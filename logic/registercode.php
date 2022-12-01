@@ -1,7 +1,7 @@
 <?php
 include_once('../config/security.php');
 
-function sanitize_user_input($data)
+function sanitizeUserInput($data)
 {
     $data = trim($data, " ");
     $data = stripslashes($data);
@@ -9,7 +9,7 @@ function sanitize_user_input($data)
     return $data;
 }
 
-function valisantize_email($data)
+function valisantizeEmail($data)
 {
     $data = filter_var($data, FILTER_VALIDATE_EMAIL);
     $data = filter_var($data, FILTER_SANITIZE_EMAIL);
@@ -48,11 +48,11 @@ if (isset($_POST['register'])) {
         header('Location: ../register-admin.php');
     } else {
 
-        $firstname          = sanitize_user_input(ucfirst($_POST['firstname']));
-        $surname            = sanitize_user_input(ucfirst($_POST['surname']));
-        $username           = sanitize_user_input($_POST['username']);
-        $email              = valisantize_email($_POST['email']);
-        $phone_number       = sanitize_user_input($_POST['phone_number']);
+        $firstname          = sanitizeUserInput(ucfirst($_POST['firstname']));
+        $surname            = sanitizeUserInput(ucfirst($_POST['surname']));
+        $username           = sanitizeUserInput($_POST['username']);
+        $email              = valisantizeEmail($_POST['email']);
+        $phone_number       = sanitizeUserInput($_POST['phone_number']);
         $password           = $_POST['password'];
         $confirm_password   = $_POST['confirm_password'];
         $status_check       = 'A';
@@ -61,18 +61,18 @@ if (isset($_POST['register'])) {
         $email_query_run = mysqli_query($connection, $email_query);
 
         if (mysqli_num_rows($email_query_run)> 0) {
-            while($row = mysqli_fetch_array($email_query_run)){
+            while ($row = mysqli_fetch_array($email_query_run)) {
                 $username_check = $row['Username'];
                 $email_check = $row['Email'];
                 $phone_number_check = $row['Phone_number'];
 
-                if($username === $username_check){
+                if ($username === $username_check) {
                     $_SESSION['warning'] = "Username is registered to another user";
                     header('Location: ../register-admin.php');
-                }elseif ($email === $email_check){
+                } elseif ($email === $email_check) {
                     $_SESSION['warning'] = "E-mail is registered to another user";
                     header('Location: ../register-admin.php');
-                }elseif ($phone_number === $phone_number_check){
+                } elseif ($phone_number === $phone_number_check) {
                     $_SESSION['warning'] = "Phone number is registered to another user";
                     header('Location: ../register-admin.php');
                 }
@@ -123,12 +123,11 @@ if (isset($_POST['delete_admin_profile'])) {
 
 // update other users password
 if (isset($_POST['update-user-profile'])) {
-
     $id                 = $_POST['id'];
-    $username           = sanitize_user_input($_POST['username']);
-    $email              = valisantize_email($_POST['email']);
-    $password           = sanitize_user_input($_POST['new_password']);
-    $confirm_password   = sanitize_user_input($_POST['con_password']);
+    $username           = sanitizeUserInput($_POST['username']);
+    $email              = valisantizeEmail($_POST['email']);
+    $password           = sanitizeUserInput($_POST['new_password']);
+    $confirm_password   = sanitizeUserInput($_POST['con_password']);
 
     if (empty($username)) {
         $_SESSION['warning'] = "Username is required";
@@ -137,7 +136,6 @@ if (isset($_POST['update-user-profile'])) {
         $_SESSION['warning'] = "Email is required";
         header('Location: ../register-admin.php');
     } elseif (empty($password)) {
-
         $_SESSION['warning'] = "Password is required";
         header('Location: ../register-admin.php');
     } else {
@@ -181,14 +179,14 @@ if (isset($_POST['updateprofile'])) {
         $_SESSION['warning'] = "Phone Number is required";
         header('Location: ../register-admin.php');
     } else {
-        function sanitize_user_update($input)
+        function sanitizeUserUpdate($input)
         {
             $input = trim($input, " ");
             $input = stripslashes($input);
             $input = htmlspecialchars($input);
             return $input;
         }
-        function valisantize_update($input)
+        function valisantizeUpdate($input)
         {
             $input = filter_var($input, FILTER_VALIDATE_EMAIL);
             $input = filter_var($input, FILTER_SANITIZE_EMAIL);
@@ -196,11 +194,11 @@ if (isset($_POST['updateprofile'])) {
         }
 
         $id             = $_POST['id'];
-        $firstname      = sanitize_user_update($_POST['firstname']);
-        $surname        = sanitize_user_update($_POST['surname']);
-        $username       = sanitize_user_update($_POST['username']);
-        $phone_number   = sanitize_user_update($_POST['phone_number']);
-        $email          = valisantize_update($_POST['email']);
+        $firstname      = sanitizeUserUpdate($_POST['firstname']);
+        $surname        = sanitizeUserUpdate($_POST['surname']);
+        $username       = sanitizeUserUpdate($_POST['username']);
+        $phone_number   = sanitizeUserUpdate($_POST['phone_number']);
+        $email          = valisantizeUpdate($_POST['email']);
 
         $query = "UPDATE `users` SET `Firstname` = ?, `Surname` = ?, `Username` = ?, `Phone_number` = ?, `Email` = ? WHERE `Id` = ? ";
         $stmt_update = $connection->prepare($query);
@@ -220,7 +218,7 @@ if (isset($_POST['updateprofile'])) {
 }
 
 // suspend user
-if (isset($_POST['status_block'])){
+if (isset($_POST['status_block'])) {
     $id = $_POST['id'];
     $status = "I";
     $query = "UPDATE `users` SET `Status` = ? WHERE `Id` = ? ";
@@ -231,14 +229,14 @@ if (isset($_POST['status_block'])){
     if ($stmt_update) {
         $_SESSION['success'] = "User's account suspended successfully";
         header("Location: ../register-admin.php");
-    }else{
+    } else {
         $_SESSION['danger'] = "Failed to suspend user";
         header("Location: ../register-admin.php");
     }
 }
 
 // unblock user
-if (isset($_POST['status_unblock'])){
+if (isset($_POST['status_unblock'])) {
     $id = $_POST['id'];
     $status = "A";
     $query = "UPDATE `users` SET `Status` = ? WHERE `Id` = ? ";
@@ -249,7 +247,7 @@ if (isset($_POST['status_unblock'])){
     if ($stmt_update) {
         $_SESSION['success'] = "User's account activated successfully";
         header("Location: ../register-admin.php");
-    }else{
+    } else {
         $_SESSION['danger'] = "Failed to activate user";
         header("Location: ../register-admin.php");
     }

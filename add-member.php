@@ -24,7 +24,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <form action="l" method="POST" autocomplete="off">
+                        <form action="logic/add-member-code.php" method="POST" autocomplete="off">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Firstname" minlength="2" maxlength="32" required>
                                 <label for="firstname">First name</label>
@@ -71,7 +71,7 @@
                                 <option value="Ahafo">Ahafo Region</option>
                                 <option value="Ashanti">Ashanti Region</option>
                                 <option value="Bono">Bono Region</option>
-                                <option value="Bono East">Bono Region</option>
+                                <option value="Bono East">Bono East Region</option>
                                 <option value="Central">Central Region</option>
                                 <option value="Eastern">Eastern Region</option>
                                 <option value="Greater Accra">Greater Accra Region</option>
@@ -88,13 +88,11 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="district" id="district" placeholder="Nzema East" minlength="2" maxlength="32" required>
+                            <input type="text" class="form-control" name="district" id="district" placeholder="Nzema East" minlength="2" maxlength="32">
                             <label for="district">Birth District</label>
                         </div>
                     </div>
-                    <hr class="my-4">
-
-                    <button type="submit" class="w-100 mb-2 btn btn-lg rounded-4 btn-outline-primary" name="register">Register</button>
+                    <button type="submit" class="w-100 my-3  btn btn-lg rounded-4 btn-outline-primary" name="add">Register</button>
                 </div>
             </div>
         </div>

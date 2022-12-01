@@ -1,15 +1,15 @@
 <?php
-include_once ('../config/security.php');
+include_once('../config/security.php');
 
 // login
     if (isset($_POST['login'])) {
-        function validate_email($user){
+        function validateEmail($user){
             $user = filter_var($user, FILTER_VALIDATE_EMAIL);
             $user = filter_var($user, FILTER_SANITIZE_EMAIL);
             return $user;
         }
 
-        $email_login = mysqli_real_escape_string($connection, validate_email($_POST['email']));
+        $email_login = mysqli_real_escape_string($connection, validateEmail($_POST['email']));
         $username_login = mysqli_real_escape_string($connection, $_POST['email']);
         $password_login = mysqli_real_escape_string($connection, $_POST['password']);
 

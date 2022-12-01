@@ -3,24 +3,24 @@
     include_once('../config/connection.php');
 
     if (isset($_POST['code-request'])) {
-        function valisantize_email($data) {
+        function valisantizeEmail($data) {
             $data = filter_var($data, FILTER_VALIDATE_EMAIL);
             $data = filter_var($data, FILTER_SANITIZE_EMAIL);
             return $data;
         }
         
-        $email =  valisantize_email($_POST['email']);
+        $email =  valisantizeEmail($_POST['email']);
         $_SESSION['email'] = $email;
         
-        if (empty($email)) {       
+        if (empty($email)) {
             $_SESSION['warning'] = "Enter your email";
-            header("Location: ../forgot-password.php");   
+            header("Location: ../forgot-password.php");
         } else {
             $query = "SELECT `Email` FROM `users` WHERE `Email` = ?";
             $stmt_check = $connection->prepare($query);
             $stmt_check->bind_param("s", $email);
             $stmt_check->execute();
-            $stmt_check->store_result();   
+            $stmt_check->store_result();
 
             if ($stmt_check->num_rows > 0) {
                 $stmt_check->bind_result($email);
@@ -50,7 +50,7 @@
                 } else {
                     $_SESSION['status'] = "Could not send verificaiton code <strong>Try Again</strong>";
                     header("location: ../forgot-password.php");
-                }   
+                }
             } else {
                 $_SESSION['status'] = "You are not registered";
                 header("Location: forgot-password.php");
@@ -62,4 +62,3 @@
         $_SESSION['warning'] = "An error occured!";
         header("Location: forgot-password.php");
     }
-?>

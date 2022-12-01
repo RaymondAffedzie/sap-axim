@@ -9,20 +9,20 @@
     require_once('../PHPMailer/src/SMTP.php');
 
     $mail = new PHPMailer(true);
-    $mail->isSMTP();          
-    $mail->SMTPDebug = 0;                                 
+    $mail->isSMTP();
+    $mail->SMTPDebug = 0;
     $mail->Host = 'smtp.gmail.com';
     $mail->Port = 465;
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $mail->SMTPAuth   = true;                                  
-    $mail->Username   = 'irbbawebsdev@gmail.com';                    
-    $mail->Password   = 'hckfnkwvocysaure';                              
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'irbbawebsdev@gmail.com';
+    $mail->Password   = 'hckfnkwvocysaure';
 
     //Recipients
     $mail->setFrom('support@paultimothyleadershipnetwork.org', 'St. Anthony of Padua Catholic Church - Axim');
-    $mail->addAddress($email);     
+    $mail->addAddress($email);
     //Content
-    $mail->isHTML(true);                                  
+    $mail->isHTML(true);
     $mail->Subject = 'Password Change Confirmation';
     date_default_timezone_set('Africa/Accra');
     $mail->Body    = '<h1 style="font-family: monospace, san-serif; text-align: center; margin-bottom: 20px;">Your password changed</h1>
@@ -32,4 +32,3 @@
                             You can safely ignore this email, if this was you and get back to business as usual.
                         </p>';
     $mail->send();
-?>
