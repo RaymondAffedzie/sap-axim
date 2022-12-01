@@ -1,0 +1,21 @@
+/* custom font for all pages on this website */
+
+h1, h2, h3, h4, h5, h6, p, input, ul, li, span, small, strong, a, label, .nav-item{
+    font-family: Raleway, Roboto, Sofia, Amita, Alike, Acme, sans-serif;
+}
+
+p, a, label{
+    font-size: 1.1rem;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
