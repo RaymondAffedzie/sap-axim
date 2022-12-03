@@ -3,7 +3,8 @@
     include_once('../config/connection.php');
 
     if (isset($_POST['code-request'])) {
-        function valisantizeEmail($data) {
+        function valisantizeEmail($data)
+        {
             $data = filter_var($data, FILTER_VALIDATE_EMAIL);
             $data = filter_var($data, FILTER_SANITIZE_EMAIL);
             return $data;

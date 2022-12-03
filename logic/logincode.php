@@ -3,7 +3,8 @@ include_once('../config/security.php');
 
 // login
     if (isset($_POST['login'])) {
-        function validateEmail($user){
+        function validateEmail($user)
+        {
             $user = filter_var($user, FILTER_VALIDATE_EMAIL);
             $user = filter_var($user, FILTER_SANITIZE_EMAIL);
             return $user;

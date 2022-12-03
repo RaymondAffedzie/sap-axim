@@ -28,11 +28,11 @@
                             <p><a class="text-decoration-none" href="forgot-password.php">Forgot Password?</a></p>
                         </div>
                     </div>
-                </div>   
+                </div>
             </div>
         </div>
     </div>
 
 <?php
-    include('includes/footer.php');
+    include_once('includes/footer.php');
 ?>
