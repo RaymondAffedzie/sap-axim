@@ -20,11 +20,12 @@
     
 
     <div class="container-fluid">
+        <?php include_once('logic/alerts.php'); ?>
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <form action="logic/add-member-code.php" method="POST" autocomplete="off">
+                        <form action="logic/add-member-code.php" method="post" autocomplete="off">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Firstname" minlength="2" maxlength="32" required>
                                 <label for="firstname">First name</label>

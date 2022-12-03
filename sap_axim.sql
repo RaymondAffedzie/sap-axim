@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 02, 2022 at 12:29 AM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 5.6.32
+-- Host: localhost
+-- Generation Time: Dec 03, 2022 at 04:07 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `address` (
   `Id` int(11) NOT NULL,
-  `PiD` int(11) NOT NULL,
+  `MiD` int(11) NOT NULL,
   `Street_name` varchar(30) DEFAULT NULL,
   `House_number` varchar(10) DEFAULT NULL,
   `GPS_address` varchar(15) NOT NULL,
@@ -47,7 +46,7 @@ CREATE TABLE `address` (
 
 CREATE TABLE `church` (
   `Id` int(11) NOT NULL,
-  `PiD` int(11) NOT NULL,
+  `MiD` int(11) NOT NULL,
   `Baptism_card_number` varchar(10) DEFAULT NULL,
   `Baptism_date` date DEFAULT NULL,
   `Confirmation_number` varchar(10) DEFAULT NULL,
@@ -62,7 +61,7 @@ CREATE TABLE `church` (
 
 CREATE TABLE `family` (
   `Id` int(11) NOT NULL,
-  `Pid` int(11) NOT NULL,
+  `MiD` int(11) NOT NULL,
   `Mother_name` varchar(50) NOT NULL,
   `M_decease` char(1) NOT NULL,
   `Father_name` varchar(50) NOT NULL,
@@ -75,12 +74,32 @@ CREATE TABLE `family` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `members`
+--
+
+CREATE TABLE `members` (
+  `Id` int(11) NOT NULL,
+  `Init` char(3) NOT NULL DEFAULT 'SAP',
+  `Reg_year` year(4) NOT NULL,
+  `Firstname` varchar(25) NOT NULL,
+  `Sur_name` varchar(25) NOT NULL,
+  `Other_name` varchar(25) NOT NULL,
+  `Sex` char(1) NOT NULL,
+  `Birth_Date` date NOT NULL,
+  `Birth_Place` varchar(20) NOT NULL,
+  `Birth_Region` varchar(30) DEFAULT NULL,
+  `Birth_District` varchar(60) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `other_info`
 --
 
 CREATE TABLE `other_info` (
   `Id` int(11) NOT NULL,
-  `PiD` int(11) NOT NULL,
+  `MiD` int(11) NOT NULL,
   `Marital_status` char(10) NOT NULL,
   `Number_of_children` int(11) NOT NULL,
   `Education_level` char(15) NOT NULL,
@@ -104,26 +123,7 @@ CREATE TABLE `password_reset` (
 --
 
 INSERT INTO `password_reset` (`Pwd_reset_id`, `Pwd_reset_email`, `Pwd_reset_token`) VALUES
-(9, 'raymondaffedzie@gmail.com', 463812);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `personal`
---
-
-CREATE TABLE `personal` (
-  `Id` int(11) NOT NULL,
-  `Serial_Number` varchar(20) NOT NULL,
-  `Firstname` varchar(25) NOT NULL,
-  `Sur_name` varchar(25) NOT NULL,
-  `Other_name` varchar(25) NOT NULL,
-  `Sex` char(1) NOT NULL,
-  `Birth_Date` date NOT NULL,
-  `Birth_Place` varchar(20) NOT NULL,
-  `Birth_Region` varchar(30) DEFAULT NULL,
-  `Birth_District` varchar(60) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(41, 'raymondaffedzie@gmail.com', 582524);
 
 -- --------------------------------------------------------
 
@@ -133,7 +133,7 @@ CREATE TABLE `personal` (
 
 CREATE TABLE `society` (
   `Id` int(11) NOT NULL,
-  `PiD` int(11) NOT NULL,
+  `MiD` int(11) NOT NULL,
   `Society_name` varchar(30) DEFAULT NULL,
   `Position_held` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -162,8 +162,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`Id`, `Firstname`, `Surname`, `Username`, `Phone_number`, `Email`, `Password`, `Pwd_reset_token`, `Role`, `Status`) VALUES
-(2, 'Ray', 'Berth', 'berth_ray', '0247692388', 'raymondaffedzie@gmail.com', '$2y$10$lmKh11itlDVySVIa2UootOUSDS3liJWnVD6G0aIPu4rADyPgnWxum', 463812, 'A', 'A'),
-(3, 'John', 'Doe', 'johndoe', '7231045687', 'johndoe@email.com', '$2y$10$vF4KjDPVUiQFVNKU3sYgZu84d8qhG87OXL7fUbjn3.PEltmnF1qpu', 0, 'M', 'A');
+(1, 'Ray', 'Berth', 'berth_ray', '0247692388', 'raymondaffedzie@gmail.com', '$2y$10$lmKh11itlDVySVIa2UootOUSDS3liJWnVD6G0aIPu4rADyPgnWxum', 463812, 'A', 'A'),
+(2, 'John', 'Doe', 'johndoe', '7231045687', 'johndoe@email.com', '$2y$10$vF4KjDPVUiQFVNKU3sYgZu84d8qhG87OXL7fUbjn3.PEltmnF1qpu', 0, 'M', 'A');
 
 --
 -- Indexes for dumped tables
@@ -174,28 +174,34 @@ INSERT INTO `users` (`Id`, `Firstname`, `Surname`, `Username`, `Phone_number`, `
 --
 ALTER TABLE `address`
   ADD PRIMARY KEY (`Id`),
-  ADD KEY `Relationship-Add` (`PiD`);
+  ADD UNIQUE KEY `MiD` (`MiD`);
 
 --
 -- Indexes for table `church`
 --
 ALTER TABLE `church`
   ADD PRIMARY KEY (`Id`),
-  ADD KEY `Relationship-Chc` (`PiD`);
+  ADD UNIQUE KEY `MiD` (`MiD`);
 
 --
 -- Indexes for table `family`
 --
 ALTER TABLE `family`
   ADD PRIMARY KEY (`Id`),
-  ADD KEY `Relationship-Fam` (`Pid`);
+  ADD UNIQUE KEY `MiD` (`MiD`);
+
+--
+-- Indexes for table `members`
+--
+ALTER TABLE `members`
+  ADD PRIMARY KEY (`Id`,`Init`,`Reg_year`);
 
 --
 -- Indexes for table `other_info`
 --
 ALTER TABLE `other_info`
   ADD PRIMARY KEY (`Id`),
-  ADD KEY `Relationship-OtI` (`PiD`);
+  ADD UNIQUE KEY `MiD` (`MiD`);
 
 --
 -- Indexes for table `password_reset`
@@ -204,17 +210,11 @@ ALTER TABLE `password_reset`
   ADD PRIMARY KEY (`Pwd_reset_id`);
 
 --
--- Indexes for table `personal`
---
-ALTER TABLE `personal`
-  ADD PRIMARY KEY (`Id`);
-
---
 -- Indexes for table `society`
 --
 ALTER TABLE `society`
   ADD PRIMARY KEY (`Id`),
-  ADD KEY `Relationship-Sct` (`PiD`);
+  ADD UNIQUE KEY `MiD` (`MiD`);
 
 --
 -- Indexes for table `users`
@@ -245,6 +245,12 @@ ALTER TABLE `family`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `members`
+--
+ALTER TABLE `members`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `other_info`
 --
 ALTER TABLE `other_info`
@@ -254,13 +260,7 @@ ALTER TABLE `other_info`
 -- AUTO_INCREMENT for table `password_reset`
 --
 ALTER TABLE `password_reset`
-  MODIFY `Pwd_reset_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `personal`
---
-ALTER TABLE `personal`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Pwd_reset_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `society`
@@ -272,7 +272,7 @@ ALTER TABLE `society`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -282,32 +282,31 @@ ALTER TABLE `users`
 -- Constraints for table `address`
 --
 ALTER TABLE `address`
-  ADD CONSTRAINT `Relationship` FOREIGN KEY (`PiD`) REFERENCES `personal` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `Relationship-Add` FOREIGN KEY (`PiD`) REFERENCES `personal` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `address_ibfk_1` FOREIGN KEY (`MiD`) REFERENCES `members` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `church`
 --
 ALTER TABLE `church`
-  ADD CONSTRAINT `Relationship-Chc` FOREIGN KEY (`PiD`) REFERENCES `personal` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `church_ibfk_1` FOREIGN KEY (`MiD`) REFERENCES `members` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `family`
 --
 ALTER TABLE `family`
-  ADD CONSTRAINT `Relationship-Fam` FOREIGN KEY (`Pid`) REFERENCES `personal` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `family_ibfk_1` FOREIGN KEY (`MiD`) REFERENCES `members` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `other_info`
 --
 ALTER TABLE `other_info`
-  ADD CONSTRAINT `Relationship-OtI` FOREIGN KEY (`PiD`) REFERENCES `personal` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `other_info_ibfk_1` FOREIGN KEY (`MiD`) REFERENCES `members` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `society`
 --
 ALTER TABLE `society`
-  ADD CONSTRAINT `Relationship-Sct` FOREIGN KEY (`PiD`) REFERENCES `personal` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `society_ibfk_1` FOREIGN KEY (`MiD`) REFERENCES `members` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

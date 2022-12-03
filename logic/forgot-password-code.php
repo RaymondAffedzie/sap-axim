@@ -53,13 +53,13 @@
                     header("location: ../forgot-password.php");
                 }
             } else {
-                $_SESSION['status'] = "You are not registered";
-                header("Location: forgot-password.php");
+                $_SESSION['status'] = "Account is not registered";
+                header("Location: ../forgot-password.php");
                 $stmt_insert->close();
             }
             $stmt_check->close();
         }
     } else {
         $_SESSION['warning'] = "An error occured!";
-        header("Location: forgot-password.php");
+        header("Location: ../forgot-password.php");
     }

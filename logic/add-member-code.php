@@ -16,9 +16,6 @@ if (isset($_POST['add'])) {
     } elseif (empty($_POST['surname'])) {
         $_SESSION['warning'] = "Surname is required";
         header('Location: ../add-member.php');
-    } elseif (empty($_POST['othername'])) {
-        $_SESSION['warning'] = "Othername is required";
-        header('Location: ../add-member.php');
     } elseif (empty($_POST['sex'])) {
         $_SESSION['warning'] = "sex is required";
         header('Location: ../add-member.php');
@@ -29,16 +26,29 @@ if (isset($_POST['add'])) {
         $_SESSION['warning'] = "Place of birth is required";
         header('Location: ../add-member.php');
     } else {
-
-        $firstname          = sanitizeUserInput(ucfirst($_POST['firstname']));
-        $surname            = sanitizeUserInput(ucfirst($_POST['surname']));
-        $othername            = sanitizeUserInput(ucfirst($_POST['othername']));
+        $firstname = sanitizeUserInput(ucfirst($_POST['firstname']));
+        $surname = sanitizeUserInput(ucfirst($_POST['surname']));
+        $othername = sanitizeUserInput(ucfirst($_POST['othername']));
         $sex  = sanitizeUserInput($_POST['sex']);
         $birthdate      = sanitizeUserInput($_POST['birthdate']);
-        $birthplace = sanitizeUserInput($_POST['birthplace']);
-        $region = sanitizeUserInput($_POST['region']);
-        $district = sanitizeUserInput($_POST['district']);
+        $birthplace = sanitizeUserInput(ucfirst($_POST['birthplace']));
+        $region = sanitizeUserInput(ucfirst($_POST['region']));
+        $district = sanitizeUserInput(ucfirst($_POST['district']));
+        $year = date('Y'); // get the today's date year eg. 2023
+        $init = "SAP";
 
-        echo 'SAP'. date('Y') . rand(99, 1000);
+        $query = INSERT INTO `members`(`Init`, `Reg_year`, `Firstname`, `Sur_name`, `Other_name`, `Sex`, `Birth_Date`, `Birth_Place`, `Birth_Region`, `Birth_District`) VALUES (?,?,?,?,?,?,?,?,?,?);
+        $stmt_insert = $connection->prepare($query);
+        $stmt_insert->bind_param("sissssssss", $init, $year, $firstname, $surname, $othername, $sex, $birthdate, $birthplace, $region, $district);
+        $stmt_insert->execute();
+
+        if ($stmt_insert->affected_rows > 0) {
+            $_SESSION['success'] =  "Member registered successfully";
+            header('Location: ../add-member.php');
+        } else {
+            $_SESSION['success'] =  "Member registration failed";
+            header('Location: ../add-member.php');
+        }
+        $stmt_insert->close();
     }
 }
