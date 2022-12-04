@@ -81,7 +81,9 @@ if (isset($_POST['updateprofile'])) {
         $region     = sanitizeUserInput(ucfirst($_POST['region']));
         $district   = sanitizeUserInput(ucfirst($_POST['district']));
         
-        $queryUpd = "UPDATE `members` SET `Firstname` =  ?, `Sur_name` = ?, `Other_name` = ?, `Sex` = ?, `Birth_Date` = ?, `Birth_Place` = ?, `Birth_Region` = ?, `Birth_District = ? WHERE CONCAT(`Init`,`Reg_year`,`Id`) = ?";
+
+        // echo $id ." ".$firstname." ".$surname." ".$othername." ".$sex." ".$birthplace." ".$birthdate." ".$region." ".$district;
+        $queryUpd = "UPDATE `members` SET `Firstname` =  ?, `Sur_name` = ?, `Other_name` = ?, `Sex` = ?, `Birth_Date` = ?, `Birth_Place` = ?, `Birth_Region` = ?, `Birth_District = ? WHERE CONCAT(Init,`Reg_year`,`Id`) = ?";
         $stmt_update = $connection->prepare($queryUpd);
         $stmt_update->bind_param("sssssssss",$firstname, $surname, $othername, $sex, $birthdate, $birthplace, $region, $district, $id);
         $stmt_update->execute();

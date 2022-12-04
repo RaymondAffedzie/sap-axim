@@ -29,18 +29,30 @@ include_once('includes/navbar.php');
             </li>
 
             <li class="nav-item" role="presentation">
-                <button class="nav-link text-light" id="pills-change_password-tab" data-bs-toggle="pill" data-bs-target="#pills-change_password" type="button" role="tab" aria-controls="pills-change_password" aria-selected="false">Change Password</button>
+                <button class="nav-link text-light" id="pills-other-info-tab" data-bs-toggle="pill" data-bs-target="#pills-other-info" type="button" role="tab" aria-controls="pills-other-info" aria-selected="false">Other Info</button>
             </li>
 
             <li class="nav-item" role="presentation">
-                <!-- <button class="nav-link text-light" id="pills-activities-tab" data-bs-toggle="pill" data-bs-target="#pills-activities" type="button" role="tab" aria-controls="pills-activities" aria-selected="false">Activities</button> -->
+                <button class="nav-link text-light" id="pills-address-tab" data-bs-toggle="pill" data-bs-target="#pills-address" type="button" role="tab" aria-controls="pills-other-info" aria-selected="false">Address</button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link text-light" id="pills-church-detail-tab" data-bs-toggle="pill" data-bs-target="#pills-church-detail" type="button" role="tab" aria-controls="pills-church-detail" aria-selected="false">Church Details</button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link text-light" id="pills-society-tab" data-bs-toggle="pill" data-bs-target="#pills-society" type="button" role="tab" aria-controls="pills-society" aria-selected="false">Societies</button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link text-light" id="pills-family-tab" data-bs-toggle="pill" data-bs-target="#pills-family" type="button" role="tab" aria-controls="pills-family" aria-selected="false">Family</button>
             </li>
         </ul>
         
         <div class="tab-content" id="pills-tabContent">
 
             <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <div class="card mb-3 border-0 rounded-0">
+                <div class="card mb-1 border-0 rounded-0">
                     <div class="row g-0">
                         <div class="col-md-5">
                             <?php
@@ -132,12 +144,12 @@ include_once('includes/navbar.php');
                                                 </div>
 
                                                 <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control" name="birth_region" value="<?php echo $row['Birth_Region']; ?>" id="birth_region">
+                                                    <input type="text" class="form-control" name="region" value="<?php echo $row['Birth_Region']; ?>" id="birth_region">
                                                     <label for="Birth_region">Birth Region</label>
                                                 </div>
 
                                                 <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control" name="birth_district" value="<?php echo $row['Birth_District']; ?>" id="birth_district">
+                                                    <input type="text" class="form-control" name="district" value="<?php echo $row['Birth_District']; ?>" id="birth_district">
                                                     <label for="Birth_district">Birth District</label>
                                                 </div>
 
@@ -168,12 +180,28 @@ include_once('includes/navbar.php');
                     </div>
                 </div>
             </div>
+            
+            <div class="tab-pane fade" id="pills-other-info" style="display:flex;" role="tabpanel" aria-labelledby="pills-other-info-tab">
+                <div class="card mb-1 border-0 rounded-0">
+                    <div class="row g-5">
 
-            <div class="tab-pane fade" id="pills-change_password" role="tabpanel" aria-labelledby="pills-change_password-tab">
-                <div class="card mb-3 border-0 shadow-lg rounded-0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-address" style="display:flex;" role="tabpanel" aria-labelledby="pills-address-tab">
+                <div class="card mb-1 border-0 rounded-0">
+                    <div class="row g-5">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-church-detail" role="tabpanel" aria-labelledby="pills-church-detail-tab">
+                <div class="card mb-1 border-0 rounded-0">
                     <div class="row g-0">
                         <div class="col-md-5">
-                            <h1 class="display-4 mt-3 text-secondary"><i class="fa fa-key"></i><br> Change Password</h1>
+                            <h1 class="display-4 mt-3 text-secondary"><i class="fa-solid fa-church"></i><br>Church Details</h1>
                         </div>
                         <div class="col-md-7">
                             <div class="card-body">
@@ -239,12 +267,25 @@ include_once('includes/navbar.php');
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="tab-pane fade" id="pills-activities" style="display:flex;" role="tabpanel" aria-labelledby="pills-activities-tab">
+
+            <div class="tab-pane fade" id="pills-society" style="display:flex;" role="tabpanel" aria-labelledby="pills-society-tab">
+                <div class="card mb-1 border-0 rounded-0">
+                    <div class="row g-5">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-family" style="display:flex;" role="tabpanel" aria-labelledby="pills-family-tab">
+                <div class="card mb-1 border-0 rounded-0">
+                    <div class="row g-5">
+
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
-</div>
 </div>
 
 
