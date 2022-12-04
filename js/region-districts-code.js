@@ -19,7 +19,7 @@ let user_country_code = "IN";
 
     // creating district name drop-down
     let text_box =
-        '<label for="state">District</label><input type="text" class="form-control" class="input-text" id="state">';
+        '<label for="state">District</label><input type="text" class="form-control" name="district" class="input-text" id="state">';
     let state_code_id = document.getElementById("state-code");
 
     function create_states_dropdown() {

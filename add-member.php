@@ -8,8 +8,8 @@
         <h1 class="h2">Add new member</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+            <a type="button" href="view-members.php" class="btn btn-sm btn-outline-secondary">Members Page</a>
+            <a type="button" class="btn btn-sm btn-outline-secondary">Export</a>
           </div>
           <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
             <span data-feather="calendar" class="align-text-bottom"></span>
