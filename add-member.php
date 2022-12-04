@@ -37,18 +37,18 @@
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" name="othername" id="othername" placeholder="othername" minlength="2" maxlength="32" required>
+                                <input type="text" class="form-control" name="othername" id="othername" placeholder="othername" minlength="2" maxlength="32">
                                 <label for="othername">Other name</label>
                             </div>
 
                             <fieldset>
                                 <legend>Sex</legend>
                                 <div class="form-check">
-                                    <input type="radio" class="form-check-input" name="sex" id="male" value="male">
+                                    <input type="radio" class="form-check-input" name="sex" id="male" value="M">
                                     <label for="male" class="form-check-label">Male</label>
                                 </div>
                                 <div class="form-check">
-                                    <input type="radio" class="form-check-input" name="sex" id="female" value="female">
+                                    <input type="radio" class="form-check-input" name="sex" id="female" value="F">
                                     <label for="female" class="form-check-label">Female</label>
                                 </div>
                             </fieldset>
@@ -67,30 +67,14 @@
 
                         <div class="form-group mb-3">
                             <label for="region">Birth Region</label>
-                            <select class="form-control" name="region" id="region">
+                            <select class="form-control" name="region" id="country">
                                 <option value="">Select birth region</option>
-                                <option value="Ahafo">Ahafo Region</option>
-                                <option value="Ashanti">Ashanti Region</option>
-                                <option value="Bono">Bono Region</option>
-                                <option value="Bono East">Bono East Region</option>
-                                <option value="Central">Central Region</option>
-                                <option value="Eastern">Eastern Region</option>
-                                <option value="Greater Accra">Greater Accra Region</option>
-                                <option value="Northern">Northern Region</option>
-                                <option value="North East">North East Region</option>
-                                <option value="Oti">Oti Region</option>
-                                <option value="Savannah">Savannah Region</option>
-                                <option value="Upper East">Upper East Region</option>
-                                <option value="Upper West">Upper West Region</option>
-                                <option value="Volta">Volta Region</option>
-                                <option value="Western">Western Region</option>
-                                <option value="Western North">Western North Region</option>
                             </select>
                         </div>
 
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="district" id="district" placeholder="Nzema East" minlength="2" maxlength="32">
-                            <label for="district">Birth District</label>
+                        <div class="form-group mb-3" id="state-code">
+                            <input type="text" class="form-control" name="district" id="state">
+                            <label for="state">District</label>
                         </div>
                     </div>
                     <button type="submit" class="w-100 my-3  btn btn-lg rounded-4 btn-outline-primary" name="add">Register</button>
@@ -99,7 +83,9 @@
         </div>
     </div>
 
-
+    <!-- script for regions and districts in ghana -->
+    <script src="js/region-districts.js"></script>
+    <script src="js/region-districts-code.js"></script>
 <?php
     include_once('includes/footer.php');
 ?>
