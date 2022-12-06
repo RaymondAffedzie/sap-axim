@@ -8,13 +8,10 @@
         <h1 class="h2">Add new member</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
-            <a type="button" href="view-members.php" class="btn btn-sm btn-outline-secondary">Members Page</a>
+            <a type="button" href="view-members.php" class="btn btn-sm btn-outline-secondary">View Members</a>
             <a type="button" class="btn btn-sm btn-outline-secondary">Export</a>
           </div>
-          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            <span data-feather="calendar" class="align-text-bottom"></span>
-            This week
-          </button>
+          <a type="button" class="btn btn-sm btn-outline-secondary" href="add-member.php">Add member</a>
         </div>
     </div>
     
@@ -24,8 +21,8 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-6">
-                        <form action="logic/add-member-code.php" method="post" autocomplete="off">
+                    <form action="logic/member-code.php" method="post" autocomplete="off">
+                        <div class="col-md-6">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Firstname" minlength="2" maxlength="32" required>
                                 <label for="firstname">First name</label>
@@ -53,31 +50,32 @@
                                 </div>
                             </fieldset>
                         
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-floating mb-3">
-                            <input type="date" class="form-control" name="birthdate" id="birthdate" required>
-                            <label for="birthdate">Date of Birth</label>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control" name="birthdate" id="birthdate" required>
+                                <label for="birthdate">Date of Birth</label>
+                            </div>
 
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="birthplace" id="birthplace" placeholder="Takoradi" minlength="2" maxlength="32" required>
-                            <label for="birthplace">Place of Birth</label>
-                        </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="birthplace" id="birthplace" placeholder="Takoradi" minlength="2" maxlength="32" required>
+                                <label for="birthplace">Place of Birth</label>
+                            </div>
 
-                        <div class="form-group mb-3">
-                            <label for="region">Birth Region</label>
-                            <select class="form-control" name="region" id="country">
-                                <option value="">Select birth region</option>
-                            </select>
-                        </div>
+                            <div class="form-group mb-3">
+                                <label for="region">Birth Region</label>
+                                <select class="form-control" name="region" id="country">
+                                    <option value="">Select birth region</option>
+                                </select>
+                            </div>
 
-                        <div class="form-group mb-3" id="state-code">
-                            <input type="text" class="form-control" name="district" id="state">
-                            <label for="state">District</label>
+                            <div class="form-group mb-3" id="state-code">
+                                <input type="text" class="form-control" name="district" id="state">
+                                <label for="state">District</label>
+                            </div>
                         </div>
-                    </div>
-                    <button type="submit" class="w-100 my-3  btn btn-lg rounded-4 btn-outline-primary" name="add">Register</button>
+                        <button type="submit" class="w-100 my-3  btn btn-lg rounded-4 btn-outline-primary" name="add">Register</button>
+                    </form>
                 </div>
             </div>
         </div>

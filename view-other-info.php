@@ -5,10 +5,10 @@
 ?>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">All Registered Members</h1>
+        <h1 class="h2">Members Personal Infomation</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a type="button" href="view-members.php" class="btn btn-sm btn-outline-secondary">View members</a>
+                <a type="button" href="view-other-info.php" class="btn btn-sm btn-outline-secondary">View members Information</a>
                 <a type="button" class="btn btn-sm btn-outline-secondary">Export</a>
             </div>
             <a type="button" class="btn btn-sm btn-outline-secondary" href="add-member.php">Add member</a>
@@ -40,7 +40,7 @@
                                         <th scope="col">Birth Region</th>
                                         <th scope="col">Birth District</th>
                                         <th scope="col">View</th>
-                                        <th scope="col">Delete</th>
+                                        <!-- <th scope="col">Delete</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -75,18 +75,10 @@
                                                     <p> <?php echo $row['Birth_District']; ?> </p>
                                                 </td>
                                                 <td>
-                                                    <form action="member-profile.php" method="post">
+                                                    <form action="add-other-info.php" method="post">
                                                         <input type="hidden" name="member_id" value="<?php echo $row['Init'].$row['Reg_year'].$row['Id']; ?>" hidden>
-                                                        <button type="submit" class="btn btn-outline-secondary" name="view-member" data-bs-toggle="tooltip" data-bs-placement="left" title="View member's profile">
-                                                            <i class="fa fa-eye"></i>
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                                <td>
-                                                    <form action="logic/member-code.php" method="post">
-                                                        <input type="hidden" name="member_id" value="<?php echo $row['Reg_year'].$row['Id']; ?>">
-                                                        <button type="submit" name="delete_member" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete this member" onclick="return confirm('Do you want to delete this member')">
-                                                            <i class="fa fa-trash-o"></i>
+                                                        <button type="submit" class="btn btn-outline-secondary" name="add-other-info" data-bs-toggle="tooltip" data-bs-placement="left" title="Add member's personal information">
+                                                            <i class="fa fa-plus"></i>
                                                         </button>
                                                     </form>
                                                 </td>

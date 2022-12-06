@@ -121,7 +121,7 @@ include_once('includes/navbar.php');
                                                 if ($query_run) {
                                                     while ($row = mysqli_fetch_array($query_run)) {
                                             ?>
-                                            <form action="logic/add-member-code.php" method="post">
+                                            <form action="logic/member-code.php" method="post">
                                                 <input type="hidden" class="form-control" name="member_id" value="<?php echo $id; ?>">
                                                 <div class="form-floating mb-3">
                                                     <input type="text" class="form-control" name="firstname" value="<?php echo $row['Firstname']; ?>" id="firstname" min="2" max="32" required>

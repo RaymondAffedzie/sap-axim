@@ -81,13 +81,11 @@ if (isset($_POST['updateprofile'])) {
         $region     = sanitizeUserInput(ucfirst($_POST['region']));
         $district   = sanitizeUserInput(ucfirst($_POST['district']));
         
-
-        // echo $id ." ".$firstname." ".$surname." ".$othername." ".$sex." ".$birthplace." ".$birthdate." ".$region." ".$district;
-        $queryUpd = "UPDATE `members` SET `Firstname` =  ?, `Sur_name` = ?, `Other_name` = ?, `Sex` = ?, `Birth_Date` = ?, `Birth_Place` = ?, `Birth_Region` = ?, `Birth_District = ? WHERE CONCAT(Init,`Reg_year`,`Id`) = ?";
-        $stmt_update = $connection->prepare($queryUpd);
+        $query = "UPDATE `members` SET `Firstname` =  ?, `Sur_name` = ?, `Other_name` = ?, `Sex` = ?, `Birth_Date` = ?, `Birth_Place` = ?, `Birth_Region` = ?, `Birth_District` = ? WHERE CONCAT(Init,`Reg_year`,`Id`) = ?";
+        $stmt_update = $connection->prepare($query);
         $stmt_update->bind_param("sssssssss",$firstname, $surname, $othername, $sex, $birthdate, $birthplace, $region, $district, $id);
         $stmt_update->execute();
-
+        
         if ($stmt_update->affected_rows > 0) {
             $_SESSION['success'] =  "Member's profile updated successfully";
             header('Location: ../view-members.php');
@@ -96,6 +94,28 @@ if (isset($_POST['updateprofile'])) {
             header('Location: ../view-members.php');
         }
         $stmt_update->close();
+    }
+}
+
+
+// delete member code
+if (isset($_POST['delete_member'])) {
+    $id = $_POST['member_id'];
+
+    $query = "SELECT * FROM `members` WHERE CONCAT(`Reg_year`,`Id`) = '$id'";
+    $query_run = mysqli_query($connection, $query);
+    $row = mysqli_fetch_assoc($query_run);
+
+    if (mysqli_num_rows($query_run) == 1) {
+        $query = "DELETE FROM `members` WHERE CONCAT(`Reg_year`,`Id`) = ?";
+        $stmt = $connection->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $_SESSION['success'] = "Member deleted successfully";
+        header("Location: ../view-members.php");
+    } else {
+        $_SESSION['neutral'] = "Member does not exist";
+        header("Location: ../view-members.php");
     }
 }
 
