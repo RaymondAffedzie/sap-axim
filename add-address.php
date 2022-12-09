@@ -38,7 +38,7 @@ include_once('includes/navbar.php');
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control" name="street_name" id="street_name" min="0" required>
-                                            <label for="street_name">street Name</label>
+                                            <label for="street_name">Street Name</label>
                                         </div>
 
                                         <div class="form-floating mb-3">
@@ -64,7 +64,7 @@ include_once('includes/navbar.php');
                                         </div>
 
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" name="phone_number" id="phone_number" required>
+                                            <input type="tel" class="form-control" name="phone_number" id="phone_number" required>
                                             <label for="phone_number">Phone Number</label>
                                         </div>
                                     </div>

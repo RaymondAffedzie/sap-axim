@@ -203,7 +203,7 @@ include_once('includes/navbar.php');
             <!-- society -->
             <div class="row">
                 <div class="col-md-5">
-                    <h1 class="display-4 mt-3 text-center text-secondary"><i class="fa-solid fa-people-roof"></i><br>Societies</h1>
+                    <h1 class="display-4 mt-3 text-center text-secondary"><i class="fa-solid fa-users"></i><br>Societies</h1>
                 </div>
                 <div class="col-md-7">
                     <div class="card-body">

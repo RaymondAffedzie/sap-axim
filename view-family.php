@@ -24,7 +24,7 @@
                         <div class="table-responsive">
                             <?php
                                 include_once('logic/alerts.php');
-                                $query = "SELECT address.Id, address.MiD, address.Street_name, address.House_number, address.GPS_address, address.Postal_address, address.Phone_number, address.Email, members.Init, members.Reg_year, members.Id, members.Firstname, members.Sur_name, members.Other_name FROM address LEFT JOIN members ON address.MiD = members.Id ORDER BY members.Id ASC";
+                                $query = "SELECT family.Id, family.MiD, family.Mother_name, family.M_decease, family.Father_name, family.F_decease, family.Next_of_kin, family.NoK_contact, family.NoK_GPS_address, members.Id, members.Init, members.Reg_year, members.Firstname, members.Sur_name, members.Other_name FROM family LEFT JOIN members ON members.Id = family.MiD ORDER BY members.Id ASC";
                                 $query_run = mysqli_query($connection, $query);
                                 $counter = 0;
                             ?>
@@ -33,13 +33,14 @@
                                 <tr>
                                         <th scope="col">SN</th>
                                         <th scope="col">Member Id</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Street Name</th>
-                                        <th scope="col">House Number</th>
-                                        <th scope="col">GPS Address</th>
-                                        <th scope="col">Postal Address</th>
-                                        <th scope="col">Phone Number</th>
-                                        <th scope="col" class="text-wrap" style="width: 300px;">Email</th>
+                                        <th scope="col" class="text-wrap" style="width: 300px;">Member's name</th>
+                                        <th scope="col" class="text-wrap" style="width: 300px;">Father's name</th>
+                                        <th scope="col" class="text-wrap" style="width: 100px;">Father's status</th>
+                                        <th scope="col" class="text-wrap" style="width: 300px;">Mother's name</th>
+                                        <th scope="col" class="text-wrap" style="width: 100px;">Mother's status</th>
+                                        <th scope="col" class="text-wrap" style="width: 300px;">Next of Kin's name</th>
+                                        <th scope="col" class="text-wrap" style="width: 100px;">Phone number</th>
+                                        <th scope="col" class="text-wrap" style="width: 300px;">GPS Address</th>
                                         <th scope="col">View</th>
                                     </tr>
                                 </thead>
@@ -56,26 +57,29 @@
                                                 <td class="text-wrap">
                                                     <p> <?php echo $row['Init'].$row['Reg_year'].$row['Id']; ?> </p>
                                                 </td>
-                                                <td class="text-wrap" style="width: 400px;">
+                                                <td class="text-wrap" style="width: 300px;">
                                                     <p> <?php echo $row['Firstname']." ".$row['Other_name']." ".$row['Sur_name']; ?> </p>
                                                 </td>
                                                 <td class="text-wrap" style="width: 300px;">
-                                                    <p> <?php echo $row['Street_name']; ?> </p>
-                                                </td>
-                                                <td class="text-wrap" style="width: 300px;">
-                                                    <p> <?php echo $row['House_number']; ?> </p>
-                                                </td>
-                                                <td class="text-wrap" style="width: 300px;">
-                                                    <p> <?php echo $row['GPS_address']; ?> </p>
-                                                </td>
-                                                <td class="text-wrap" style="width: 300px;">
-                                                    <p> <?php echo $row['Postal_address']; ?> </p>
+                                                    <p> <?php echo $row['Father_name']; ?> </p>
                                                 </td>
                                                 <td>
-                                                    <p> <?php echo $row['Phone_number']; ?> </p>
+                                                    <p> <?php echo $row['F_decease']; ?> </p>
                                                 </td>
                                                 <td class="text-wrap" style="width: 300px;">
-                                                    <p> <?php echo $row['Email']; ?> </p>
+                                                    <p> <?php echo $row['Mother_name']; ?> </p>
+                                                </td>
+                                                <td>
+                                                    <p> <?php echo $row['M_decease']; ?> </p>
+                                                </td>
+                                                <td class="text-wrap" style="width: 300px;">
+                                                    <p> <?php echo $row['Next_of_kin']; ?> </p>
+                                                </td>
+                                                <td>
+                                                    <p> <?php echo $row['NoK_contact']; ?> </p>
+                                                </td>
+                                                <td class="text-wrap" style="width: 300px;">
+                                                    <p> <?php echo $row['NoK_GPS_address']; ?> </p>
                                                 </td>
                                                 <td>
                                                     <form action="member-profile.php" method="post">
