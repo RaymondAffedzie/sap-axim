@@ -82,7 +82,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="view-other-info.php">
                             <span data-feather="layers" class="align-text-bottom"></span>
-                            View members personal infomation
+                            View other info
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="add-address.php">
+                            <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                            Add address
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="view-address.php">
+                            <span data-feather="layers" class="align-text-bottom"></span>
+                            View address
                         </a>
                     </li>
                 </ul>

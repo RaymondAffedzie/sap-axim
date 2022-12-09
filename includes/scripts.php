@@ -1,5 +1,5 @@
     <!-- Bootstrap core JavaScript-->
-    <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
+    <script src="js/js/bootstrap.bundle.min.js"></script>
     <script src="js/dashboard.js"></script>
 
     <!-- custome Js -->

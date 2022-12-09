@@ -44,7 +44,7 @@ if (isset($_POST['add'])) {
 
         if ($stmt_insert->affected_rows > 0) {
             $_SESSION['success'] =  "Member registered successfully";
-            header('Location: ../add-member.php');
+            header('Location: ../add-other-info.php');
         } else {
             $_SESSION['success'] =  "Member registration failed";
             header('Location: ../add-member.php');

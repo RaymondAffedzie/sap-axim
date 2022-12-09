@@ -20,8 +20,8 @@
         <?php include_once('logic/alerts.php'); ?>
         <div class="card shadow mb-4">
             <div class="card-body">
-                <div class="row">
-                    <form action="logic/member-code.php" method="post" autocomplete="off">
+                <form action="logic/member-code.php" method="post" autocomplete="off">
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Firstname" minlength="2" maxlength="32" required>
@@ -75,8 +75,8 @@
                             </div>
                         </div>
                         <button type="submit" class="w-100 my-3  btn btn-lg rounded-4 btn-outline-primary" name="add">Register</button>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
