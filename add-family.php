@@ -22,7 +22,7 @@ include_once('includes/navbar.php');
                 <form action="logic/family-code.php" method="post" autocomplete="off">
                     <div class="row">
                         <?php
-                            $query = "SELECT * FROM `members` WHERE `Id` ORDER BY `Id` ASC LIMIT 1";
+                            $query = "SELECT * FROM `members` WHERE `Id` ORDER BY `Id` DESC LIMIT 1";
                             $query_run = mysqli_query($connection, $query);
                             if ($query_run) {
                                 while ($row = mysqli_fetch_array($query_run)) {
@@ -69,7 +69,7 @@ include_once('includes/navbar.php');
                                                 <label for="f_status" class="form-check-label">Alive</label>
                                             </div>
                                             <div class="form-check">
-                                                <input type="radio" class="form-check-input" name="f_deceased" id="f_deceased" value="D">
+                                                <input type="radio" class="form-check-input" name="f_status" id="f_deceased" value="D">
                                                 <label for="f_deceased" class="form-check-label">Deceased</label>
                                             </div>
                                         </fieldset>
