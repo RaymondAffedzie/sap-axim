@@ -5,13 +5,13 @@
 ?>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">All Members Address</h1>
+        <h1 class="h2">Baptism Page</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a type="button" href="view-address.php" class="btn btn-sm btn-outline-secondary">View address</a>
+                <a type="button" href="view-church.php" class="btn btn-sm btn-outline-secondary">View church</a>
                 <a type="button" class="btn btn-sm btn-outline-secondary">Export</a>
             </div>
-            <a type="button" class="btn btn-sm btn-outline-secondary" href="add-member.php">Add member</a>
+            <a type="button" class="btn btn-sm btn-outline-secondary" href="add-church.php">Add church</a>
         </div>
     </div>
 
@@ -24,7 +24,7 @@
                         <div class="table-responsive">
                             <?php
                                 include_once('logic/alerts.php');
-                                $query = "SELECT family.Id, family.MiD, family.Mother_name, family.M_decease, family.Father_name, family.F_decease, family.Next_of_kin, family.NoK_contact, family.NoK_GPS_address, members.Id, members.Init, members.Reg_year, members.Firstname, members.Sur_name, members.Other_name FROM family LEFT JOIN members ON members.Id = family.MiD ORDER BY members.Id ASC";
+                                $query = "SELECT church.Id, church.MiD, church.Baptism_card_number, church.Baptism_date, members.Id, members.Init, members.Reg_year, members.Firstname, members.Sur_name, members.Other_name FROM church LEFT JOIN members ON members.Id = church.MiD ORDER BY church.Baptism_date ASC";
                                 $query_run = mysqli_query($connection, $query);
                                 $counter = 0;
                             ?>
@@ -34,13 +34,8 @@
                                         <th scope="col">SN</th>
                                         <th scope="col">Member Id</th>
                                         <th scope="col" class="text-wrap" style="width: 400px;">Member's name</th>
-                                        <th scope="col" class="text-wrap" style="width: 400px;">Father's name</th>
-                                        <th scope="col" class="text-wrap" style="width: 300px;">Father's status</th>
-                                        <th scope="col" class="text-wrap" style="width: 300px;">Mother's name</th>
-                                        <th scope="col" class="text-wrap" style="width: 300px;">Mother's status</th>
-                                        <th scope="col" class="text-wrap" style="width: 300px;">Next of Kin's name</th>
-                                        <th scope="col">Phone number</th>
-                                        <th scope="col" class="text-wrap" style="width: 300px;">GPS Address</th>
+                                        <th scope="col" class="text-wrap" style="width: 400px;">Baptism card number</th>
+                                        <th scope="col" class="text-wrap" style="width: 300px;">Baptism date</th>
                                         <th scope="col">View</th>
                                     </tr>
                                 </thead>
@@ -61,45 +56,10 @@
                                                     <p> <?php echo $row['Firstname']." ".$row['Other_name']." ".$row['Sur_name']; ?> </p>
                                                 </td>
                                                 <td class="text-wrap" style="width: 400px;">
-                                                    <p> <?php echo $row['Father_name']; ?> </p>
-                                                </td>
-                                                <td>
-                                                    <?php
-                                                        if ($row['F_decease'] == "A") {
-                                                        ?>
-                                                            <p>Alive</p>
-                                                        <?php
-                                                        } elseif ($row['F_decease'] == "D") {
-                                                        ?>
-                                                            <p>Deceased</p>
-                                                        <?php
-                                                        }
-                                                    ?>
+                                                    <p> <?php echo $row['Baptism_card_number']; ?> </p>
                                                 </td>
                                                 <td class="text-wrap" style="width: 400px;">
-                                                    <p> <?php echo $row['Mother_name']; ?> </p>
-                                                </td>
-                                                <td>
-                                                    <?php
-                                                        if ($row['M_decease'] == "A") {
-                                                        ?>
-                                                            <p>Alive</p>
-                                                        <?php
-                                                        } elseif ($row['M_decease'] == "D") {
-                                                        ?>
-                                                            <p>Deceased</p>
-                                                        <?php
-                                                        }
-                                                    ?>
-                                                </td>
-                                                <td class="text-wrap" style="width: 400px;">
-                                                    <p> <?php echo $row['Next_of_kin']; ?> </p>
-                                                </td>
-                                                <td>
-                                                    <p> <?php echo $row['NoK_contact']; ?> </p>
-                                                </td>
-                                                <td class="text-wrap" style="width: 300px;">
-                                                    <p> <?php echo $row['NoK_GPS_address']; ?> </p>
+                                                    <p> <?php echo $row['Baptism_date']; ?> </p>
                                                 </td>
                                                 <td>
                                                     <form action="member-profile.php" method="post">

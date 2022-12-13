@@ -18,7 +18,7 @@ include_once('includes/navbar.php');
         </div>
     </div>
 
-<?php include('logic/alerts.php') ?>
+<?php include_once('logic/alerts.php') ?>
 <div class="card text-center col-md-12 border-0 shadow-lg rounded-0">
     <div class="card-header">
         <ul class="nav nav-pills navbar-light  bg-dark card-header-pills mb-3" id="pills-tab" role="tablist">
@@ -63,5 +63,5 @@ include_once('includes/navbar.php');
 
 
 <?php
-    include('includes/footer.php');
+    include_once('includes/footer.php');
 ?>

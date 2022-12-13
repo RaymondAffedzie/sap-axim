@@ -33,13 +33,13 @@
                                 <tr>
                                         <th scope="col">SN</th>
                                         <th scope="col">Member Id</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Street Name</th>
-                                        <th scope="col">House Number</th>
-                                        <th scope="col">GPS Address</th>
-                                        <th scope="col">Postal Address</th>
+                                        <th scope="col" class="text-wrap" style="width: 300px;">Name</th>
+                                        <th scope="col" class="text-wrap" style="width: 250px;">Street Name</th>
+                                        <th scope="col" class="text-wrap" style="width: 250px;">House Number</th>
+                                        <th scope="col" class="text-wrap" style="width: 300px;">GPS Address</th>
+                                        <th scope="col" class="text-wrap" style="width: 300px;">Postal Address</th>
                                         <th scope="col">Phone Number</th>
-                                        <th scope="col" class="text-wrap" style="width: 300px;">Email</th>
+                                        <th scope="col">Email</th>
                                         <th scope="col">View</th>
                                     </tr>
                                 </thead>
@@ -56,13 +56,13 @@
                                                 <td class="text-wrap">
                                                     <p> <?php echo $row['Init'].$row['Reg_year'].$row['Id']; ?> </p>
                                                 </td>
-                                                <td class="text-wrap" style="width: 400px;">
+                                                <td class="text-wrap" style="width: 300px;">
                                                     <p> <?php echo $row['Firstname']." ".$row['Other_name']." ".$row['Sur_name']; ?> </p>
                                                 </td>
-                                                <td class="text-wrap" style="width: 300px;">
+                                                <td class="text-wrap" style="width: 250px;">
                                                     <p> <?php echo $row['Street_name']; ?> </p>
                                                 </td>
-                                                <td class="text-wrap" style="width: 300px;">
+                                                <td>
                                                     <p> <?php echo $row['House_number']; ?> </p>
                                                 </td>
                                                 <td class="text-wrap" style="width: 300px;">
@@ -74,7 +74,7 @@
                                                 <td>
                                                     <p> <?php echo $row['Phone_number']; ?> </p>
                                                 </td>
-                                                <td class="text-wrap" style="width: 300px;">
+                                                <td>
                                                     <p> <?php echo $row['Email']; ?> </p>
                                                 </td>
                                                 <td>

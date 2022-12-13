@@ -109,6 +109,30 @@
                             View family
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="add-church.php">
+                            <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                            Add church
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="view-church.php">
+                            <span data-feather="layers" class="align-text-bottom"></span>
+                            View church
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="add-society.php">
+                            <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                            Add society
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="view-society.php">
+                            <span data-feather="layers" class="align-text-bottom"></span>
+                            View society
+                        </a>
+                    </li>
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">

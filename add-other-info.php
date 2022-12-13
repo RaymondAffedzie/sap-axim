@@ -22,7 +22,7 @@ include_once('includes/navbar.php');
                 <form action="logic/other-info-code.php" method="post" autocomplete="off">
                     <div class="row">
                         <?php
-                            $query = "SELECT * FROM `members`  ORDER BY `Id` DESC LIMIT 1";
+                            $query = "SELECT * FROM `members` ORDER BY `Id` DESC LIMIT 1";
                             $query_run = mysqli_query($connection, $query);
                             if ($query_run) {
                                 while ($row = mysqli_fetch_array($query_run)) {

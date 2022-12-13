@@ -22,7 +22,7 @@ include_once('includes/navbar.php');
                 <form action="logic/family-code.php" method="post" autocomplete="off">
                     <div class="row">
                         <?php
-                            $query = "SELECT * FROM `members` WHERE `Id` ORDER BY `Id` DESC LIMIT 1";
+                            $query = "SELECT * FROM `members` ORDER BY `Id` DESC LIMIT 1";
                             $query_run = mysqli_query($connection, $query);
                             if ($query_run) {
                                 while ($row = mysqli_fetch_array($query_run)) {
@@ -34,25 +34,6 @@ include_once('includes/navbar.php');
                                     <div class="form-group">
                                         <label for="full-member-id">Member ID</label>
                                         <input type="text" name="full-member-id" id="full-member-id" class="form-control mb-2" value="<?php echo $row['Init'] . $row['Reg_year'] . $row['Id']; ?>" disabled>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <fieldset>
-                                            <legend>Mother</legend>
-                                            <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" name="mother_name" id="mother_name" min="0" required>
-                                                <label for="mother_name">Mother's name</label>
-                                            </div>
-
-                                            <legend>Status</legend>
-                                            <div class="form-check">
-                                                <input type="radio" class="form-check-input" name="m_status" id="m_alive" value="A">
-                                                <label for="m_alive" class="form-check-label">Alive</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input type="radio" class="form-check-input" name="m_status" id="m_deceased" value="D">
-                                                <label for="m_deceased" class="form-check-label">Deceased</label>
-                                            </div>
-                                        </fieldset>
                                     </div>
 
                                     <div class="col-md-4">
@@ -71,6 +52,26 @@ include_once('includes/navbar.php');
                                             <div class="form-check">
                                                 <input type="radio" class="form-check-input" name="f_status" id="f_deceased" value="D">
                                                 <label for="f_deceased" class="form-check-label">Deceased</label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <fieldset>
+                                            <legend>Mother</legend>
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" name="mother_name" id="mother_name" min="0" required>
+                                                <label for="mother_name">Mother's name</label>
+                                            </div>
+
+                                            <legend>Status</legend>
+                                            <div class="form-check">
+                                                <input type="radio" class="form-check-input" name="m_status" id="m_alive" value="A">
+                                                <label for="m_alive" class="form-check-label">Alive</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="radio" class="form-check-input" name="m_status" id="m_deceased" value="D">
+                                                <label for="m_deceased" class="form-check-label">Deceased</label>
                                             </div>
                                         </fieldset>
                                     </div>
