@@ -47,7 +47,7 @@ if (isset($_POST['add'])) {
 
                 if ($stmt_insert->affected_rows > 0) {
                     $_SESSION['success'] = "Member's church details added successfully";
-                    header('Location: ../add-church.php');
+                    header('Location: ../view-church.php');
                 } else {
                     $_SESSION['status'] =  "Failed to add member's church details";
                     header('Location: ../add-church.php');

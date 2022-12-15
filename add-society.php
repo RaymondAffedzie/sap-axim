@@ -11,7 +11,7 @@ include_once('includes/navbar.php');
                 <a type="button" href="view-society.php" class="btn btn-sm btn-outline-secondary">View members society</a>
                 <a type="button" class="btn btn-sm btn-outline-secondary">Export</a>
             </div>
-            <a type="button" class="btn btn-sm btn-outline-secondary" href="add-society.php">Add society</a>
+            <a type="button" class="add-more-form btn btn-sm btn-outline-primary" href="javascript:void(0)">ADD MORE</a>
         </div>
     </div>
 
@@ -27,6 +27,7 @@ include_once('includes/navbar.php');
                         if ($query_run) {
                             while ($row = mysqli_fetch_array($query_run)) {
                         ?>
+                                
                                 <!-- will be inserted into the database as a foreign key -->
                                 <input type="hidden" name="member-id" class="form-control mb-2" value="<?php echo $row['Id']; ?>">
 
@@ -36,22 +37,21 @@ include_once('includes/navbar.php');
                                     <input type="text" name="full-member-id" id="full-member-id" class="form-control mb-2" value="<?php echo $row['Init'] . $row['Reg_year'] . $row['Id']; ?>" disabled>
                                 </div>
 
-                                <div class="col-md-12">
-                                    <fieldset>
-                                        <legend>Societies</legend>
-                                        <div class="row">
-                                            <div class="form-floating col-md-6 mb-3">
-                                                <input type="text" class="form-control" name="society_name" id="society_name">
-                                                <label for="society_name">Society</label>
-                                            </div>
-                                            
-                                            <div class="form-floating col-md-6 mb-3">
-                                                <input type="text" class="form-control" name="position" id="position">
-                                                <label for="position">Office held</label>
-                                            </div>
-                                        </div>
-                                    </fieldset>
+                                <div class="col-md-5">
+                                    <div class="form-floating">
+                                        <input type="text" name="society_name[]" class="form-control" id="society_name">
+                                        <label for="society_name">Society name</label>
+                                    </div>
                                 </div>
+
+                                <div class="col-md-5">
+                                    <div class="form-floating">
+                                        <input type="text" name="office_held[]" class="form-control" id="office_held">
+                                        <label for="office_held">Office held</label>
+                                    </div>
+                                </div>
+
+                                <div class="paste-new-forms"></div>
 
                         <?php
                             }
@@ -67,3 +67,35 @@ include_once('includes/navbar.php');
     <?php
     include_once('includes/footer.php');
     ?>
+
+
+<!-- jquery -->
+<script src="js/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', '.remove-btn', function () {
+                $(this).closest('.main-form').remove();
+            });
+
+            $(document).on('click', '.add-more-form', function () {
+                $('.paste-new-forms').append('<div class="row main-form my-2">\
+                                <div class="col-md-5">\
+                                    <div class="form-floating">\
+                                        <input type="text" name="society_name[]" class="form-control" id="society_name">\
+                                        <label for="society_name">Name</label>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-5">\
+                                    <div class="form-floating">\
+                                        <input type="text" name="office_held[]" class="form-control" id="office_held">\
+                                        <label for="office_held">Office held</label>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-2">\
+                                        <br>\
+                                        <button type="button" class="remove-btn btn btn-danger">Remove</button>\
+                                </div>\
+                            </div>');
+            });
+        });
+    </script>

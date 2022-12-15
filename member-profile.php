@@ -29,16 +29,14 @@ include_once('includes/navbar.php');
                 echo $id;
                 $query = "SELECT members.Init, members.Reg_year, members.Id, members.Firstname, members.Sur_name, members.Other_name, members.Sex, members.Birth_Date, members.Birth_Place, members.Birth_Region, members.Birth_District,
                 address.Id, address.MiD, address.Street_name, address.House_number, address.GPS_address, address.Postal_address, address.Phone_number, address.Email,
-                church.MiD, church.Baptism_card_number, church.Baptism_date, church.Confirmation_number, church.Confirmation_datE,
                 family.Id, family.MiD, family.Mother_name, family.M_decease, family.Father_name, family.F_decease, family.Next_of_kin, family.NoK_contact, family.NoK_GPS_address,
                 other_info.Id, other_info.MiD, other_info.Marital_status, other_info.Number_of_children, other_info.Education_level, other_info.Occupation,
-                society.Id, society.MiD, society.Society_name, society.Position_held
                 FROM members
                 INNER JOIN address ON members.Id = address.MiD
-                INNER JOIN church ON members.Id = church.MiD
+                --INNER JOIN church ON members.Id = church.MiD
                 INNER JOIN family ON members.Id = family.MiD
                 INNER JOIN other_info ON members.Id = other_info.MiD
-                INNER JOIN society ON members.Id = society.MiD
+                --INNER JOIN society ON members.Id = society.MiD
                 WHERE CONCAT(members.Init,members.Reg_year,members.Id) = '$id'";
                 $query_run = mysqli_query($connection, $query);
                 if ($query_run) {
@@ -173,7 +171,11 @@ include_once('includes/navbar.php');
                     </button>
                 </div>
             </div>
-
+            <?php
+                        }
+                    }
+                }
+            ?>
             <!-- chruch -->
             <div class="row">
                 <div class="col-md-5">
@@ -223,11 +225,6 @@ include_once('includes/navbar.php');
             </div>
 
         </div>
-        <?php
-                        }
-                    }
-                }
-        ?>
     </div>
 
 
