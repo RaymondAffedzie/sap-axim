@@ -24,7 +24,7 @@ if (isset($_POST['add'])) {
 
     $member_id  = $_POST['member-id'];
     $baptism_date = sanitizeUserInput($_POST['b_date']);
-    $baptism_number = sanitizeUserInput($_POST['b_id']);
+    $baptism_number = sanitizeUserInput(ucwords($_POST['b_id']));
 
     $select_query = "SELECT * FROM `members` WHERE `Id` = '$member_id'";
     $query_run = mysqli_query($connection, $select_query);
@@ -47,7 +47,7 @@ if (isset($_POST['add'])) {
 
                 if ($stmt_insert->affected_rows > 0) {
                     $_SESSION['success'] = "Member's church details added successfully";
-                    header('Location: ../view-church.php');
+                    header('Location: ../add-society.php');
                 } else {
                     $_SESSION['status'] =  "Failed to add member's church details";
                     header('Location: ../add-church.php');

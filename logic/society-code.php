@@ -17,16 +17,38 @@ if (isset($_POST['add'])) {
     foreach ($society as $index => $names) {
         $societies = sanitizeUserInput(ucwords($names));
         $offices = sanitizeUserInput(ucwords($office[$index]));
-        
+
         $query = "INSERT INTO `society`(`MiD`, `Society_name`, `Position_held`) VALUES ('$member_id', '$societies', '$offices')";
         $query_run = mysqli_query($connection, $query);
     }
 
     if ($query_run) {
         $_SESSION['success'] = "Member's society(ies) added successfully";
-        header('Location: ../view-society.php');
+        header('Location: ../view-members.php');
     } else {
         $_SESSION['status'] =  "Failed to add member's society(ies) details";
         header('Location: ../add-society.php');
     }
+}
+
+
+
+// delete member society code
+if (isset($_POST['delete_society'])) {
+    $sid = $_POST['society_id'];
+
+    $query = "DELETE FROM `society` WHERE `Id` = ?";
+    $stmt = $connection->prepare($query);
+    $stmt->bind_param("i", $sid);
+    $stmt->execute();
+
+    if ($stmt->affected_rows > 0) {
+        $_SESSION['success'] = "Member's society <i class='text-danger'>deleted</i> successfully";
+        header("Location: ../view-society.php");
+    } else {
+        $_SESSION['warning'] = "Failed to delete member's society";
+        header("Location: ../view-society.php");
+    }
+
+    $stmt->close();
 }

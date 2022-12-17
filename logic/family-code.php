@@ -31,12 +31,12 @@ if (isset($_POST['add'])) {
     } else {
         $member_id  = $_POST['member-id'];
         $m_name     = sanitizeUserInput(ucwords($_POST['mother_name']));
-        $m_status   = sanitizeUserInput($_POST['m_status']);
+        $m_status   = sanitizeUserInput(ucwords($_POST['m_status']));
         $f_name     = sanitizeUserInput(ucwords($_POST['father_name']));
         $f_status   = sanitizeUserInput(ucfirst($_POST['f_status']));
         $kin_name   = sanitizeUserInput(ucwords($_POST['kin_name']));
         $kin_contact = sanitizeUserInput($_POST['phone_number']);
-        $gps_address = sanitizeUserInput(ucfirst($_POST['gps_address']));
+        $gps_address = sanitizeUserInput(ucwords($_POST['gps_address']));
         
         $query = "INSERT INTO `family`(`MiD`, `Mother_name`, `M_decease`, `Father_name`, `F_decease`, `Next_of_kin`, `NoK_contact`, `NoK_GPS_address`) VALUES (?,?,?,?,?,?,?,?)";
         $stmt_insert = $connection->prepare($query);
@@ -45,7 +45,7 @@ if (isset($_POST['add'])) {
 
         if ($stmt_insert->affected_rows > 0) {
             $_SESSION['success'] =  "Member's family added successfully";
-            header('Location: ../view-family.php');
+            header('Location: ../add-church.php');
         } else {
             $_SESSION['success'] =  "Failed to add member's family";
             header('Location: ../add-family.php');

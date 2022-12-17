@@ -71,7 +71,7 @@
                                                 </td>
                                                 <td>
                                                     <form action="member-profile.php" method="post">
-                                                        <input type="hidden" name="member_id" value="<?php echo $row['Init'].$row['Reg_year'].$row['Id']; ?>">
+                                                        <input type="hidden" name="member_id" value="<?php echo $row['Id']; ?>">
                                                         <button type="submit" class="btn btn-outline-secondary" name="view-member" data-bs-toggle="tooltip" data-bs-placement="left" title="View member's profile">
                                                             <i class="fa fa-eye"></i>
                                                         </button>

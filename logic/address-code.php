@@ -20,13 +20,13 @@ if (isset($_POST['add'])) {
         $_SESSION['warning'] = "Street name is required";
         header('Location: ../add-address.php');
     } else {
-        $member_id          = $_POST['member-id'];
-        $street_name     = sanitizeUserInput(ucfirst($_POST['street_name']));
-        $house_number    = sanitizeUserInput($_POST['house_number']);
-        $gps_address    = sanitizeUserInput(ucfirst($_POST['gps_address']));
-        $post_address         = sanitizeUserInput(ucfirst($_POST['postal_address']));
-        $email         = sanitizeUserInput(ucfirst($_POST['email']));
-        $phone_number         = sanitizeUserInput(ucfirst($_POST['phone_number']));
+        $member_id      = $_POST['member-id'];
+        $house_number   = sanitizeUserInput(ucwords($_POST['house_number']));
+        $street_name    = sanitizeUserInput(ucwords($_POST['street_name']));
+        $gps_address    = sanitizeUserInput($_POST['gps_address']);
+        $post_address   = sanitizeUserInput(ucwords($_POST['postal_address']));
+        $email          = sanitizeUserInput($_POST['email']);
+        $phone_number   = sanitizeUserInput($_POST['phone_number']);
         
         $query = "INSERT INTO `address`(`MiD`, `Street_name`, `House_number`, `GPS_address`, `Postal_address`, `Phone_number`, `Email`) VALUES (?,?,?,?,?,?,?)";
         $stmt_insert = $connection->prepare($query);
@@ -35,7 +35,7 @@ if (isset($_POST['add'])) {
 
         if ($stmt_insert->affected_rows > 0) {
             $_SESSION['success'] =  "Member's address added successfully";
-            header('Location: ../view-address.php');
+            header('Location: ../add-family.php');
         } else {
             $_SESSION['success'] =  "Failed to add member's Address";
             header('Location: ../add-address.php');

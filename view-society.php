@@ -24,7 +24,7 @@
                         <div class="table-responsive">
                             <?php
                                 include_once('logic/alerts.php');
-                                $query = "SELECT society.Id, society.MiD, society.Society_name, society.Position_held, members.Id, members.Init, members.Reg_year, members.Firstname, members.Sur_name, members.Other_name FROM society LEFT JOIN members ON members.Id = society.MiD ORDER BY society.MiD ASC";
+                                $query = "SELECT society.Id, society.MiD, society.Society_name, society.Position_held, members.Init, members.Reg_year, members.Firstname, members.Sur_name, members.Other_name FROM society LEFT JOIN members ON members.Id = society.MiD ORDER BY society.MiD ASC";
                                 $query_run = mysqli_query($connection, $query);
                                 $counter = 0;
                             ?>
@@ -37,6 +37,7 @@
                                         <th scope="col" class="text-wrap" style="width: 400px;">Society name</th>
                                         <th scope="col" class="text-wrap" style="width: 300px;">Office held</th>
                                         <th scope="col">View</th>
+                                        <th scope="col">Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,7 +51,7 @@
                                                     <p> <?php echo $counter; ?> </p>
                                                 </td>
                                                 <td class="text-wrap">
-                                                    <p> <?php echo $row['Init'].$row['Reg_year'].$row['Id']; ?> </p>
+                                                    <p> <?php echo $row['Init'].$row['Reg_year'].$row['MiD']; ?> </p> <!-- MiD is member id from members table inside society table -->
                                                 </td>
                                                 <td class="text-wrap" style="width: 400px;">
                                                     <p> <?php echo $row['Firstname']." ".$row['Other_name']." ".$row['Sur_name']; ?> </p>
@@ -63,9 +64,17 @@
                                                 </td>
                                                 <td>
                                                     <form action="member-profile.php" method="post">
-                                                        <input type="hidden" name="member_id" value="<?php echo $row['Init'].$row['Reg_year'].$row['Id']; ?>" hidden>
+                                                        <input type="hidden" name="member_id" value="<?php echo $row['MiD']; ?>" hidden> <!-- MiD is member id from members table inside society table -->
                                                         <button type="submit" class="btn btn-outline-secondary" name="view-member" data-bs-toggle="tooltip" data-bs-placement="left" title="View member's profile">
                                                             <i class="fa fa-eye"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <form action="logic/society-code.php" method="post">
+                                                        <input type="hidden" name="society_id" value="<?php echo $row['Id']; ?>"> <!-- society table id is used -->
+                                                        <button type="submit" name="delete_society" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete this member's society" onclick="return confirm('Do you want to delete members society')">
+                                                            <i class="fa fa-trash-o"></i>
                                                         </button>
                                                     </form>
                                                 </td>
