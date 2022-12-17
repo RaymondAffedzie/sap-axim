@@ -37,14 +37,14 @@ include_once('includes/navbar.php');
                                     <input type="text" name="full-member-id" id="full-member-id" class="form-control mb-2" value="<?php echo $row['Init'] . $row['Reg_year'] . $row['Id']; ?>" disabled>
                                 </div>
 
-                                <div class="col-md-5">
+                                <div class="col-md-5 mb-2">
                                     <div class="form-floating">
                                         <input type="text" name="society_name[]" class="form-control" id="society_name">
                                         <label for="society_name">Society name</label>
                                     </div>
                                 </div>
 
-                                <div class="col-md-5">
+                                <div class="col-md-5 mb-2">
                                     <div class="form-floating">
                                         <input type="text" name="office_held[]" class="form-control" id="office_held">
                                         <label for="office_held">Office held</label>

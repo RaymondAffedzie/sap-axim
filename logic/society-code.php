@@ -14,23 +14,19 @@ if (isset($_POST['add'])) {
     $office = $_POST['office_held'];
     $member_id = $_POST['member-id'];
 
-    foreach ($society as $index => $socity_name) {
-        $societies = sanitizeUserInput(ucwords($society_name));
+    foreach ($society as $index => $names) {
+        $societies = sanitizeUserInput(ucwords($names));
         $offices = sanitizeUserInput(ucwords($office[$index]));
         
-        $query = "INSERT INTO `society`(`MiD`, `Society_name`, `Position_held`) VALUES (?,?,?)";
-        $stmt_insert = $connection->prepare($query);
-        $stmt_insert->bind_param("iss", $member_id, $societies, $offices);
-        $stmt_insert->execute();
+        $query = "INSERT INTO `society`(`MiD`, `Society_name`, `Position_held`) VALUES ('$member_id', '$societies', '$offices')";
+        $query_run = mysqli_query($connection, $query);
     }
 
-    if ($stmt_insert->affected_rows > 0) {
+    if ($query_run) {
         $_SESSION['success'] = "Member's society(ies) added successfully";
         header('Location: ../view-society.php');
     } else {
         $_SESSION['status'] =  "Failed to add member's society(ies) details";
         header('Location: ../add-society.php');
     }
-    $stmt_insert->close();
-
 }
