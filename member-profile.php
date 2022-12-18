@@ -10,11 +10,11 @@ include_once('includes/navbar.php');
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
                 <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">This week</button>
             </div>
             <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
                 <span data-feather="calendar" class="align-text-bottom"></span>
-                This week
+                Export
             </button>
         </div>
     </div>
@@ -149,51 +149,6 @@ include_once('includes/navbar.php');
                             <hr class="my-3" />
                         </div>
 
-                        <!-- address -->
-                        <div class="row">
-                            <div class="col-md-5">
-                                <h1 class="display-4 mt-3 text-center text-secondary">
-                                    <i class="fas fa-address-card"></i><br>
-                                    Address
-                                </h1>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="font-size: 20px; text-align: left">Street name:
-                                                <b><?php echo  $row['Street_name']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                House number: <b><?php echo $row['House_number']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                GPS address: <b><?php echo $row['GPS_address']; ?></b>
-                                            </p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="font-size: 20px; text-align: left">
-                                                Postal address: <b><?php echo $row['Postal_address']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                Phone number: <b><?php echo $row['Phone_number']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                Email: <b><?php echo $row['Email']; ?></b>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <form action="edit-address.php" method="POST">
-                                    <input type="hidden" name="edit_id" value="<?php echo $row['Id']; ?>"> <!-- Edit profile using member table id -->
-                                    <button type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's address">
-                                        <i class="fas fa-edit"></i> Edit details
-                                    </button>
-                                </form>
-                            </div>
-                            <hr class="my-3" />
-                        </div>
-
                         <!-- chruch -->
                         <div class="row">
                             <div class="col-md-5">
@@ -220,6 +175,53 @@ include_once('includes/navbar.php');
                                 <form action="edit-church.php" method="POST">
                                     <input type="hidden" name="edit_id" value="<?php echo $row['Id']; ?>"> <!-- Edit profile using member table id -->
                                     <button type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's baptism details">
+                                        <i class="fas fa-edit"></i> Edit details
+                                    </button>
+                                </form>
+                            </div>
+                            <hr class="my-3" />
+                        </div>
+
+                        <!-- address -->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h1 class="display-4 mt-3 text-center text-secondary">
+                                    <i class="fas fa-address-card"></i><br>
+                                    Address
+                                </h1>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <p style="font-size: 20px; text-align: left">Street name:
+                                                <b><?php echo  $row['Street_name']; ?></b>
+                                            </p>
+                                            <p style="font-size: 20px; text-align: left">
+                                                House number: <b><?php echo $row['House_number']; ?></b>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p style="font-size: 20px; text-align: left">
+                                                GPS address: <b><?php echo $row['GPS_address']; ?></b>
+                                            </p>
+                                            <p style="font-size: 20px; text-align: left">
+                                                Postal address: <b><?php echo $row['Postal_address']; ?></b>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p style="font-size: 20px; text-align: left">
+                                                Phone number: <b><?php echo $row['Phone_number']; ?></b>
+                                            </p>
+                                            <p style="font-size: 20px; text-align: left">
+                                                Email: <b><?php echo $row['Email']; ?></b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="edit-address.php" method="POST">
+                                    <input type="hidden" name="edit_id" value="<?php echo $row['Id']; ?>"> <!-- Edit profile using member table id -->
+                                    <button type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's address">
                                         <i class="fas fa-edit"></i> Edit details
                                     </button>
                                 </form>
@@ -320,25 +322,81 @@ include_once('includes/navbar.php');
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <p style="font-size: 20px; text-align: left">
-                                    Society name: <b><?php echo  $row['Society_name']; ?></b>
-                                </p>
-                                <p style="font-size: 20px; text-align: left">
-                                    Position held: <b><?php echo $row['Position_held']; ?></b>
-                                </p>
+                                <div class="table-responsive">
+                                    <?php
+                                        if (isset($_POST['view-member'])) {
+                                            $id = $_POST['member_id'];
+                                            $query = "SELECT `Id`, `Society_name`, `Position_held` FROM society WHERE `MiD` = '$id'";
+                                            $query_run = mysqli_query($connection, $query);
+                                            $counter = 0;
+                                    ?>
+                                    <table class="table table-hover table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">SN</th>
+                                                <th scope="col" class="text-wrap" style="width: 400px;">Society name</th>
+                                                <th scope="col" class="text-wrap" style="width: 300px;">Office held</th>
+                                                <th scope="col">Edit</th>
+                                                <th scope="col">Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            if ($query_run) {
+                                                while ($row = mysqli_fetch_array($query_run)) {
+                                                    $counter++;
+                                            ?>
+                                                    <tr>
+                                                        <td>
+                                                            <p> <?php echo $counter; ?> </p>
+                                                        </td>
+                                                        <td class="text-wrap" style="width: 400px;">
+                                                            <p> <?php echo $row['Society_name']; ?> </p>
+                                                        </td>
+                                                        <td class="text-wrap" style="width: 400px;">
+                                                            <p> <?php echo $row['Position_held']; ?> </p>
+                                                        </td>
+                                                        <td>
+                                                            <form action="edit-society.php" method="POST">
+                                                                <input type="hidden" name="edit_id" value="<?php echo $row['Id']; ?>"> <!-- Edit profile using society table id -->
+                                                                <input type="hidden" name="mem_id" value="<?php echo $id; ?>"> <!-- Edit profile using member table id -->
+                                                                <button type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's profile">
+                                                                    <i class="fas fa-edit"></i>
+                                                                </button>
+                                                            </form>
+                                                        </td>
+                                                        <td>
+                                                            <form action="logic/society-code.php" method="post">
+                                                                <input type="hidden" name="society_id" value="<?php echo $row['Id']; ?>"> <!-- society table id is used -->
+                                                                <button type="submit" name="delete_society" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete this member's society" onclick="return confirm('Do you want to delete members society')">
+                                                                    <i class="fa fa-trash-o"></i>
+                                                                </button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                            <?php
+                                                        }
+                                                    }
+
+                                                    ?>
+                                                            <form action="manual-add-society.php" method="POST">
+                                                                <input type="hidden" name="mem_id" value="<?php echo $id; ?>"> <!-- Add society using member id -->
+                                                                <button type="submit" name="add_soceity" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Add member's society">
+                                                                    <i class="fas fa-plus"></i> Add new society
+                                                                </button>
+                                                            </form>
+                                                    <?php
+                                                }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <form action="edit-member.php" method="POST">
-                        <input type="hidden" name="edit_id" value="<?php echo $row['Id']; ?>"> <!-- Edit profile using member table id -->
-                        <button type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's profile">
-                            <i class="fas fa-edit"></i> Edit details
-                        </button>
-                    </form>
                 </div>
                 <hr class="my-3" />
             </div>
-
         </div>
     </div>
 

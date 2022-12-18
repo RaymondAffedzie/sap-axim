@@ -36,7 +36,7 @@ if (isset($_POST['add'])) {
             if (empty($baptism_date)) {
                 header('Location: ../view-church.php');
             } elseif ($birth_date > $baptism_date) {
-                $_SESSION['warning'] = "Birth date should not be current than baptism date";
+                $_SESSION['neutral'] = $row['Firstname']." ".$row['Other_name']." ".$row['Sur_name']." ".$row['Init'].$row['Reg_year'].$row['Id']." "."Birth date should not be current than baptism date";
                 header('Location: ../add-church.php');
             } else {
 
@@ -53,6 +53,56 @@ if (isset($_POST['add'])) {
                     header('Location: ../add-church.php');
                 }
                 $stmt_insert->close();
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+// update church/baptism details
+if (isset($_POST['update'])) {
+    if (empty($_POST['card_number'])) {
+        $_SESSION['warning'] = "Baptism number is required";
+        header('Location: ../view-church.php');
+    } elseif (empty($_POST['baptism_date'])) {
+        $_SESSION['warning'] = "Baptism date is required";
+        header('Location: ../view-church.php');
+    } else {
+        $id             = $_POST['member_id'];
+        $baptism_date   = sanitizeUserInput($_POST['baptism_date']);
+        $baptism_number = sanitizeUserInput(ucwords($_POST['card_number']));
+        
+        $select_query = "SELECT * FROM `members` WHERE `Id` = '$id'";
+        $query_run = mysqli_query($connection, $select_query);
+    
+        if (mysqli_num_rows($query_run) > 0) {
+            while ($row = mysqli_fetch_array($query_run)) {
+                $birth_date = $row['Birth_Date'];
+    
+                if ($birth_date > $baptism_date) {
+                    $_SESSION['neutral'] = $row['Firstname']." ".$row['Other_name']." ".$row['Sur_name']." ".$row['Init'].$row['Reg_year'].$row['Id']." Birth date should not be current than baptism date";
+                    header('Location: ../view-church.php');
+                } else {
+
+                    $query = "UPDATE `church` SET `Baptism_card_number` = ?, `Baptism_date` = ? WHERE `MiD` = ?";
+                    $stmt_update = $connection->prepare($query);
+                    $stmt_update->bind_param("ssi", $baptism_number, $baptism_date, $id);
+                    $stmt_update->execute();
+                    
+                    if ($stmt_update->affected_rows > 0) {
+                        $_SESSION['success'] =  "Member's church/baptism details updated successfully";
+                        header('Location: ../view-church.php');
+                    } else {
+                        $_SESSION['neutral'] =  "Member's church/baptism details update failed";
+                        header('Location: ../view-church.php');
+                    }
+                    $stmt_update->close();
+                }
             }
         }
     }

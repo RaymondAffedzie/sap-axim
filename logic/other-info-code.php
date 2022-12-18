@@ -45,12 +45,9 @@ if (isset($_POST['add'])) {
 
 
 // update other info
-if (isset($_POST['updatede'])) {
+if (isset($_POST['update'])) {
     if (empty($_POST['marital_status'])) {
         $_SESSION['warning'] = "Marital status is required";
-        header('Location: ../view-other-info.php');
-    } elseif (empty($_POST['children_number'])) {
-        $_SESSION['warning'] = "Number of children is required";
         header('Location: ../view-other-info.php');
     } elseif (empty($_POST['education_level'])) {
         $_SESSION['warning'] = "Level of education is required";

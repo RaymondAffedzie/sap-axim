@@ -53,3 +53,52 @@ if (isset($_POST['add'])) {
         $stmt_insert->close();
     }
 }
+
+
+// update family details
+if (isset($_POST['update'])) {
+    if (empty($_POST['f_name'])) {
+        $_SESSION['warning'] = "Father's name is required";
+        header('Location: ../view-family.php');
+    } elseif (empty($_POST['m_name'])) {
+        $_SESSION['warning'] = "Mother's name is required";
+        header('Location: ../view-family.php');
+    } elseif (empty($_POST['k_name'])) {
+        $_SESSION['warning'] = "Next of kin's name is required";
+        header('Location: ../view-family.php');
+    } elseif (empty($_POST['f_status'])) {
+        $_SESSION['warning'] = "Father's status is required";
+        header('Location: ../view-family.php');
+    } elseif (empty($_POST['m_status'])) {
+        $_SESSION['warning'] = "Mother's status is required";
+        header('Location: ../view-family.php');
+    } elseif (empty($_POST['k_contact'])) {
+        $_SESSION['warning'] = "Next of kin's contact is required";
+        header('Location: ../view-family.php');
+    } else {
+        $id             = $_POST['member_id'];
+        $kin_contact    = sanitizeUserInput($_POST['k_contact']);
+        $kin_gps        = sanitizeUserInput(ucwords($_POST['k_gps']));
+        $mother_status  = sanitizeUserInput(ucwords($_POST['m_status']));
+        $father_status  = sanitizeUserInput(ucwords($_POST['f_status']));
+        $kin_name       = sanitizeUserInput(ucwords($_POST['k_name']));
+        $father_name    = sanitizeUserInput(ucwords($_POST['f_name']));
+        $mother_name    = sanitizeUserInput(ucwords($_POST['m_name']));
+        
+        $query = "UPDATE `family` SET `Mother_name` = ?, `M_decease`= ?, `Father_name` = ?,
+        `F_decease` = ?, `Next_of_kin` = ?, `NoK_contact` = ?, `NoK_GPS_address`= ? WHERE `MiD` = ?";
+        $stmt_update = $connection->prepare($query);
+        $stmt_update->bind_param("sssssssi", $mother_name, $mother_status, $father_name, $father_status, $kin_name, $kin_contact, $kin_gps, $id);
+        $stmt_update->execute();
+        
+        if ($stmt_update->affected_rows > 0) {
+            $_SESSION['success'] =  "Member's family details updated successfully";
+            header('Location: ../view-family.php');
+        } else {
+            $_SESSION['neutral'] =  "Member's family details update failed";
+            header('Location: ../view-family.php');
+        }
+        $stmt_update->close();
+    }
+}
+

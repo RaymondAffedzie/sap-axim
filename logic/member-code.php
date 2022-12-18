@@ -116,7 +116,7 @@ if (isset($_POST['delete_member'])) {
         $stmt = $connection->prepare($query);
         $stmt->bind_param("i", $id);
         $stmt->execute();
-        $_SESSION['success'] = "Member deleted successfully";
+        $_SESSION['success'] = $row['Firstname']." ".$row['Other_name']." ".$row['Sur_name']." ".$row['Init'].$row['Reg_year'].$row['Id']." deleted successfully";
         header("Location: ../view-members.php");
     } else {
         $_SESSION['neutral'] = "Member does not exist";
