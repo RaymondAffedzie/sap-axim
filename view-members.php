@@ -8,10 +8,10 @@ include_once('includes/navbar.php');
         <h1 class="h2">All Registered Members</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a type="button" href="view-members.php" class="btn btn-sm btn-outline-secondary">View members</a>
-                <a type="button" class="btn btn-sm btn-outline-secondary">Export</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary" href="register-admin.php">Add user</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary" href="view-users.php">View users</a>
             </div>
-            <a type="button" class="btn btn-sm btn-outline-secondary" href="add-member.php">Add member</a>
+            <a type="button" class="btn btn-sm btn-outline-secondary" href="profile.php">View profile</a>
         </div>
     </div>
 

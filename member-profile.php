@@ -47,263 +47,263 @@ include_once('includes/navbar.php');
                 if ($query_run) {
                     while ($row = mysqli_fetch_array($query_run)) {
             ?>
-                        <!-- personal -->
+            <!-- personal -->
+            <div class="row">
+                <div class="col-md-5">
+                    <h1 class="display-4 mt-3 text-center text-secondary">
+                        <i class="fas fa-id-badge"></i><br>
+                        <?php echo $row['Firstname'] . " " . $row['Other_name'] . " " . $row['Sur_name']; ?>
+                    </h1>
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
                         <div class="row">
-                            <div class="col-md-5">
-                                <h1 class="display-4 mt-3 text-center text-secondary">
-                                    <i class="fas fa-id-badge"></i><br>
-                                    <?php echo $row['Firstname'] . " " . $row['Other_name'] . " " . $row['Sur_name']; ?>
-                                </h1>
+                            <div class="col-md-6">
+                                <p style="font-size: 20px; text-align: left">
+                                    First name: <b><?php echo  $row['Firstname']; ?></b>
+                                </p>
+                                <p style="font-size: 20px; text-align: left">
+                                    Surname: <b><?php echo $row['Sur_name']; ?></b>
+                                </p>
+                                <p style="font-size: 20px; text-align: left">
+                                    Other names: <b><?php echo $row['Other_name']; ?></b>
+                                </p>
+                                <!-- condition to check member's sex -->
+                                <?php
+                                if ($row['Sex'] == "M") {
+                                ?>
+                                    <p style="font-size: 20px; text-align: left">Sex: <b>Male</b></p>
+                                <?php
+                                } elseif ($row['Sex'] == "F") {
+                                ?>
+                                    <p style="font-size: 20px; text-align: left">Sex: <b>Female</b></p>
+                                <?php
+                                }
+                                ?>
                             </div>
-                            <div class="col-md-7">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="font-size: 20px; text-align: left">
-                                                First name: <b><?php echo  $row['Firstname']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                Surname: <b><?php echo $row['Sur_name']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                Other names: <b><?php echo $row['Other_name']; ?></b>
-                                            </p>
-                                            <!-- condition to check member's sex -->
-                                            <?php
-                                            if ($row['Sex'] == "M") {
-                                            ?>
-                                                <p style="font-size: 20px; text-align: left">Sex: <b>Male</b></p>
-                                            <?php
-                                            } elseif ($row['Sex'] == "F") {
-                                            ?>
-                                                <p style="font-size: 20px; text-align: left">Sex: <b>Female</b></p>
-                                            <?php
-                                            }
-                                            ?>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="font-size: 20px; text-align: left">
-                                                Birth Date: <b><?php echo $row['Birth_Date']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                Birth Place: <b><?php echo $row['Birth_Place']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                Birth Region: <b><?php echo $row['Birth_Region']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                Birth District: <b><?php echo $row['Birth_District']; ?></b>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <form action="edit-member.php" method="POST">
-                                    <input type="hidden" name="edit_id" value="<?php echo $row['Id']; ?>"> <!-- Edit profile using member table id -->
-                                    <button type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's profile">
-                                        <i class="fas fa-edit"></i> Edit details
-                                    </button>
-                                </form>
+                            <div class="col-md-6">
+                                <p style="font-size: 20px; text-align: left">
+                                    Birth Date: <b><?php echo $row['Birth_Date']; ?></b>
+                                </p>
+                                <p style="font-size: 20px; text-align: left">
+                                    Birth Place: <b><?php echo $row['Birth_Place']; ?></b>
+                                </p>
+                                <p style="font-size: 20px; text-align: left">
+                                    Birth Region: <b><?php echo $row['Birth_Region']; ?></b>
+                                </p>
+                                <p style="font-size: 20px; text-align: left">
+                                    Birth District: <b><?php echo $row['Birth_District']; ?></b>
+                                </p>
                             </div>
-                            <hr class="my-3" />
                         </div>
-                        `
-                        <!-- other info -->
+                    </div>
+                    <form action="edit-member.php" method="POST">
+                        <input type="hidden" name="edit_id" value="<?php echo $row['Id']; ?>"> <!-- Edit profile using member table id -->
+                        <button type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's profile">
+                            <i class="fas fa-edit"></i> Edit details
+                        </button>
+                    </form>
+                </div>
+                <hr class="my-3" />
+            </div>
+            `
+            <!-- other info -->
+            <div class="row">
+                <div class="col-md-5">
+                    <h1 class="display-4 mt-3 text-center text-secondary">
+                        <i class="fas fa-user"></i><br>
+                        Other Information
+                    </h1>
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
                         <div class="row">
-                            <div class="col-md-5">
-                                <h1 class="display-4 mt-3 text-center text-secondary">
-                                    <i class="fas fa-user"></i><br>
-                                    Other Information
-                                </h1>
+                            <div class="col-md-6">
+                                <p style="font-size: 20px; text-align: left">
+                                    Marital status: <b><?php echo  $row['Marital_status']; ?></b>
+                                </p>
+                                <p style="font-size: 20px; text-align: left">
+                                    Number of Children: <b><?php echo $row['Number_of_children']; ?></b>
+                                </p>
                             </div>
-                            <div class="col-md-7">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="font-size: 20px; text-align: left">
-                                                Marital status: <b><?php echo  $row['Marital_status']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                Number of Children: <b><?php echo $row['Number_of_children']; ?></b>
-                                            </p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="font-size: 20px; text-align: left">
-                                                Level of Education: <b><?php echo $row['Education_level']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                Occupation: <b><?php echo $row['Occupation']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                Member ID: <b><?php echo $row['Init'] . $row['Reg_year'] . $row['Id']; ?></b>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <form action="edit-other-info.php" method="POST">
-                                    <input type="hidden" name="edit_id" value="<?php echo $row['Id']; ?>"> <!-- Edit profile using member table id -->
-                                    <button type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's other info">
-                                        <i class="fas fa-edit"></i> Edit details
-                                    </button>
-                                </form>
+                            <div class="col-md-6">
+                                <p style="font-size: 20px; text-align: left">
+                                    Level of Education: <b><?php echo $row['Education_level']; ?></b>
+                                </p>
+                                <p style="font-size: 20px; text-align: left">
+                                    Occupation: <b><?php echo $row['Occupation']; ?></b>
+                                </p>
+                                <p style="font-size: 20px; text-align: left">
+                                    Member ID: <b><?php echo $row['Init'] . $row['Reg_year'] . $row['Id']; ?></b>
+                                </p>
                             </div>
-                            <hr class="my-3" />
                         </div>
+                    </div>
+                    <form action="edit-other-info.php" method="POST">
+                        <input type="hidden" name="edit_id" value="<?php echo $row['Id']; ?>"> <!-- Edit profile using member table id -->
+                        <button type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's other info">
+                            <i class="fas fa-edit"></i> Edit details
+                        </button>
+                    </form>
+                </div>
+                <hr class="my-3" />
+            </div>
 
-                        <!-- chruch -->
+            <!-- chruch -->
+            <div class="row">
+                <div class="col-md-5">
+                    <h1 class="display-4 mt-3 text-center text-secondary">
+                        <i class="fas fa-church"></i><br>
+                        Church details
+                    </h1>
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
                         <div class="row">
-                            <div class="col-md-5">
-                                <h1 class="display-4 mt-3 text-center text-secondary">
-                                    <i class="fas fa-church"></i><br>
-                                    Church details
-                                </h1>
+                            <div class="col-md-6">
+                                <p style="font-size: 20px; text-align: left">
+                                    Baptism card number: <b><?php echo  $row['Baptism_card_number']; ?></b>
+                                </p>
                             </div>
-                            <div class="col-md-7">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="font-size: 20px; text-align: left">
-                                                Baptism card number: <b><?php echo  $row['Baptism_card_number']; ?></b>
-                                            </p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="font-size: 20px; text-align: left">
-                                                Baptism date: <b><?php echo $row['Baptism_date']; ?></b>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <form action="edit-church.php" method="POST">
-                                    <input type="hidden" name="edit_id" value="<?php echo $row['Id']; ?>"> <!-- Edit profile using member table id -->
-                                    <button type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's baptism details">
-                                        <i class="fas fa-edit"></i> Edit details
-                                    </button>
-                                </form>
+                            <div class="col-md-6">
+                                <p style="font-size: 20px; text-align: left">
+                                    Baptism date: <b><?php echo $row['Baptism_date']; ?></b>
+                                </p>
                             </div>
-                            <hr class="my-3" />
                         </div>
+                    </div>
+                    <form action="edit-church.php" method="POST">
+                        <input type="hidden" name="edit_id" value="<?php echo $row['Id']; ?>"> <!-- Edit profile using member table id -->
+                        <button type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's baptism details">
+                            <i class="fas fa-edit"></i> Edit details
+                        </button>
+                    </form>
+                </div>
+                <hr class="my-3" />
+            </div>
 
-                        <!-- address -->
+            <!-- address -->
+            <div class="row">
+                <div class="col-md-4">
+                    <h1 class="display-4 mt-3 text-center text-secondary">
+                        <i class="fas fa-address-card"></i><br>
+                        Address
+                    </h1>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-md-4">
-                                <h1 class="display-4 mt-3 text-center text-secondary">
-                                    <i class="fas fa-address-card"></i><br>
-                                    Address
-                                </h1>
+                                <p style="font-size: 20px; text-align: left">Street name:
+                                    <b><?php echo  $row['Street_name']; ?></b>
+                                </p>
+                                <p style="font-size: 20px; text-align: left">
+                                    House number: <b><?php echo $row['House_number']; ?></b>
+                                </p>
                             </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <p style="font-size: 20px; text-align: left">Street name:
-                                                <b><?php echo  $row['Street_name']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                House number: <b><?php echo $row['House_number']; ?></b>
-                                            </p>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <p style="font-size: 20px; text-align: left">
-                                                GPS address: <b><?php echo $row['GPS_address']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                Postal address: <b><?php echo $row['Postal_address']; ?></b>
-                                            </p>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <p style="font-size: 20px; text-align: left">
-                                                Phone number: <b><?php echo $row['Phone_number']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                Email: <b><?php echo $row['Email']; ?></b>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <form action="edit-address.php" method="POST">
-                                    <input type="hidden" name="edit_id" value="<?php echo $row['Id']; ?>"> <!-- Edit profile using member table id -->
-                                    <button type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's address">
-                                        <i class="fas fa-edit"></i> Edit details
-                                    </button>
-                                </form>
+                            <div class="col-md-4">
+                                <p style="font-size: 20px; text-align: left">
+                                    GPS address: <b><?php echo $row['GPS_address']; ?></b>
+                                </p>
+                                <p style="font-size: 20px; text-align: left">
+                                    Postal address: <b><?php echo $row['Postal_address']; ?></b>
+                                </p>
                             </div>
-                            <hr class="my-3" />
+                            <div class="col-md-4">
+                                <p style="font-size: 20px; text-align: left">
+                                    Phone number: <b><?php echo $row['Phone_number']; ?></b>
+                                </p>
+                                <p style="font-size: 20px; text-align: left">
+                                    Email: <b><?php echo $row['Email']; ?></b>
+                                </p>
+                            </div>
                         </div>
-                        
-                        <!-- family -->
+                    </div>
+                    <form action="edit-address.php" method="POST">
+                        <input type="hidden" name="edit_id" value="<?php echo $row['Id']; ?>"> <!-- Edit profile using member table id -->
+                        <button type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's address">
+                            <i class="fas fa-edit"></i> Edit details
+                        </button>
+                    </form>
+                </div>
+                <hr class="my-3" />
+            </div>
+            
+            <!-- family -->
+            <div class="row">
+                <div class="col-md-4">
+                    <h1 class="display-4 mt-3 text-center text-secondary">
+                        <i class="fa-solid fa-people-roof"></i><br>
+                        Family
+                    </h1>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-md-4">
-                                <h1 class="display-4 mt-3 text-center text-secondary">
-                                    <i class="fa-solid fa-people-roof"></i><br>
-                                    Family
-                                </h1>
+                                <p style="font-size: 20px; text-align: left">
+                                    Mother name: <b><?php echo  $row['Mother_name']; ?></b>
+                                </p>
+                                <p style="font-size: 20px; text-align: left">
+                                    Status:
+                                    <b>
+                                        <?php
+                                        if ($row['M_decease'] == "A") {
+                                        ?>
+                                            Alive
+                                        <?php
+                                        } elseif ($row['M_decease'] == "D") {
+                                        ?>
+                                            Deceased
+                                        <?php
+                                        }
+                                        ?>
+                                    </b>
+                                </p>
                             </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <p style="font-size: 20px; text-align: left">
-                                                Mother name: <b><?php echo  $row['Mother_name']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                Status:
-                                                <b>
-                                                    <?php
-                                                    if ($row['M_decease'] == "A") {
-                                                    ?>
-                                                        Alive
-                                                    <?php
-                                                    } elseif ($row['M_decease'] == "D") {
-                                                    ?>
-                                                        Deceased
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                </b>
-                                            </p>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <p style="font-size: 20px; text-align: left">
-                                                Father name: <b><?php echo $row['Father_name']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                Status:
-                                                <b>
-                                                    <?php
-                                                    if ($row['F_decease'] == "A") {
-                                                    ?>
-                                                        Alive
-                                                    <?php
-                                                    } elseif ($row['F_decease'] == "D") {
-                                                    ?>
-                                                        Deceased
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                </b>
-                                            </p>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <p style="font-size: 20px; text-align: left">
-                                                Next of kin's name: <b><?php echo $row['Next_of_kin']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                Next of kin contact: <b><?php echo $row['NoK_contact']; ?></b>
-                                            </p>
-                                            <p style="font-size: 20px; text-align: left">
-                                                Next of kin GPS address: <b><?php echo $row['NoK_GPS_address']; ?></b>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <form action="edit-family.php" method="POST">
-                                    <input type="hidden" name="edit_id" value="<?php echo $row['Id']; ?>"> <!-- Edit profile using member table id -->
-                                    <button type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's family details">
-                                        <i class="fas fa-edit"></i> Edit details
-                                    </button>
-                                </form>
+                            <div class="col-md-4">
+                                <p style="font-size: 20px; text-align: left">
+                                    Father name: <b><?php echo $row['Father_name']; ?></b>
+                                </p>
+                                <p style="font-size: 20px; text-align: left">
+                                    Status:
+                                    <b>
+                                        <?php
+                                        if ($row['F_decease'] == "A") {
+                                        ?>
+                                            Alive
+                                        <?php
+                                        } elseif ($row['F_decease'] == "D") {
+                                        ?>
+                                            Deceased
+                                        <?php
+                                        }
+                                        ?>
+                                    </b>
+                                </p>
                             </div>
-                            <hr class="my-3" />
+                            <div class="col-md-4">
+                                <p style="font-size: 20px; text-align: left">
+                                    Next of kin's name: <b><?php echo $row['Next_of_kin']; ?></b>
+                                </p>
+                                <p style="font-size: 20px; text-align: left">
+                                    Next of kin contact: <b><?php echo $row['NoK_contact']; ?></b>
+                                </p>
+                                <p style="font-size: 20px; text-align: left">
+                                    Next of kin GPS address: <b><?php echo $row['NoK_GPS_address']; ?></b>
+                                </p>
+                            </div>
                         </div>
+                    </div>
+                    <form action="edit-family.php" method="POST">
+                        <input type="hidden" name="edit_id" value="<?php echo $row['Id']; ?>"> <!-- Edit profile using member table id -->
+                        <button type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's family details">
+                            <i class="fas fa-edit"></i> Edit details
+                        </button>
+                    </form>
+                </div>
+                <hr class="my-3" />
+            </div>
             <?php
                     }
                 }

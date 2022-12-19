@@ -19,37 +19,30 @@ function valisantizeEmail($data)
 // user registration code
 if (isset($_POST['register'])) {
     if (empty($_POST['firstname'])) {
-
         $_SESSION['warning'] = "Firstname is required";
         header('Location: ../register-admin.php');
     } elseif (empty($_POST['surname'])) {
-
         $_SESSION['warning'] = "Surname is required";
         header('Location: ../register-admin.php');
     } elseif (empty($_POST['username'])) {
-
         $_SESSION['warning'] = "Username is required";
         header('Location: ../register-admin.php');
     } elseif (empty($_POST['email'])) {
-
         $_SESSION['warning'] = "Email is required";
         header('Location: ../register-admin.php');
     } elseif (empty($_POST['phone_number'])) {
-
         $_SESSION['warning'] = "Phone Number is required";
         header('Location: ../register-admin.php');
     } elseif (empty($_POST['password'])) {
-
         $_SESSION['warning'] = "Password is required";
         header('Location: ../register-admin.php');
     } elseif (empty($_POST['confirm_password'])) {
-
         $_SESSION['warning'] = "Please confirm your password";
         header('Location: ../register-admin.php');
     } else {
 
-        $firstname          = sanitizeUserInput(ucfirst($_POST['firstname']));
-        $surname            = sanitizeUserInput(ucfirst($_POST['surname']));
+        $firstname          = sanitizeUserInput(ucwords($_POST['firstname']));
+        $surname            = sanitizeUserInput(ucwords($_POST['surname']));
         $username           = sanitizeUserInput($_POST['username']);
         $email              = valisantizeEmail($_POST['email']);
         $phone_number       = sanitizeUserInput($_POST['phone_number']);
@@ -57,7 +50,8 @@ if (isset($_POST['register'])) {
         $confirm_password   = $_POST['confirm_password'];
         $status_check       = 'A';
 
-        $email_query = "SELECT Email, Username FROM users WHERE Email = '$email' OR Username = '$username'";
+        $email_query = "SELECT `Email`, `Username`, `Phone_number` FROM `users` WHERE `Email` = '$email'
+        OR `Username` = '$username' OR `Phone_number` = '$phone_number'";
         $email_query_run = mysqli_query($connection, $email_query);
 
         if (mysqli_num_rows($email_query_run)> 0) {
@@ -82,17 +76,18 @@ if (isset($_POST['register'])) {
                 $_SESSION['warning'] =  "Passwords Do Not Match";
                 header('Location: ../register-admin.php');
             } else {
-                $password = password_hash($password, PASSWORD_BCRYPT);
-                $query = "INSERT INTO `users` (`Firstname`, `Surname`, `Username`, `Email`, `Phone_number`, `Password`, `Status`) VALUES (?,?,?,?,?,?,?)";
+                $password = password_hash($password, PASSWORD_BCRYPT); // hash password
+                $query = "INSERT INTO `users` (`Firstname`, `Surname`, `Username`, `Email`,
+                `Phone_number`, `Password`, `Status`) VALUES (?,?,?,?,?,?,?)";
                 $stmt_insert = $connection->prepare($query);
                 $stmt_insert->bind_param("sssssss", $firstname, $surname, $username, $email, $phone_number, $password, $status_check);
                 $stmt_insert->execute();
 
                 if ($stmt_insert->affected_rows > 0) {
-                    $_SESSION['success'] =  "Admin Registered";
-                    header('Location: ../register-admin.php');
+                    $_SESSION['success'] =  "User registered successfuly";
+                    header('Location: ../view-users.php');
                 } else {
-                    $_SESSION['status'] =  "Admin Not Added ";
+                    $_SESSION['status'] =  "Failed to register user ";
                     header('Location: ../register-admin.php');
                 }
                 $stmt_insert->close();
@@ -113,10 +108,10 @@ if (isset($_POST['delete_admin_profile'])) {
 
     if ($stmt_del) {
         $_SESSION['warning'] = "Admin <strong>Terminated</strong>";
-        header("location: ../register-admin.php");
+        header("location: ../view-users.php");
     } else {
         $_SESSION['status'] = "User termination <strong>Failed</strong>";
-        header("location: ../register-admin.php");
+        header("location: ../view-users.php");
     }
     $stmt_del->close();
 }
@@ -131,31 +126,31 @@ if (isset($_POST['update-user-profile'])) {
 
     if (empty($username)) {
         $_SESSION['warning'] = "Username is required";
-        header('Location: ../register-admin.php');
+        header('Location: ../view-users.php');
     } elseif (empty($email)) {
         $_SESSION['warning'] = "Email is required";
-        header('Location: ../register-admin.php');
+        header('Location: ../view-users.php');
     } elseif (empty($password)) {
         $_SESSION['warning'] = "Password is required";
-        header('Location: ../register-admin.php');
+        header('Location: ../view-users.php');
     } else {
         if ($password != $confirm_password) {
             $_SESSION['warning'] =  "Passwords Do Not Match";
             header('Location: ../registeredit.php');
         } else {
-            $password = password_hash($password, PASSWORD_BCRYPT);
+            $password = password_hash($password, PASSWORD_BCRYPT); // hash password
             $query = "UPDATE `users` SET `Username` = ?, `Email` = ?, `Password` = ? WHERE `Id` = ? ";
             $stmt_update = $connection->prepare($query);
             $stmt_update->bind_param("sssi", $username, $email, $password, $id);
             $stmt_update->execute();
 
             if ($stmt_update) {
-                $_SESSION['success'] = "Admins profile is updated";
-                header("location: ../register-admin.php");
+                $_SESSION['success'] = "User's profile is updated";
+                header("location: ../view-users.php");
                 exit();
             } else {
-                $_SESSION['status'] = "Admins profile is not updated";
-                header("location: ../registeredit.php");
+                $_SESSION['status'] = "User's profile is not updated";
+                header("location: ../view-users.php");
                 exit();
             }
             $stmt_update->close();
@@ -179,28 +174,16 @@ if (isset($_POST['updateprofile'])) {
         $_SESSION['warning'] = "Phone Number is required";
         header('Location: ../register-admin.php');
     } else {
-        function sanitizeUserUpdate($input)
-        {
-            $input = trim($input, " ");
-            $input = stripslashes($input);
-            $input = htmlspecialchars($input);
-            return $input;
-        }
-        function valisantizeUpdate($input)
-        {
-            $input = filter_var($input, FILTER_VALIDATE_EMAIL);
-            $input = filter_var($input, FILTER_SANITIZE_EMAIL);
-            return $input;
-        }
 
         $id             = $_POST['id'];
-        $firstname      = sanitizeUserUpdate($_POST['firstname']);
-        $surname        = sanitizeUserUpdate($_POST['surname']);
-        $username       = sanitizeUserUpdate($_POST['username']);
-        $phone_number   = sanitizeUserUpdate($_POST['phone_number']);
-        $email          = valisantizeUpdate($_POST['email']);
+        $firstname      = sanitizeUserInput($_POST['firstname']);
+        $surname        = sanitizeUserInput($_POST['surname']);
+        $username       = sanitizeUserInput($_POST['username']);
+        $phone_number   = sanitizeUserInput($_POST['phone_number']);
+        $email          = valisantizeEmail($_POST['email']);
 
-        $query = "UPDATE `users` SET `Firstname` = ?, `Surname` = ?, `Username` = ?, `Phone_number` = ?, `Email` = ? WHERE `Id` = ? ";
+        $query = "UPDATE `users` SET `Firstname` = ?, `Surname` = ?, `Username` = ?, `Phone_number` = ?,
+        `Email` = ? WHERE `Id` = ? ";
         $stmt_update = $connection->prepare($query);
         $stmt_update->bind_param("sssssi", $firstname, $surname, $username, $phone_number, $email, $id);
         $stmt_update->execute();
@@ -228,10 +211,10 @@ if (isset($_POST['status_block'])) {
 
     if ($stmt_update) {
         $_SESSION['success'] = "User's account suspended successfully";
-        header("Location: ../register-admin.php");
+        header("Location: ../view-users.php");
     } else {
         $_SESSION['danger'] = "Failed to suspend user";
-        header("Location: ../register-admin.php");
+        header("Location: ../view-users.php");
     }
 }
 
@@ -246,9 +229,9 @@ if (isset($_POST['status_unblock'])) {
 
     if ($stmt_update) {
         $_SESSION['success'] = "User's account activated successfully";
-        header("Location: ../register-admin.php");
+        header("Location: ../view-users.php");
     } else {
         $_SESSION['danger'] = "Failed to activate user";
-        header("Location: ../register-admin.php");
+        header("Location: ../view-users.php");
     }
 }

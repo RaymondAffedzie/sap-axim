@@ -24,47 +24,47 @@ include_once('includes/navbar.php');
                 <div class="card-body">
                     <h4 class="text-primary">Update  Profile</h4>
                     <?php
-                    include('logic/alerts.php');
+                        include_once('logic/alerts.php');
 
-                    if (isset($_POST['edit_btn'])) {
-                        $id = $_POST['edit_id'];
+                        if (isset($_POST['edit_btn'])) {
+                            $id = $_POST['edit_id'];
 
-                        $query = "SELECT * FROM `users` WHERE `Id` = '$id' ";
-                        $query_run = mysqli_query($connection, $query);
+                            $query = "SELECT * FROM `users` WHERE `Id` = '$id' ";
+                            $query_run = mysqli_query($connection, $query);
 
-                        if ($query_run) {
-                            while ($row = mysqli_fetch_array($query_run)) {
+                            if ($query_run) {
+                                while ($row = mysqli_fetch_array($query_run)) {
                     ?>
-                                <form action="logic/registercode.php" method="post" autocomplete="off">
-                                    <input type="hidden" name="id" value="<?php echo $row['Id'] ?>">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group mb-3">
-                                                <label for="username">Username</label>
-                                                <input type="text" class="form-control" name="username" value="<?php echo $row['Username']; ?>" id="username" placeholder="Username" minlength="3" maxlength="24" required>
-                                            </div>
-                                            <div class="form-group mb-3">
-                                                <label for="email">Email</label>
-                                                <input type="email" class="form-control" name="email" value="<?php echo $row['Email']; ?>" id="email" placeholder="Email" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-groupg mb-3">
-                                                <label for="password">Password</label>
-                                                <input type="password" class="form-control" name="new_password" id="password" placeholder="Enter password" minlength="6" required>
-                                            </div>
-                                            <div class="form-group mb-3">
-                                                <label for="con_password">Confirm Password</label>
-                                                <input type="password" class="form-control" name="con_password" id="con_password" placeholder="Confirm Password" minlength="6" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="w-100 mb-2 btn btn-lg rounded-4 btn-outline-primary" name="update-user-profile">Update Profile</button>
-                                </form>
+                    <form action="logic/registercode.php" method="post" autocomplete="off">
+                        <input type="hidden" name="id" value="<?php echo $row['Id'] ?>">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control" name="username" value="<?php echo $row['Username']; ?>" id="username" placeholder="Username" minlength="3" maxlength="24" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" name="email" value="<?php echo $row['Email']; ?>" id="email" placeholder="Email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-groupg mb-3">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" name="new_password" id="password" placeholder="Enter password" minlength="6" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="con_password">Confirm Password</label>
+                                    <input type="password" class="form-control" name="con_password" id="con_password" placeholder="Confirm Password" minlength="6" required>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-100 mb-2 btn btn-lg rounded-4 btn-outline-primary" name="update-user-profile">Update Profile</button>
+                    </form>
                     <?php
+                                }
                             }
                         }
-                    }
                     ?>
                 </div>
                 <div class="card-footer">
@@ -76,5 +76,5 @@ include_once('includes/navbar.php');
 </div>
 
 <?php
-    include('includes/footer.php');
+    include_once('includes/footer.php');
 ?>
