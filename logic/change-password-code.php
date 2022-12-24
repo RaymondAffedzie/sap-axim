@@ -10,7 +10,7 @@
             return $in;
         }
 
-        $id             = sanitizeData($_POST['id']);
+        $id             = $_SESSION['users']['users_id'];
         $old_password   = sanitizeData($_POST['old_password']);
         $new_password   = sanitizeData($_POST['new_password']);
         $con_password   = sanitizeData($_POST['con_password']);
@@ -25,8 +25,8 @@
             $_SESSION['warning'] = "New Password and Confirm password do not match";
             header('Location: ../profile.php');
         } else {
-            $new_password = password_hash($new_password, PASSWORD_BCRYPT);
 
+            $new_password = password_hash($new_password, PASSWORD_BCRYPT);
             $query = "SELECT `Password` FROM `users` WHERE `Id` = '$id'";
             $query_run = mysqli_query($connection, $query);
             if ($query_run) {

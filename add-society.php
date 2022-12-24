@@ -27,7 +27,7 @@ include_once('includes/navbar.php');
                         if ($query_run) {
                             while ($row = mysqli_fetch_array($query_run)) {
                         ?>
-                                
+
                                 <!-- will be inserted into the database as a foreign key -->
                                 <input type="hidden" name="member-id" class="form-control mb-2" value="<?php echo $row['Id']; ?>">
 
@@ -38,16 +38,30 @@ include_once('includes/navbar.php');
                                 </div>
 
                                 <div class="col-md-5 mb-2">
-                                    <div class="form-floating">
-                                        <input type="text" name="society_name[]" class="form-control" id="society_name">
+                                    <div class="form-group">
                                         <label for="society_name">Society name</label>
+                                        <select type="text" name="society_name[]" id="society" class="form-control" placeholder="Society Name">
+                                            <option value="">None</option>
+                                            <option value="Catholic Women Association">Catholic Women Association</option>
+                                            <option value="Charismatic Renewal">Charismatic Renewal</option>
+                                            <option value="Christian Mothers and Fathers">Christian Mothers and Fathers</option>
+                                            <option value="Knight and Ladies of the Alter">Knight and Ladies of the Alter</option>
+                                            <option value="Knight and Ladies of St. Johns International">Knight and Ladies of St. John's International</option>
+                                            <option value="Knight and Ladies of Marshal">Knight and Ladies of Marshal</option>
+                                            <option value="Sacred Heart of Jesus">Sacred heart of Jesus</option>
+                                            <option value="Senior Choir">Senior Choir</option>
+                                            <option value="St. Anthony Guild">St. Anthony Guild</option>
+                                            <option value="St. Cecilia Singing Band">St. Cecilia Singing Band</option>
+                                            <option value="St. Theresa of Child Jesus">St. Theresa's of Child Jesus</option>
+                                            <option value="Youth Choir">Youth Choir</option>
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="col-md-5 mb-2">
-                                    <div class="form-floating">
-                                        <input type="text" name="office_held[]" class="form-control" id="office_held">
+                                    <div class="form-group">
                                         <label for="office_held">Office held</label>
+                                        <input type="text" name="office_held[]" class="form-control" id="office_held">
                                     </div>
                                 </div>
 
@@ -69,33 +83,5 @@ include_once('includes/navbar.php');
     ?>
 
 
-<!-- jquery -->
-<script src="js/jquery.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(document).on('click', '.remove-btn', function () {
-                $(this).closest('.main-form').remove();
-            });
-
-            $(document).on('click', '.add-more-form', function () {
-                $('.paste-new-forms').append('<div class="row main-form my-2">\
-                                <div class="col-md-5">\
-                                    <div class="form-floating">\
-                                        <input type="text" name="society_name[]" class="form-control" id="society_name">\
-                                        <label for="society_name">Name</label>\
-                                    </div>\
-                                </div>\
-                                <div class="col-md-5">\
-                                    <div class="form-floating">\
-                                        <input type="text" name="office_held[]" class="form-control" id="office_held">\
-                                        <label for="office_held">Office held</label>\
-                                    </div>\
-                                </div>\
-                                <div class="col-md-2">\
-                                        <br>\
-                                        <button type="button" class="remove-btn btn btn-danger">Remove</button>\
-                                </div>\
-                            </div>');
-            });
-        });
-    </script>
+    <script src="js/jquery.js"></script>
+    <script src="js/custom.js"></script>

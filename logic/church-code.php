@@ -34,10 +34,14 @@ if (isset($_POST['add'])) {
             $birth_date = $row['Birth_Date'];
 
             if (empty($baptism_date)) {
-                header('Location: ../view-church.php');
+                $query_in = "INSERT INTO `church`(`MiD`) VALUES ('$member_id')";
+                $query_run_in = mysqli_query($connection, $query_in);
+
+                header('Location: ../add-society.php');
+
             } elseif ($birth_date > $baptism_date) {
                 $_SESSION['neutral'] = $row['Firstname']." ".$row['Other_name']." ".$row['Sur_name']." ".$row['Init'].$row['Reg_year'].$row['Id']." "."Birth date should not be current than baptism date";
-                header('Location: ../add-church.php');
+                header('Location: ../add-society.php');
             } else {
 
                 $query = "INSERT INTO `church`(`MiD`, `Baptism_card_number`, `Baptism_date`) VALUES (?,?,?)";

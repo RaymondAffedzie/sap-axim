@@ -97,9 +97,12 @@
         </div>
     </div>
 
-    <!-- script for regions and districts in ghana -->
-    <script src="js/region-districts.js"></script>
-    <script src="js/region-districts-code.js"></script>
+    
 <?php
     include_once('includes/footer.php');
 ?>
+
+    <!-- script for regions and districts in ghana -->
+    <script src="js/region-districts.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/custom.js"></script>

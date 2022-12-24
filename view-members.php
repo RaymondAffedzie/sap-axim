@@ -5,16 +5,20 @@ include_once('includes/navbar.php');
 ?>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">All Registered Members</h1>
+        <h1 class="h2">All Members</h1>
+        <input id="live_search" class="form-control w-50 rounded-0" type="text" placeholder="Search..." autocomplete="off">
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a type="button" class="btn btn-sm btn-outline-secondary" href="register-admin.php">Add user</a>
-                <a type="button" class="btn btn-sm btn-outline-secondary" href="view-users.php">View users</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary" href="add-member.php">Add member</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary" href="view-members.php">View member</a>
             </div>
-            <a type="button" class="btn btn-sm btn-outline-secondary" href="profile.php">View profile</a>
+            <a type="button" class="btn btn-sm btn-outline-secondary" href="#">Export Data</a>
         </div>
     </div>
 
+    <!-- display live search result -->
+    <div id="searchresult"></div>
+    
     <div class="container-fluid">
         <?php include_once('logic/alerts.php'); ?>
         <div class="card shadow mb-4">
@@ -193,3 +197,6 @@ include_once('includes/navbar.php');
      * UPDATE `members` SET `Firstname`='Raymond' WHERE CONCAT(`Init`,`Reg_year`,`Id`) = "SAP20221";
      */
     ?>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/custom.js"></script>

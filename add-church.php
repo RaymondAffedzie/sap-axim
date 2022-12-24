@@ -67,3 +67,7 @@ include_once('includes/navbar.php');
     <?php
     include_once('includes/footer.php');
     ?>
+
+    
+    <script src="js/jquery.js"></script>
+    <script src="js/custom.js"></script>

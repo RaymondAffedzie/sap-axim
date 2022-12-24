@@ -22,55 +22,55 @@ include_once('includes/navbar.php');
                 <form action="logic/address-code.php" method="post" autocomplete="off">
                     <div class="row">
                         <?php
-                            $query = "SELECT * FROM `members` ORDER BY `Id` DESC LIMIT 1";
-                            $query_run = mysqli_query($connection, $query);
-                            if ($query_run) {
-                                while ($row = mysqli_fetch_array($query_run)) {
+                        $query = "SELECT * FROM `members` ORDER BY `Id` DESC LIMIT 1";
+                        $query_run = mysqli_query($connection, $query);
+                        if ($query_run) {
+                            while ($row = mysqli_fetch_array($query_run)) {
                         ?>
-                                    <!-- will be inserted into the database as a foreign key -->
-                                    <input type="hidden" name="member-id" class="form-control mb-2" value="<?php echo $row['Id']; ?>">
+                                <!-- will be inserted into the database as a foreign key -->
+                                <input type="hidden" name="member-id" class="form-control mb-2" value="<?php echo $row['Id']; ?>">
 
-                                    <!-- Displays the member's ID to the page -->
-                                    <div class="form-group">
-                                        <label for="full-member-id">Member ID</label>
-                                        <input type="text" name="full-member-id" id="full-member-id" class="form-control mb-2" value="<?php echo $row['Init'] . $row['Reg_year'] . $row['Id']; ?>" disabled>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" name="street_name" id="street_name" min="0" required>
-                                            <label for="street_name">Street Name</label>
-                                        </div>
-
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" name="house_number" id="house_number" required>
-                                            <label for="house_number">House Number</label>
-                                        </div>
-
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" name="gps_address" id="gps_address" required>
-                                            <label for="gps_address">GPS Address</label>
-                                        </div>
+                                <!-- Displays the member's ID to the page -->
+                                <div class="form-group">
+                                    <label for="full-member-id">Member ID</label>
+                                    <input type="text" name="full-member-id" id="full-member-id" class="form-control mb-2" value="<?php echo $row['Init'] . $row['Reg_year'] . $row['Id']; ?>" disabled>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="street_name" id="street_name" min="0" required>
+                                        <label for="street_name">Street Name</label>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" name="postal_address" id="postal_address" min="0" required>
-                                            <label for="postal_address">Postal Address</label>
-                                        </div>
-
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" name="email" id="email" required>
-                                            <label for="email">Email</label>
-                                        </div>
-
-                                        <div class="form-floating mb-3">
-                                            <input type="tel" class="form-control" name="phone_number" id="phone_number" required>
-                                            <label for="phone_number">Phone Number</label>
-                                        </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="house_number" id="house_number" required>
+                                        <label for="house_number">House Number</label>
                                     </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="gps_address" id="gps_address" required>
+                                        <label for="gps_address">GPS Address</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="postal_address" id="postal_address" min="0" required>
+                                        <label for="postal_address">Postal Address</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="email" id="email" required>
+                                        <label for="email">Email</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="tel" class="form-control" name="phone_number" id="phone_number" required>
+                                        <label for="phone_number">Phone Number</label>
+                                    </div>
+                                </div>
                         <?php
-                                }
                             }
+                        }
                         ?>
                         <button type="submit" class="w-100 my-3  btn btn-lg rounded-4 btn-outline-primary" name="add">Submit</button>
                     </div>
@@ -82,3 +82,6 @@ include_once('includes/navbar.php');
     <?php
     include_once('includes/footer.php');
     ?>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/custom.js"></script>

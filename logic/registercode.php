@@ -48,7 +48,7 @@ if (isset($_POST['register'])) {
         $phone_number       = sanitizeUserInput($_POST['phone_number']);
         $password           = $_POST['password'];
         $confirm_password   = $_POST['confirm_password'];
-        $status_check       = 'A';
+        $status             = 'A';
 
         $email_query = "SELECT `Email`, `Username`, `Phone_number` FROM `users` WHERE `Email` = '$email'
         OR `Username` = '$username' OR `Phone_number` = '$phone_number'";
@@ -76,15 +76,16 @@ if (isset($_POST['register'])) {
                 $_SESSION['warning'] =  "Passwords Do Not Match";
                 header('Location: ../register-admin.php');
             } else {
+
                 $password = password_hash($password, PASSWORD_BCRYPT); // hash password
-                $query = "INSERT INTO `users` (`Firstname`, `Surname`, `Username`, `Email`,
-                `Phone_number`, `Password`, `Status`) VALUES (?,?,?,?,?,?,?)";
+                $query = "INSERT INTO `users`(`Firstname`, `Surname`, `Username`, `Phone_number`,
+                `Email`, `Password`, `Status`) VALUES (?,?,?,?,?,?,?)";
                 $stmt_insert = $connection->prepare($query);
-                $stmt_insert->bind_param("sssssss", $firstname, $surname, $username, $email, $phone_number, $password, $status_check);
+                $stmt_insert->bind_param("sssssss", $firstname, $surname, $username, $phone_number, $email, $password, $status);
                 $stmt_insert->execute();
 
                 if ($stmt_insert->affected_rows > 0) {
-                    $_SESSION['success'] =  "User registered successfuly";
+                    $_SESSION['success'] =  "User registered successfully";
                     header('Location: ../view-users.php');
                 } else {
                     $_SESSION['status'] =  "Failed to register user ";
@@ -136,7 +137,7 @@ if (isset($_POST['update-user-profile'])) {
     } else {
         if ($password != $confirm_password) {
             $_SESSION['warning'] =  "Passwords Do Not Match";
-            header('Location: ../registeredit.php');
+            header('Location: ../view-users.php');
         } else {
             $password = password_hash($password, PASSWORD_BCRYPT); // hash password
             $query = "UPDATE `users` SET `Username` = ?, `Email` = ?, `Password` = ? WHERE `Id` = ? ";
@@ -163,21 +164,24 @@ if (isset($_POST['update-user-profile'])) {
 if (isset($_POST['updateprofile'])) {
     if (empty($_POST['firstname'])) {
         $_SESSION['warning'] = "Firstname is required";
-        header('Location: ../register-admin.php');
+        header('Location: ../edit-profile.php');
     } elseif (empty($_POST['surname'])) {
         $_SESSION['warning'] = "Surname is required";
-        header('Location: ../register-admin.php');
+        header('Location: ../edit-profile.php');
     } elseif (empty($_POST['email'])) {
         $_SESSION['warning'] = "Email is required";
-        header('Location: ../register-admin.php');
+        header('Location: ../edit-profile.php');
     } elseif (empty($_POST['phone_number'])) {
         $_SESSION['warning'] = "Phone Number is required";
-        header('Location: ../register-admin.php');
+        header('Location: ../edit-profile.php');
+    } elseif (empty($_POST['username'])) {
+        $_SESSION['warning'] = "username is required";
+        header('Location: ../edit-profile.php');
     } else {
 
-        $id             = $_POST['id'];
-        $firstname      = sanitizeUserInput($_POST['firstname']);
-        $surname        = sanitizeUserInput($_POST['surname']);
+        $id             = $_SESSION['users']['users_id'];
+        $firstname      = sanitizeUserInput(ucwords($_POST['firstname']));
+        $surname        = sanitizeUserInput(ucwords($_POST['surname']));
         $username       = sanitizeUserInput($_POST['username']);
         $phone_number   = sanitizeUserInput($_POST['phone_number']);
         $email          = valisantizeEmail($_POST['email']);

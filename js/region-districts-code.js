@@ -1,16 +1,16 @@
-// user country code for selected option
+// user region code for selected option
 let user_country_code = "IN";
 
 (function () {
-    // Get the country name and state name from the imported script.
+    // Get the region name and district name from the imported script.
     let country_list = country_and_states["country"];
     let states_list = country_and_states["states"];
 
-    // creating country name drop-down
+    // creating region name drop-down
     let option = "";
     option += "<option>Select Birth Region</option>";
     for (let country_code in country_list) {
-        // set selected option user country
+        // set selected option user region
         let selected =
             country_code == user_country_code ? " selected" : "";
         option += '<option value="'+country_code + '"' + selected + ">" + country_list[country_code] + "</option>";
@@ -23,10 +23,10 @@ let user_country_code = "IN";
     let state_code_id = document.getElementById("state-code");
 
     function create_states_dropdown() {
-        // get selected country code
+        // get selected region code
         let country_code = document.getElementById("country").value;
         let states = states_list[country_code];
-        // invalid country code or no states add textbox
+        // invalid region code or no district add textbox
         if (!states) {
             state_code_id.innerHTML = text_box;
             return;
@@ -39,13 +39,13 @@ let user_country_code = "IN";
             }
             option += "</select>";
         } else {
-            // create input textbox if no states
+            // create input textbox if no district
             option = text_box;
         }
         state_code_id.innerHTML = option;
     }
 
-    // country select change event
+    // region select change event
     const country_select = document.getElementById("country");
     country_select.addEventListener(
         "change",

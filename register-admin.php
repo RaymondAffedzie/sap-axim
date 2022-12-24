@@ -27,12 +27,12 @@ include_once('includes/navbar.php');
                                     <fieldset>
                                         <legend>About</legend>
                                         <div class="form-group mb-3">
-                                            <label for="firstname">Firstname</label>
+                                            <label for="firstname">Firstname<b class="text-danger">*</b></label>
                                             <input type="text" class="form-control" name="firstname" id="firstname" minlength="2" maxlength="32" required>
                                         </div>
 
                                         <div class="form-group mb-3">
-                                            <label for="surname">Surname</label>
+                                            <label for="surname">Surname<b class="text-danger">*</b></label>
                                             <input type="text" class="form-control" name="surname" id="surname" minlength="2" maxlength="32" required>
                                         </div>
                                     </fieldset>
@@ -40,16 +40,8 @@ include_once('includes/navbar.php');
                                 <div class="col-md-4">
                                     <fieldset>
                                         <legend>Contact</legend>
-                                        <div>
-                                            <div class="form-group mb-3">
-                                                <label for="username">Username</label>
-                                                <input type="text" class="form-control verify_username" name="username" id="username" minlength="4" maxlength="32" required>
-                                            </div>
-                                            <p class="notice_username text-danger"></p>
-                                        </div>
-
                                         <div class="form-group mb-3">
-                                            <label for="email">Email</label>
+                                            <label for="email">Email<b class="text-danger">*</b></label>
                                             <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
                                             <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
                                             <input type="email" class="form-control verify_email" name="email" id="email" data-sb-validations="required,email" required>
@@ -58,8 +50,8 @@ include_once('includes/navbar.php');
 
                                         <div>
                                             <div class="form-group mb-3">
-                                                <label for="phone_number">Phone Number</label>
-                                                <input type="text" class="form-control verify_phone_number" name="phone_number" id="phone_number"  minlength="10" maxlength="10" required>
+                                                <label for="phone_number">Phone Number<b class="text-danger">*</b></label>
+                                                <input type="text" class="form-control verify_phone_number" name="phone_number" id="phone_number" minlength="10" maxlength="10" required>
                                             </div>
                                             <p class="notice_phone_number text-danger"></p>
                                         </div>
@@ -68,13 +60,20 @@ include_once('includes/navbar.php');
                                 <div class="col-md-4">
                                     <fieldset>
                                         <legend>Account</legend>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label for="username">Username<b class="text-danger">*</b></label>
+                                                <input type="text" class="form-control verify_username" name="username" id="username" minlength="3" maxlength="16" required>
+                                            </div>
+                                            <p class="notice_username text-danger"></p>
+                                        </div>
                                         <div class="form-group mb-3">
-                                            <label for="password">Password</label>
-                                            <input type="password" class="form-control" name="password" id="password"  minlength="4" required>
+                                            <label for="password">Password<b class="text-danger">*</b></label>
+                                            <input type="password" class="form-control" name="password" id="password" minlength="4" required>
                                         </div>
 
                                         <div class="form-group mb-3">
-                                            <label for="confirm_password">Confirm Password</label>
+                                            <label for="confirm_password">Confirm Password<b class="text-danger">*</b></label>
                                             <input type="password" class="form-control" name="confirm_password" id="confirm_password" minlength="4" required>
                                         </div>
                                     </fieldset>
@@ -91,6 +90,9 @@ include_once('includes/navbar.php');
         </div>
     </div>
 
-<?php
+    <?php
     include_once('includes/footer.php');
-?>
+    ?>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/custom.js"></script>

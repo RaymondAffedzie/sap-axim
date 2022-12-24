@@ -7,11 +7,11 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Add new member</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group me-2">
-            <a type="button" href="view-members.php" class="btn btn-sm btn-outline-secondary">View Members</a>
-            <a type="button" class="btn btn-sm btn-outline-secondary">Export</a>
-          </div>
-          <a type="button" class="btn btn-sm btn-outline-secondary" href="add-member.php">Add member</a>
+        <div class="btn-group me-2">
+                <a type="button" class="btn btn-sm btn-outline-secondary" href="add-member.php">Add member</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary" href="view-members.php">View member</a>
+            </div>
+            <a type="button" class="btn btn-sm btn-outline-secondary" href="#">Export Data</a>
         </div>
     </div>
     
@@ -81,9 +81,12 @@
         </div>
     </div>
 
-    <!-- script for regions and districts in ghana -->
-    <script src="js/region-districts.js"></script>
-    <script src="js/region-districts-code.js"></script>
+    
 <?php
     include_once('includes/footer.php');
 ?>
+
+    <!-- script for regions and districts in ghana -->
+    <script src="js/region-districts.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/custom.js"></script>

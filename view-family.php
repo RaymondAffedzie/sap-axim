@@ -1,11 +1,12 @@
 <?php
-    include_once('config/security.php');
-    include_once('includes/header.php');
-    include_once('includes/navbar.php');
+include_once('config/security.php');
+include_once('includes/header.php');
+include_once('includes/navbar.php');
 ?>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">All Members Address</h1>
+        <h1 class="h2">Members family</h1>
+        <input id="live_search" class="form-control w-50 rounded-0" type="text" placeholder="Search..." autocomplete="off">
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
                 <a type="button" href="view-address.php" class="btn btn-sm btn-outline-secondary">View address</a>
@@ -15,6 +16,9 @@
         </div>
     </div>
 
+    <!-- display live search result -->
+    <div id="searchresult"></div>
+
     <div class="container-fluid">
         <?php include_once('logic/alerts.php'); ?>
         <div class="card shadow mb-4">
@@ -23,14 +27,14 @@
                     <div class="col-md-12">
                         <div class="table-responsive">
                             <?php
-                                include_once('logic/alerts.php');
-                                $query = "SELECT family.Id, family.MiD, family.Mother_name, family.M_decease, family.Father_name, family.F_decease, family.Next_of_kin, family.NoK_contact, family.NoK_GPS_address, members.Id, members.Init, members.Reg_year, members.Firstname, members.Sur_name, members.Other_name FROM family LEFT JOIN members ON members.Id = family.MiD ORDER BY members.Id ASC";
-                                $query_run = mysqli_query($connection, $query);
-                                $counter = 0;
+                            include_once('logic/alerts.php');
+                            $query = "SELECT family.Id, family.MiD, family.Mother_name, family.M_decease, family.Father_name, family.F_decease, family.Next_of_kin, family.NoK_contact, family.NoK_GPS_address, members.Id, members.Init, members.Reg_year, members.Firstname, members.Sur_name, members.Other_name FROM family LEFT JOIN members ON members.Id = family.MiD ORDER BY members.Id ASC";
+                            $query_run = mysqli_query($connection, $query);
+                            $counter = 0;
                             ?>
                             <table class="table table-hover table-sm">
                                 <thead>
-                                <tr>
+                                    <tr>
                                         <th scope="col">SN</th>
                                         <th scope="col">Member Id</th>
                                         <th scope="col" class="text-wrap" style="width: 400px;">Member's name</th>
@@ -55,25 +59,25 @@
                                                     <p> <?php echo $counter; ?> </p>
                                                 </td>
                                                 <td class="text-wrap">
-                                                    <p> <?php echo $row['Init'].$row['Reg_year'].$row['Id']; ?> </p>
+                                                    <p> <?php echo $row['Init'] . $row['Reg_year'] . $row['Id']; ?> </p>
                                                 </td>
                                                 <td class="text-wrap" style="width: 400px;">
-                                                    <p> <?php echo $row['Firstname']." ".$row['Other_name']." ".$row['Sur_name']; ?> </p>
+                                                    <p> <?php echo $row['Firstname'] . " " . $row['Other_name'] . " " . $row['Sur_name']; ?> </p>
                                                 </td>
                                                 <td class="text-wrap" style="width: 400px;">
                                                     <p> <?php echo $row['Father_name']; ?> </p>
                                                 </td>
                                                 <td>
                                                     <?php
-                                                        if ($row['F_decease'] == "A") {
-                                                        ?>
-                                                            <p>Alive</p>
-                                                        <?php
-                                                        } elseif ($row['F_decease'] == "D") {
-                                                        ?>
-                                                            <p>Deceased</p>
-                                                        <?php
-                                                        }
+                                                    if ($row['F_decease'] == "A") {
+                                                    ?>
+                                                        <p>Alive</p>
+                                                    <?php
+                                                    } elseif ($row['F_decease'] == "D") {
+                                                    ?>
+                                                        <p>Deceased</p>
+                                                    <?php
+                                                    }
                                                     ?>
                                                 </td>
                                                 <td class="text-wrap" style="width: 400px;">
@@ -81,15 +85,15 @@
                                                 </td>
                                                 <td>
                                                     <?php
-                                                        if ($row['M_decease'] == "A") {
-                                                        ?>
-                                                            <p>Alive</p>
-                                                        <?php
-                                                        } elseif ($row['M_decease'] == "D") {
-                                                        ?>
-                                                            <p>Deceased</p>
-                                                        <?php
-                                                        }
+                                                    if ($row['M_decease'] == "A") {
+                                                    ?>
+                                                        <p>Alive</p>
+                                                    <?php
+                                                    } elseif ($row['M_decease'] == "D") {
+                                                    ?>
+                                                        <p>Deceased</p>
+                                                    <?php
+                                                    }
                                                     ?>
                                                 </td>
                                                 <td class="text-wrap" style="width: 400px;">
@@ -123,16 +127,19 @@
         </div>
     </div>
 
-  
-<?php
-include_once('includes/footer.php');
 
-/**
- * query for selecting specific member details
- * SELECT `Firstname`, `Sur_name`, `Other_name`, `Sex`, `Birth_Date`, `Birth_Place`, `Birth_Region`, `Birth_District` FROM members WHERE CONCAT(`Init`,`Reg_year`,`Id`) LIKE "SAP%";
- * query for selecting all member details
- * SELECT * FROM `members` WHERE CONCAT(`Init`,`Reg_year`,`Id`) = "SAP20221";
- * query for updating member details
- * UPDATE `members` SET `Firstname`='Raymond' WHERE CONCAT(`Init`,`Reg_year`,`Id`) = "SAP20221";
- */
-?>
+    <?php
+    include_once('includes/footer.php');
+
+    /**
+     * query for selecting specific member details
+     * SELECT `Firstname`, `Sur_name`, `Other_name`, `Sex`, `Birth_Date`, `Birth_Place`, `Birth_Region`, `Birth_District` FROM members WHERE CONCAT(`Init`,`Reg_year`,`Id`) LIKE "SAP%";
+     * query for selecting all member details
+     * SELECT * FROM `members` WHERE CONCAT(`Init`,`Reg_year`,`Id`) = "SAP20221";
+     * query for updating member details
+     * UPDATE `members` SET `Firstname`='Raymond' WHERE CONCAT(`Init`,`Reg_year`,`Id`) = "SAP20221";
+     */
+    ?>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/custom.js"></script>

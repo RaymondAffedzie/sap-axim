@@ -3,55 +3,68 @@ include_once('config/security.php');
 include_once('includes/header.php');
 include_once('includes/navbar.php');
 ?>
+
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
+        <h1 class="h2">Users profile</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-          </div>
-          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            <span data-feather="calendar" class="align-text-bottom"></span>
-            This week
-          </button>
+            <div class="btn-group me-2">
+                <a type="button" class="btn btn-sm btn-outline-secondary" href="register-admin.php">Add user</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary" href="view-users.php">View users</a>
+            </div>
+            <a type="button" class="btn btn-sm btn-outline-secondary" href="profile.php">View profile</a>
         </div>
     </div>
 
-<?php include_once('logic/alerts.php') ?>
-<div class="card text-center col-md-12 border-0 shadow-lg rounded-0">
-    <div class="card-header">
-        <ul class="nav nav-pills navbar-light  bg-dark card-header-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link text-light active" id="pills-users-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Profile</button>
-            </li>
-        </ul>
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-users-profile-tab">
-                <div class="card mb-3 border-0 shadow-lg rounded-0 p-3">
+    <?php include_once('logic/alerts.php'); ?>
+    <div class="card text-center shadow mb-4">
+        <div class="card-body">
+            <!-- change profile info -->
+            <div class="row">
+                <div class="col-lg-12">
                     <div class="row g-0">
-                        <div class="col-md-5">
-                        <?php
-                                if (isset($_POST['view_user'])) {
-                                    $id = $_POST['id'];
-                                    $query = "SELECT * FROM `users` WHERE `id` = '$id'";
-                                    $query_run = mysqli_query($connection, $query);
-                                    if ($query_run) {
-                                        while ($row = mysqli_fetch_array($query_run)) {
-                                ?>
-                            <h1 class="display-4 mt-3 text-secondary"><i class="fa fa-user-circle-o"></i><br><?php echo $row['Firstname'] . " " . $row['Surname']; ?></h1>
+                        <div class="col-lg-5">
+                            <?php
+                            if (isset($_POST['view_user'])) {
+                                $id = $_POST['user_id'];
+                                $query = "SELECT * FROM `users` WHERE `id` = '$id'";
+                                $query_run = mysqli_query($connection, $query);
+                                if ($query_run) {
+                                    while ($row = mysqli_fetch_array($query_run)) {
+                            ?>
+                                        <h1 class="display-4 mt-3 text-secondary"><i class="fa fa-user-circle-o"></i><br><?php echo $row['Firstname'] . " " . $row['Surname']; ?></h1>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-lg-7">
                             <div class="card-body">
-                             
-                                            <p>Username: <?php echo  $row['Username']; ?></p>
-                                            <p>Email: <?php echo $row['Email']; ?></p>
-                                            <p>Phone Number: <?php echo $row['Phone_number']; ?></p>
-                                <?php
-                                        }
+                                <p>Username: <b><?php echo  $row['Username']; ?></b></p>
+                                <p>Email: <b><?php echo $row['Email']; ?></b></p>
+                                <p>Phone Number: <b><?php echo $row['Phone_number']; ?></b></p>
+
+                                <hr class="my-4">
+
+                                <small>Only update other user's profile when they have forgotten their credentials</small>
+                                <!-- Edit profile details -->
+                                <form action="registeredit.php" method="post">
+                                    <input type="hidden" name="edit_id" value="<?php echo $row['Id']; ?>">
+                                    <button type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit user's Profile">
+                                        <i class="fas fa-edit"></i> Update profile
+                                    </button>
+                                </form>
+
+                                <hr class="my-4">
+                                <small class="text-danger">Remember this action cannot be undone</small>
+                                <form action="registercode.php" method="post">
+                                    <input type="hidden" name="delete_id" value="<?php echo $row['Id']; ?>">
+                                    <button type="submit" name="delete_admin_profile" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete user's account" onclick="return confirm('Do you want to delete user\'s account')">
+                                        <i class="fa fa-trash-o"></i> Delete user account
+                                    </button>
+                                </form>
+
+                    <?php
                                     }
                                 }
-                                ?>
+                            }
+                    ?>
                             </div>
                         </div>
                     </div>
@@ -59,9 +72,12 @@ include_once('includes/navbar.php');
             </div>
         </div>
     </div>
-</div>
 
 
-<?php
+    <?php
     include_once('includes/footer.php');
-?>
+    ?>
+
+
+    <script src="js/jquery.js"></script>
+    <script src="js/custom.js"></script>

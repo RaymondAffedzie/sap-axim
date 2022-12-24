@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('includes/header.php');
+include_once('includes/header.php');
 ?>
 
 <div class="container-fluid d-flex align-items-center justify-content-center" style=" width: 100vw; height:100vh; background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%); background-size: 100vw 100vh;">
