@@ -54,14 +54,14 @@ include_once('includes/navbar.php');
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="bcn">Baptism card number</label>
+                                            <label for="bcn">Baptism number</label>
                                             <input type="text" class="form-control" name="card_number" value="<?php echo $row['Baptism_card_number']; ?>" id="bcn" autocapitalize="on">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="bd">Baptism date</label>
-                                            <input type="date" class="form-control" name="baptism_date" value="<?php echo $row['Baptism_date']; ?>" id="ms">
+                                            <label for="bp">Parish of baptism</label>
+                                            <input type="text" class="form-control" name="parish" value="<?php echo $row['Parish']; ?>" id="bp">
                                         </div>
                                     </div>
                                 </div>

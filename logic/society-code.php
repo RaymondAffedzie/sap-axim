@@ -18,7 +18,8 @@ if (isset($_POST['add'])) {
         $societies = sanitizeUserInput(ucwords($names));
         $offices = sanitizeUserInput(ucwords($office[$index]));
 
-        $query = "INSERT INTO `society`(`MiD`, `Society_name`, `Position_held`) VALUES ('$member_id', '$societies', '$offices')";
+        $query = "INSERT INTO `society`(`MiD`, `Society_name`, `Position_held`)
+         VALUES ('$member_id', '$societies', '$offices')";
         $query_run = mysqli_query($connection, $query);
     }
 

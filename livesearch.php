@@ -13,8 +13,8 @@ include_once('config/security.php');
                 $input = $_POST['input'];
 
                 $query = "SELECT * FROM `members` WHERE `Firstname` LIKE '{$input}%' OR
-                `Sur_name` LIKE '{$input}%' OR `Other_name` LIKE '{$input}%' OR `Sex` LIKE '{$input}%' OR
-                CONCAT(`Init`,`Reg_year`,`Id`) LIKE '{$input}%'";
+                `Sur_name` LIKE '{$input}%' OR `Other_name` LIKE '{$input}%' OR
+                 `Sex` LIKE '{$input}%' OR CONCAT(`Init`,`Reg_year`,`Id`) LIKE '{$input}%'";
                 $query_run = mysqli_query($connection, $query);
 
                 if (mysqli_num_rows($query_run) > 0) {

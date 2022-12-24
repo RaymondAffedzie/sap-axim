@@ -19,7 +19,7 @@ include_once('includes/navbar.php');
     <!-- display live search result -->
     <div id="searchresult"></div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="element">
         <?php include_once('logic/alerts.php'); ?>
         <div class="card shadow mb-4">
             <div class="card-body">

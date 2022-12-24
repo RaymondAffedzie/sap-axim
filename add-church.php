@@ -40,14 +40,14 @@ include_once('includes/navbar.php');
                                     <fieldset>
                                         <legend>Baptism</legend>
                                         <div class="row">
-                                            <div class="form-floating mb-3 col-md-6">
-                                                <input type="text" class="form-control" name="b_id" id="b_id">
+                                            <div class="form-group mb-3 col-md-6">
                                                 <label for="b_id">Baptism number</label>
+                                                <input type="text" class="form-control" name="baptism_number" id="b_id">
                                             </div>
                                             
-                                            <div class="form-floating mb-3 col-md-6">
-                                                <input type="date" class="form-control" name="b_date" id="b_date">
-                                                <label for="b_date">Baptism date</label>
+                                            <div class="form-group mb-3 col-md-6">
+                                                <label for="b_date">Parish of baptism</label>
+                                                <input type="text" class="form-control" name="parish" id="b_date">
                                             </div>
                                         </div>
                                     </fieldset>

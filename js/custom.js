@@ -102,7 +102,7 @@ $(document).ready(function () {
 	});
 });
 
-// live search
+// live search for members
 $(document).ready(function () {
     $("#live_search").keyup(function (e) { 
         var input = $(this).val();

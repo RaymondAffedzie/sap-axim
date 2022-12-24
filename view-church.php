@@ -20,7 +20,7 @@ include_once('includes/navbar.php');
     <!-- display live search result -->
     <div id="searchresult"></div>
     
-    <div class="container-fluid">
+    <div class="container-fluid" id="element">
         <?php include_once('logic/alerts.php'); ?>
         <div class="card shadow mb-4">
             <div class="card-body">
@@ -29,7 +29,10 @@ include_once('includes/navbar.php');
                         <div class="table-responsive">
                             <?php
                             include_once('logic/alerts.php');
-                            $query = "SELECT church.Id, church.MiD, church.Baptism_card_number, church.Baptism_date, members.Id, members.Init, members.Reg_year, members.Firstname, members.Sur_name, members.Other_name FROM church LEFT JOIN members ON members.Id = church.MiD ORDER BY church.Baptism_date ASC";
+                            $query = "SELECT church.Id, church.MiD, church.Baptism_card_number, church.Parish,
+                             members.Id, members.Init, members.Reg_year, members.Firstname, members.Sur_name,
+                              members.Other_name FROM church LEFT JOIN members ON members.Id = church.MiD
+                               ORDER BY church.Parish ASC, church.Baptism_card_number ASC";
                             $query_run = mysqli_query($connection, $query);
                             $counter = 0;
                             ?>
@@ -39,8 +42,8 @@ include_once('includes/navbar.php');
                                         <th scope="col">SN</th>
                                         <th scope="col">Member Id</th>
                                         <th scope="col" class="text-wrap" style="width: 400px;">Member's name</th>
-                                        <th scope="col" class="text-wrap" style="width: 400px;">Baptism card number</th>
-                                        <th scope="col" class="text-wrap" style="width: 300px;">Baptism date</th>
+                                        <th scope="col" class="text-wrap" style="width: 400px;">Baptism number</th>
+                                        <th scope="col" class="text-wrap" style="width: 300px;">Parish/Station</th>
                                         <th scope="col">View</th>
                                     </tr>
                                 </thead>
@@ -64,7 +67,7 @@ include_once('includes/navbar.php');
                                                     <p> <?php echo $row['Baptism_card_number']; ?> </p>
                                                 </td>
                                                 <td class="text-wrap" style="width: 400px;">
-                                                    <p> <?php echo $row['Baptism_date']; ?> </p>
+                                                    <p> <?php echo $row['Parish']; ?> </p>
                                                 </td>
                                                 <td>
                                                     <form action="member-profile.php" method="post">

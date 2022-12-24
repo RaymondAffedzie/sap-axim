@@ -30,7 +30,7 @@ include_once('includes/navbar.php');
                     `members`.`Birth_Place`, `members`.`Birth_Region`, `members`.`Birth_District`,
                     `address`.`MiD`, `address`.`Street_name`, `address`.`House_number`,
                     `address`.`GPS_address`, `address`.`Postal_address`, `address`.`Phone_number`, `address`.`Email`,
-                    `church`.`MiD`, `church`.`Baptism_card_number`, `church`.`Baptism_date`,
+                    `church`.`MiD`, `church`.`Baptism_card_number`, `church`.`Parish`,
                     `family`.`MiD`, `family`.`Mother_name`, `family`.`M_decease`, `family`.`Father_name`,
                     `family`.`F_decease`, `family`.`Next_of_kin`, `family`.`NoK_contact`, `family`.`NoK_GPS_address`,
                     `other_info`.`MiD`, `other_info`.`Marital_status`, `other_info`.`Number_of_children`,
@@ -162,12 +162,12 @@ include_once('includes/navbar.php');
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p style="font-size: 20px; text-align: left">
-                                                Baptism card number: <b><?php echo  $row['Baptism_card_number']; ?></b>
+                                                Baptism number: <b><?php echo  $row['Baptism_card_number']; ?></b>
                                             </p>
                                         </div>
                                         <div class="col-md-6">
                                             <p style="font-size: 20px; text-align: left">
-                                                Baptism date: <b><?php echo $row['Baptism_date']; ?></b>
+                                                Parish of Baptism: <b><?php echo $row['Parish']; ?></b>
                                             </p>
                                         </div>
                                     </div>
