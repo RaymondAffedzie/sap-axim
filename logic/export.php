@@ -12,7 +12,8 @@ use PhpOffice\PhpSpreadsheet\Writer\Csv;
 if (isset($_POST['export_excel_btn'])) {
     $file_ext_name = $_POST['export_file_type'];
     $filename = 'members-sheet';
-    $query = "SELECT * FROM `members`";
+    $query = "SELECT `Id`, `Init`, `Reg_year`, `Firstname`, `Sur_name`, `Other_name`,
+     `Sex`, `Birth_Date`, `Birth_Place`, `Birth_Region`, `Birth_District` FROM `members`";
     $query_run = mysqli_query($connection, $query);
 
     if (mysqli_num_rows($query_run) > 0) {
@@ -29,7 +30,7 @@ if (isset($_POST['export_excel_btn'])) {
         $counter = 2;
         foreach ($query_run as $data) {
             $sheet->setCellValue('A'.$counter, $data['Init'].$data['Reg_year'].$data['Id']);
-            $sheet->setCellValue('B'.$counter, $data['Firstname'].$data['Other_name'].$data['Sur_name']);
+            $sheet->setCellValue('B'.$counter, $data['Firstname']." ".$data['Other_name']." ".$data['Sur_name']);
             $sheet->setCellValue('C'.$counter, $data['Sex']);
             $sheet->setCellValue('C'.$counter, $data['Birth_Date']);
             $sheet->setCellValue('E'.$counter, $data['Birth_Place']);
@@ -40,20 +41,22 @@ if (isset($_POST['export_excel_btn'])) {
 
         if ($file_ext_name == 'xlsx') {
             $writer = new Xlsx($spreadsheet);
-            $final_filename = $filename.'xlsx';
+            $final_filename = $filename.'.xlsx';
         } elseif ($file_ext_name == 'xls') {
             $writer = new Xls($spreadsheet);
-            $final_filename = $filename.'xls';
+            $final_filename = $filename.'.xls';
         } elseif ($file_ext_name == 'csv') {
             $writer = new Csv($spreadsheet);
-            $final_filename = $filename.'csv';
+            $final_filename = $filename.'.csv';
         }
+        // $writer->save($final_filename);
         
-        $writer->save($final_filename);
+        header('content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('content-Disposition: attactment; filename="'.urlencode($final_filename).'"');
+        $writer->save('php://output');
 
     } else {
         $_SESSION['neutral'] = "No records found";
         header('Location: ../view-members.php');
-        exit(0);
     }
 }
