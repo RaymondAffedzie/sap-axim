@@ -39,9 +39,7 @@ if (isset($_POST['add'])) {
         $year       = date('Y'); // get the today's date year eg. 2023
         $init       = "SAP";
         
-        $query = "INSERT INTO `members`(`Init`, `Reg_year`, `Firstname`, `Sur_name`,
-        `Other_name`, `Sex`, `Birth_Date`, `Birth_Place`, `Birth_Region`,
-        `Birth_District`) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        $query = "INSERT INTO `members`(`Init`, `Reg_year`, `Firstname`, `Sur_name`, `Other_name`, `Sex`, `Birth_Date`, `Birth_Place`, `Birth_Region`, `Birth_District`) VALUES (?,?,?,?,?,?,?,?,?,?)";
         $stmt_insert = $connection->prepare($query);
         $stmt_insert->bind_param("sissssssss", $init, $year, $firstname, $surname, $othername, $sex, $birthdate, $birthplace, $region, $district);
         $stmt_insert->execute();
