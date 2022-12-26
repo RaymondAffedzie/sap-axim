@@ -9,9 +9,8 @@ include_once('includes/navbar.php');
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
                 <a type="button" href="view-church.php" class="btn btn-sm btn-outline-secondary">View church details</a>
-                <a type="button" class="btn btn-sm btn-outline-secondary">Export</a>
+                <!-- <a type="button" class="btn btn-sm btn-outline-secondary" href="add-church.php">Add church</a> -->
             </div>
-            <a type="button" class="btn btn-sm btn-outline-secondary" href="add-church.php">Add church</a>
         </div>
     </div>
 

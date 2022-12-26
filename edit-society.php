@@ -62,13 +62,13 @@ include_once('includes/navbar.php');
                                                 <option value="Charismatic Renewal">Charismatic Renewal</option>
                                                 <option value="Christian Mothers and Fathers">Christian Mothers and Fathers</option>
                                                 <option value="Knight and Ladies of the Alter">Knight and Ladies of the Alter</option>
-                                                <option value="Knight and Ladies of St. Johns International">Knight and Ladies of St. John's International</option>
+                                                <option value="Knight and Ladies of St. John\'s International">Knight and Ladies of St. John's International</option>
                                                 <option value="Knight and Ladies of Marshal">Knight and Ladies of Marshal</option>
                                                 <option value="Sacred Heart of Jesus">Sacred heart of Jesus</option>
                                                 <option value="Senior Choir">Senior Choir</option>
                                                 <option value="St. Anthony Guild">St. Anthony Guild</option>
                                                 <option value="St. Cecilia Singing Band">St. Cecilia Singing Band</option>
-                                                <option value="St. Theresa of Child Jesus">St. Theresa's of Child Jesus</option>
+                                                <option value="St. Theresa\'s of the Child Jesus">St. Theresa's of the Child Jesus</option>
                                                 <option value="Youth Choir">Youth Choir</option>
                                             </select>
                                         </div>

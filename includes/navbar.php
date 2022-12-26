@@ -14,7 +14,7 @@
         <i class="fas fa-search"></i> search
     </button> -->
     <span class="mr-2 d-block d-sm-inline">
-        <a href="./profile.php" class="text-decoration-none text-white">
+        <a href="./profile.php" class="text-decoration-none text-white w-100">
             <?php
                 $id = $_SESSION['users']['users_id'];
                 $query = "SELECT * FROM `users` WHERE `Id` = '$id'";

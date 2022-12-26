@@ -9,10 +9,10 @@ include_once('includes/navbar.php');
         <input id="live_search" class="form-control w-50 rounded-0" type="text" placeholder="Search..." autocomplete="off">
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a type="button" href="view-society.php" class="btn btn-sm btn-outline-secondary">View society</a>
-                <a type="button" class="btn btn-sm btn-outline-secondary">Export</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary rounded-0" href="view-society.php" >View society</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary rounded-0" href="add-member.php">Add member</a>
             </div>
-            <a type="button" class="btn btn-sm btn-outline-secondary" href="add-society.php">Add society</a>
+            <a type="button" class="btn btn-sm btn-outline-primary rounded-0">Export data</a>
         </div>
     </div>
 
@@ -38,7 +38,7 @@ include_once('includes/navbar.php');
                                         <th scope="col">SN</th>
                                         <th scope="col">Member Id</th>
                                         <th scope="col" class="text-wrap" style="width: 400px;">Member's name</th>
-                                        <th scope="col" class="text-wrap" style="width: 400px;">Society name</th>
+                                        <th scope="col" class="text-wrap" style="width: 600px;">Society name</th>
                                         <th scope="col" class="text-wrap" style="width: 300px;">Office held</th>
                                         <th scope="col">View</th>
                                         <th scope="col">Delete</th>
@@ -60,7 +60,7 @@ include_once('includes/navbar.php');
                                                 <td class="text-wrap" style="width: 400px;">
                                                     <p> <?php echo $row['Firstname'] . " " . $row['Other_name'] . " " . $row['Sur_name']; ?> </p>
                                                 </td>
-                                                <td class="text-wrap" style="width: 400px;">
+                                                <td class="text-wrap" style="width: 600px;">
                                                     <p> <?php echo $row['Society_name']; ?> </p>
                                                 </td>
                                                 <td class="text-wrap" style="width: 400px;">

@@ -4,28 +4,24 @@ include_once('includes/header.php');
 include_once('includes/navbar.php');
 ?>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 text-center pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1 style="cursor: pointer;">
-        <input id="live_search" class="form-control w-50 rounded-0" type="text" placeholder="Search..." autocomplete="off" style="cursor: pointer;">
-        <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group me-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button style="cursor: pointer;">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-            </div>
-            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <span data-feather="calendar" class="align-text-bottom"></span>
-                This week
-            </button>
-        </div>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap
+     align-items-center pt-3 text-center pb-2 mb-3 border-bottom">
+        <h1 class="h2 px-3">Dashboard</h1>
+        <input id="live_search" class="form-control w-100 rounded-0"
+         type="search" placeholder="Search..." autocomplete="off">
     </div>
 
     <div id="searchresult"></div>
 
     <div class="row" id="element">
         <div class="row">
-            <h4 class="text-center" style="text-transform: uppercase; font-weight: 700; color: crimson;">Welcome to St. Anthony of Padua Catholic Catholic Church, Axim, Data collection system</h4>
+            <h4 class="text-center" style="text-transform: uppercase; font-weight: 700; color: crimson;">
+                Welcome to St. Anthony of Padua Catholic Catholic Church, Axim, Data collection system
+            </h4>
             <div class="col-md-3 my-3">
-                <div class="card text-bg-dark text-light text-center rounded-0 border-0" style="max-height: 200px; min-height: 150px">
+                <div class="card text-bg-dark text-light text-center rounded-0 border-0"
+                
+                style="max-height: 200px; min-height: 150px">
                     <div class="card-body" style="cursor: pointer;">
                         <h3>Members</h3>
                         <?php
@@ -42,7 +38,8 @@ include_once('includes/navbar.php');
                 </div>
             </div>
             <div class="col-md-3 my-3">
-                <div class="card text-bg-primary text-dark text-center rounded-0 border-0" style="max-height: 200px; min-height: 150px">
+                <div class="card text-bg-primary text-dark text-center rounded-0 border-0"
+                 style="max-height: 200px; min-height: 150px">
                     <div class="card-body" style="cursor: pointer;">
                         <h3>Males</h3>
                         <?php
@@ -59,7 +56,8 @@ include_once('includes/navbar.php');
                 </div>
             </div>
             <div class="col-md-3 my-3">
-                <div class="card text-bg-info text-light text-center rounded-0 border-0" style="max-height: 200px; min-height: 150px">
+                <div class="card text-bg-info text-light text-center rounded-0 border-0"
+                 style="max-height: 200px; min-height: 150px">
                     <div class="card-body" style="cursor: pointer;">
                         <h3>Females</h3>
                         <?php
@@ -76,7 +74,8 @@ include_once('includes/navbar.php');
                 </div>
             </div>
             <div class="col-md-3 my-3">
-                <div class="card text-bg-light text-dark text-center rounded-0 border-0" style="max-height: 200px; min-height: 150px">
+                <div class="card text-bg-light text-dark text-center rounded-0 border-0"
+                 style="max-height: 200px; min-height: 150px">
                     <div class="card-body" style="cursor: pointer;">
                         <h3>Youths</h3>
                         <?php
@@ -96,7 +95,8 @@ include_once('includes/navbar.php');
         </div>
         <div class="row">
             <div class="col-md-3 my-3">
-                <div class="card text-bg-warning text-light text-center rounded-0 border-0" style="max-height: 200px; min-height: 150px">
+                <div class="card text-bg-warning text-light text-center rounded-0 border-0"
+                 style="max-height: 200px; min-height: 150px">
                     <div class="card-body" style="cursor: pointer;">
                         <h3>Children</h3>
                         <?php
@@ -113,7 +113,8 @@ include_once('includes/navbar.php');
                 </div>
             </div>
             <div class="col-md-3 my-3">
-                <div class="card text-bg-success text-light text-center rounded-0 border-0" style="max-height: 200px; min-height: 150px">
+                <div class="card text-bg-success text-light text-center rounded-0 border-0"
+                 style="max-height: 200px; min-height: 150px">
                     <div class="card-body" style="cursor: pointer;">
                         <h3>Bap in Axim</h3>
                         <?php
@@ -130,7 +131,8 @@ include_once('includes/navbar.php');
                 </div>
             </div>
             <div class="col-md-3 my-3">
-                <div class="card text-bg-secondary text-light text-center rounded-0 border-0" style="max-height: 200px; min-height: 150px">
+                <div class="card text-bg-secondary text-light text-center rounded-0 border-0"
+                 style="max-height: 200px; min-height: 150px">
                     <div class="card-body" style="cursor: pointer;">
                         <h3>Students</h3>
                         <?php
@@ -147,7 +149,8 @@ include_once('includes/navbar.php');
                 </div>
             </div>
             <div class="col-md-3 my-3">
-                <div class="card text-bg-danger text-light text-center rounded-0 border-0" style="max-height: 200px; min-height: 150px">
+                <div class="card text-bg-danger text-light text-center rounded-0 border-0"
+                 style="max-height: 200px; min-height: 150px">
                     <div class="card-body" style="cursor: pointer;">
                         <h3>Admins</h3>
                         <?php

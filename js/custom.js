@@ -70,19 +70,19 @@ $(document).ready(function () {
                         <div class="col-md-5">\
                         <div class="form-group">\
                                 <label for="society_name">Society name</label>\
-                                <select type="text" name="society_name[]" id="society" class="form-control" placeholder="Society Name">\
+                                <select type="text" name="society_name[]" id="society" class="form-control rounded-0" placeholder="Society Name">\
                                     <option value="">None</option>\
                                     <option value="Catholic Women Association">Catholic Women Association</option>\
                                     <option value="Charismatic Renewal">Charismatic Renewal</option>\
                                     <option value="Christian Mothers and Fathers">Christian Mothers and Fathers</option>\
                                     <option value="Knight and Ladies of the Alter">Knight and Ladies of the Alter</option>\
-                                    <option value="Knight and Ladies of St. Johns International">Knight and Ladies of St. Johns International</option>\
+                                    <option value="Knight and Ladies of St. John\'s International">Knight and Ladies of St. John\'s International</option>\
                                     <option value="Knight and Ladies of Marshal">Knight and Ladies of Marshal</option>\
                                     <option value="Sacred Heart of Jesus">Sacred heart of Jesus</option>\
                                     <option value="Senior Choir">Senior Choir</option>\
                                     <option value="St. Anthony Guild">St. Anthony Guild</option>\
                                     <option value="St. Cecilia Singing Band">St. Cecilia Singing Band</option>\
-                                    <option value="St. Theresa of Child Jesus">St. Theresa of Child Jesus</option>\
+                                    <option value="St. Theresa\'s of Child Jesus">St. Theresa of the Child Jesus</option>\
                                     <option value="Youth Choir">Youth Choir</option>\
                                 </select>\
                             </div>\
@@ -90,12 +90,12 @@ $(document).ready(function () {
                         <div class="col-md-5">\
                             <div class="form-group">\
                             <label for="office_held">Office held</label>\
-                                <input type="text" name="office_held[]" class="form-control" id="office_held">\
+                                <input type="text" name="office_held[]" class="form-control rounded-0" id="office_held">\
                             </div>\
                         </div>\
                         <div class="col-md-2">\
                                 <br>\
-                                <button type="button" class="remove-btn btn btn-danger">Remove</button>\
+                                <button type="button" class="remove-btn btn btn-danger rounded-0">Remove</button>\
                         </div>\
                     </div>'
 		);
@@ -148,7 +148,7 @@ let user_country_code = "IN";
 
     // creating district name drop-down
     let text_box =
-        '<label for="state">District</label><input type="text" class="form-control" name="district" class="input-text" id="state">';
+        '<label for="district">District</label><input type="text" class="form-control rounded-0" name="district" class="input-text" id="district">';
     let state_code_id = document.getElementById("state-code");
 
     function create_states_dropdown() {
@@ -162,7 +162,7 @@ let user_country_code = "IN";
         }
         let option = "";
         if (states.length > 0) {
-            option = '<label for="state">District</label><select class="form-control" name="district" id="state">\n';
+            option = '<label for="district">District</label><select class="form-control rounded-0" name="district" id="district">\n';
             for (let i = 0; i < states.length; i++) {
                 option += '<option value="' + states[i].code + '">' + states[i].name + "</option>";
             }
