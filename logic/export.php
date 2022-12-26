@@ -11,12 +11,11 @@ use PhpOffice\PhpSpreadsheet\Writer\Csv;
 
 if (isset($_POST['export_excel_btn'])) {
     $file_ext_name = $_POST['export_file_type'];
-    $filename = 'members-sheet'.date('m/Y');
+    $filename = 'members-sheet';
     $query = "SELECT * FROM `members`";
     $query_run = mysqli_query($connection, $query);
 
     if (mysqli_num_rows($query_run) > 0) {
-
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
         $sheet->setCellValue('A1', 'Member ID');
