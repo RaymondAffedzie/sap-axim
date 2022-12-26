@@ -15,7 +15,7 @@ include_once('includes/navbar.php');
                     View member
                 </a>
             </div>
-            <form action="logic/export.php" method="post">
+            <form action="export.php" method="post">
                 <div class="btn-group me-2">
                     <select type="button" class="btn btn-sm btn-outline-secondary rounded-0" name="export_file_type">
                         <option value="">Select file type</option>

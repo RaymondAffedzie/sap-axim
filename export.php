@@ -1,17 +1,15 @@
 <?php
-include_once('../config/security.php');
-
-require_once '../vendor/autoload.php';
+include_once('config/security.php');
+require_once 'vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Writer\Xls;
 use PhpOffice\PhpSpreadsheet\Writer\Csv;
 
-
 if (isset($_POST['export_excel_btn'])) {
     $file_ext_name = $_POST['export_file_type'];
-    $filename = 'members-sheet';
+    $filename = 'members-sheet'.date('m-Y');
     $query = "SELECT `Id`, `Init`, `Reg_year`, `Firstname`, `Sur_name`, `Other_name`,
      `Sex`, `Birth_Date`, `Birth_Place`, `Birth_Region`, `Birth_District` FROM `members`";
     $query_run = mysqli_query($connection, $query);
@@ -32,7 +30,7 @@ if (isset($_POST['export_excel_btn'])) {
             $sheet->setCellValue('A'.$counter, $data['Init'].$data['Reg_year'].$data['Id']);
             $sheet->setCellValue('B'.$counter, $data['Firstname']." ".$data['Other_name']." ".$data['Sur_name']);
             $sheet->setCellValue('C'.$counter, $data['Sex']);
-            $sheet->setCellValue('C'.$counter, $data['Birth_Date']);
+            $sheet->setCellValue('D'.$counter, $data['Birth_Date']);
             $sheet->setCellValue('E'.$counter, $data['Birth_Place']);
             $sheet->setCellValue('F'.$counter, $data['Birth_Region']);
             $sheet->setCellValue('G'.$counter, $data['Birth_District']);
