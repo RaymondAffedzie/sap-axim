@@ -28,7 +28,11 @@ include_once('includes/navbar.php');
                         <div class="table-responsive">
                             <?php
                             include_once('logic/alerts.php');
-                            $query = "SELECT other_info.Id, other_info.MiD, other_info.Marital_status, other_info.Number_of_children, other_info.Education_level, other_info.Occupation, members.Init, members.Reg_year, members.Id, members.Firstname, members.Sur_name, members.Other_name FROM other_info LEFT JOIN members ON other_info.MiD = members.Id";
+                            $query = "SELECT other_info.Id, other_info.MiD, other_info.Marital_status,
+                             other_info.Number_of_children, other_info.Education_level, other_info.Occupation,
+                              members.Init, members.Reg_year, members.Id, members.Firstname, members.Sur_name,
+                               members.Other_name FROM other_info LEFT JOIN members ON other_info.MiD = members.Id
+                                ORDER BY members.Id, members.Firstname, members.Sur_name ASC";
                             $query_run = mysqli_query($connection, $query);
                             $counter = 0;
                             ?>
@@ -76,7 +80,7 @@ include_once('includes/navbar.php');
                                                 <td>
                                                     <form action="member-profile.php" method="post">
                                                         <input type="hidden" name="member_id" value="<?php echo $row['Id']; ?>">
-                                                        <button type="submit" class="btn btn-outline-secondary" name="view-member" data-bs-toggle="tooltip" data-bs-placement="left" title="View member's profile">
+                                                        <button type="submit" class="btn btn-outline-secondary rounded-0" name="view-member" data-bs-toggle="tooltip" data-bs-placement="left" title="View member's profile">
                                                             <i class="fa fa-eye"></i>
                                                         </button>
                                                     </form>

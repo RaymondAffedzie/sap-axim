@@ -8,7 +8,7 @@ include_once('includes/navbar.php');
         <h1 class="h2">Add Member's Church Details</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a type="button" href="view-church.php" class="btn btn-sm btn-outline-secondary">View church details</a>
+                <a type="button" href="view-church.php" class="btn btn-sm btn-outline-secondary rounded-0">View church details</a>
                 <!-- <a type="button" class="btn btn-sm btn-outline-secondary" href="add-church.php">Add church</a> -->
             </div>
         </div>
@@ -32,7 +32,7 @@ include_once('includes/navbar.php');
                                 <!-- Displays the member's ID to the page -->
                                 <div class="form-group">
                                     <label for="full-member-id">Member ID</label>
-                                    <input type="text" name="full-member-id" id="full-member-id" class="form-control mb-2" value="<?php echo $row['Init'] . $row['Reg_year'] . $row['Id']; ?>" disabled>
+                                    <input type="text" name="full-member-id" id="full-member-id" class="form-control rounded-0 mb-2" value="<?php echo $row['Init'] . $row['Reg_year'] . $row['Id']; ?>" disabled>
                                 </div>
 
                                 <div class="col-md-12">
@@ -40,24 +40,23 @@ include_once('includes/navbar.php');
                                         <legend>Baptism</legend>
                                         <div class="row">
                                             <div class="form-group mb-3 col-md-6">
-                                                <label for="b_id">Baptism number</label>
-                                                <input type="text" class="form-control" name="baptism_number" id="b_id">
+                                                <label for="b_id">Baptism number (NLB)</label>
+                                                <input type="text" class="form-control rounded-0" name="baptism_number" id="b_id">
                                             </div>
                                             
                                             <div class="form-group mb-3 col-md-6">
                                                 <label for="b_date">Parish of baptism</label>
-                                                <input type="text" class="form-control" name="parish" id="b_date">
+                                                <input type="text" class="form-control rounded-0" name="parish" id="b_date">
                                             </div>
                                         </div>
                                     </fieldset>
                                 </div>
-
                         <?php
                             }
                         }
                         ?>
-                        <button type="submit" class="w-100 my-3  btn btn-lg rounded-4 btn-outline-primary" name="add">Submit</button>
                     </div>
+                    <button type="submit" class="w-100 my-3  btn btn-lg rounded-0 btn-outline-primary" name="add">Submit</button>
                 </form>
             </div>
         </div>

@@ -9,10 +9,10 @@ include_once('includes/navbar.php');
         <h1 class="h2">Profile</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a type="button" class="btn btn-sm btn-outline-secondary" href="register-admin.php">Add user</a>
-                <a type="button" class="btn btn-sm btn-outline-secondary" href="view-users.php">View users</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary rounded-0" href="register-admin.php">Add user</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary rounded-0" href="view-users.php">View users</a>
             </div>
-            <a type="button" class="btn btn-sm btn-outline-secondary" href="profile.php">View profile</a>
+            <a type="button" class="btn btn-sm btn-outline-success rounded-0" href="profile.php">View profile</a>
         </div>
     </div>
 
@@ -40,14 +40,14 @@ include_once('includes/navbar.php');
                                 <p>Phone Number: <?php echo $row['Phone_number']; ?></p>
 
                                 <!-- Edit profile details -->
-                                <a href="edit-profile.php" type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's profile">
+                                <a href="edit-profile.php" type="submit" name="edit_btn" class="btn btn-outline-secondary rounded-0" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's profile">
                                     <i class="fas fa-edit"></i> Edit details
                                 </a>
 
                                 <hr class="my-5">
 
                                 <!-- change password -->
-                                <a href="change-password.php" type="submit" name="edit_btn" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's profile">
+                                <a href="change-password.php" type="submit" name="edit_btn" class="btn btn-outline-secondary rounded-0" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit member's profile">
                                     <i class="fa fa-key"></i> Change password
                                 </a>
                         <?php

@@ -8,10 +8,10 @@ include_once('includes/navbar.php');
         <h1 class="h2">Change your password</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a type="button" class="btn btn-sm btn-outline-secondary" href="profile.php">View profile</a>
-                <a type="button" class="btn btn-sm btn-outline-secondary" href="register-admin.php">View users</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary rounded-0" href="register-admin.php">Add user</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary rounded-0" href="view-users.php">View users</a>
             </div>
-            <a type="button" class="btn btn-sm btn-outline-secondary" href="register-admin.php">Add user</a>
+            <a type="button" class="btn btn-sm btn-outline-success rounded-0" href="profile.php">View profile</a>
         </div>
     </div>
 
@@ -19,7 +19,6 @@ include_once('includes/navbar.php');
         <?php include_once('logic/alerts.php'); ?>
         <div class="card shadow mb-4">
             <div class="card-body">
-
                 <?php
                 $id  = $_SESSION['users']['users_id'];
                 $query = "SELECT * FROM `users` WHERE `Id` = '$id' ";
@@ -35,11 +34,11 @@ include_once('includes/navbar.php');
                                         <legend>Old passwod</legend>
                                         <div class="form-group mb-3">
                                             <label for="username">Username</label>
-                                            <input type="text" class="form-control" name="username" value="<?php echo $row['Username']; ?>" id="username" disabled>
+                                            <input type="text" class="form-control rounded-0" name="username" value="<?php echo $row['Username']; ?>" id="username" disabled>
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="old_password">Old Password</label>
-                                            <input type="password" class="form-control" name="old_password" id="password" minlength="6" required>
+                                            <input type="password" class="form-control rounded-0" name="old_password" id="password" minlength="6" required>
                                         </div>
                                     </fieldset>
                                 </div>
@@ -48,17 +47,17 @@ include_once('includes/navbar.php');
                                         <legend>New password</legend>
                                         <div class="form-group mb-3">
                                             <label for="new_password">New Password</label>
-                                            <input type="password" class="form-control" name="new_password" id="new_password" minlength="6" required>
+                                            <input type="password" class="form-control rounded-0" name="new_password" id="new_password" minlength="6" required>
                                         </div>
 
                                         <div class="form-group mb-3">
                                             <label for="confirm_password">Confirm Password</label>
-                                            <input type="password" class="form-control" name="con_password" id="confirm_password" minlength="6" required>
+                                            <input type="password" class="form-control rounded-0" name="con_password" id="confirm_password" minlength="6" required>
                                         </div>
                                     </fieldset>
                                 </div>
                             </div>
-                            <button type="submit" name="changepassword" class="w-100 mb-2 btn btn-outline-primary" onclick="return confirm('Confirm password change')">Save</button>
+                            <button type="submit" name="changepassword" class="w-100 mb-2 btn btn-outline-primary rounded-0" onclick="return confirm('Confirm password change')">Save</button>
                         </form>
                 <?php
                     }
@@ -66,7 +65,7 @@ include_once('includes/navbar.php');
                 ?>
             </div>
             <div class="card-footer">
-                <a href="profile.php" class="btn btn-outline-danger">Cancel</a>
+                <a href="profile.php" class="btn btn-outline-danger rounded-0">Cancel</a>
             </div>
         </div>
     </div>

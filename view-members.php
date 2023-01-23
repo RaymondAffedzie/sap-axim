@@ -10,11 +10,6 @@ include_once('includes/navbar.php');
         <input id="live_search" class="form-control w-50 rounded-0" type="search"
          placeholder="Search..." autocomplete="off">
         <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group me-2">
-                <a type="button" class="btn btn-sm btn-outline-secondary rounded-0" href="view-members.php">
-                    View member
-                </a>
-            </div>
             <form action="export.php" method="post">
                 <div class="btn-group me-2">
                     <select type="button" class="btn btn-sm btn-outline-secondary rounded-0" name="export_file_type">
@@ -28,6 +23,11 @@ include_once('includes/navbar.php');
                     </button>
                 </div>
             </form>
+            <div class="btn-group me-2">
+                <a type="button" class="btn btn-sm btn-outline-success rounded-0" href="view-members.php">
+                View members
+                </a>
+            </div>
         </div>
     </div>
 
@@ -172,7 +172,7 @@ include_once('includes/navbar.php');
                                                 <td>
                                                     <form action="member-profile.php" method="post">
                                                         <input type="hidden" name="member_id" value="<?php echo $row['Id']; ?>" hidden>
-                                                        <button type="submit" class="btn btn-outline-secondary" name="view-member" data-bs-toggle="tooltip" data-bs-placement="left" title="View member's profile">
+                                                        <button type="submit" class="btn btn-outline-secondary rounded-0" name="view-member" data-bs-toggle="tooltip" data-bs-placement="left" title="View member's profile">
                                                             <i class="fa fa-eye"></i>
                                                         </button>
                                                     </form>
@@ -180,7 +180,7 @@ include_once('includes/navbar.php');
                                                 <td>
                                                     <form action="logic/member-code.php" method="post">
                                                         <input type="hidden" name="member_id" value="<?php echo $row['Reg_year'] . $row['Id']; ?>">
-                                                        <button type="submit" name="delete_member" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete this member" onclick="return confirm('Do you want to delete this member')">
+                                                        <button type="submit" name="delete_member" class="btn btn-outline-danger rounded-0" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete this member" onclick="return confirm('Do you want to delete this member')">
                                                             <i class="fa fa-trash-o"></i>
                                                         </button>
                                                     </form>

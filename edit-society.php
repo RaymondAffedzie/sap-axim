@@ -8,10 +8,8 @@ include_once('includes/navbar.php');
         <h1 class="h2">Update member's society details</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a type="button" href="view-society.php" class="btn btn-sm btn-outline-secondary">View society</a>
-                <a type="button" class="btn btn-sm btn-outline-secondary">Export</a>
+                <a type="button" href="view-society.php" class="btn btn-sm btn-outline-secondary rounded-0">View society</a>
             </div>
-            <a type="button" class="btn btn-sm btn-outline-secondary" href="#">Add member</a>
         </div>
     </div>
 
@@ -42,10 +40,10 @@ include_once('includes/navbar.php');
                                         while ($fetch = mysqli_fetch_array($sql_run)) {
                                     ?>
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control text-center mb-3" value="<?php echo $fetch['Init'] . $fetch['Reg_year'] . $fetch['Id'] ?> " disabled>
+                                                <input type="text" class="form-control rounded-0 text-center mb-3" value="<?php echo $fetch['Init'] . $fetch['Reg_year'] . $fetch['Id'] ?> " disabled>
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control text-center mb-3" value="<?php echo $fetch['Firstname'] . " " . $fetch['Other_name'] . " " . $fetch['Sur_name'] ?> " disabled>
+                                                <input type="text" class="form-control rounded-0 text-center mb-3" value="<?php echo $fetch['Firstname'] . " " . $fetch['Other_name'] . " " . $fetch['Sur_name'] ?> " disabled>
                                             </div>
                                     <?php
                                         }
@@ -56,7 +54,7 @@ include_once('includes/navbar.php');
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="sn">Society name</label>
-                                            <select type="text" name="society_name" id="society" class="form-control" placeholder="Society Name">
+                                            <select type="text" name="society_name" id="society" class="form-control rounded-0" placeholder="Society Name">
                                                 <option value="<?php echo $row['Society_name']; ?>"><?php echo $row['Society_name']; ?></option>
                                                 <option value="Catholic Women Association">Catholic Women Association</option>
                                                 <option value="Charismatic Renewal">Charismatic Renewal</option>
@@ -76,11 +74,11 @@ include_once('includes/navbar.php');
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="oh">Office held</label>
-                                            <input type="text" class="form-control" name="office_held" value="<?php echo $row['Position_held']; ?>" id="oh">
+                                            <input type="text" class="form-control rounded-0" name="office_held" value="<?php echo $row['Position_held']; ?>" id="oh">
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="w-100 mb-2 btn btn-lg rounded-4 btn-outline-primary" name="update">Save</button>
+                                <button type="submit" class="w-100 mb-2 btn btn-lg rounded-0 btn-outline-primary" name="update">Save</button>
                             </form>
                 <?php
                         }
@@ -89,7 +87,7 @@ include_once('includes/navbar.php');
                 ?>
             </div>
             <div class="card-footer">
-                <a href="view-society.php" class="btn btn-outline-danger">Cancel</a>
+                <a href="view-society.php" class="btn btn-outline-danger rounded-0">Cancel</a>
             </div>
         </div>
     </div>

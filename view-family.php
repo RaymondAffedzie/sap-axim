@@ -108,7 +108,7 @@ include_once('includes/navbar.php');
                                                 <td>
                                                     <form action="member-profile.php" method="post">
                                                         <input type="hidden" name="member_id" value="<?php echo $row['Id']; ?>" hidden>
-                                                        <button type="submit" class="btn btn-outline-secondary" name="view-member" data-bs-toggle="tooltip" data-bs-placement="left" title="View member's profile">
+                                                        <button type="submit" class="btn btn-outline-secondary rounded-0" name="view-member" data-bs-toggle="tooltip" data-bs-placement="left" title="View member's profile">
                                                             <i class="fa fa-eye"></i>
                                                         </button>
                                                     </form>

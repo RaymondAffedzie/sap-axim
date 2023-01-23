@@ -8,10 +8,10 @@ include_once('includes/navbar.php');
         <h1 class="h2">Register new user</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a type="button" class="btn btn-sm btn-outline-secondary" href="register-admin.php">Add user</a>
-                <a type="button" class="btn btn-sm btn-outline-secondary" href="view-users.php">View users</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary rounded-0" href="register-admin.php">Add user</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary rounded-0" href="view-users.php">View users</a>
             </div>
-            <a type="button" class="btn btn-sm btn-outline-secondary" href="profile.php">View profile</a>
+            <a type="button" class="btn btn-sm btn-outline-success rounded-0" href="profile.php">View profile</a>
         </div>
     </div>
 
@@ -28,12 +28,12 @@ include_once('includes/navbar.php');
                                         <legend>About</legend>
                                         <div class="form-group mb-3">
                                             <label for="firstname">Firstname<b class="text-danger">*</b></label>
-                                            <input type="text" class="form-control" name="firstname" id="firstname" minlength="2" maxlength="32" required>
+                                            <input type="text" class="form-control rounded-0" name="firstname" id="firstname" minlength="2" maxlength="32" required>
                                         </div>
 
                                         <div class="form-group mb-3">
                                             <label for="surname">Surname<b class="text-danger">*</b></label>
-                                            <input type="text" class="form-control" name="surname" id="surname" minlength="2" maxlength="32" required>
+                                            <input type="text" class="form-control rounded-0" name="surname" id="surname" minlength="2" maxlength="32" required>
                                         </div>
                                     </fieldset>
                                 </div>
@@ -44,14 +44,14 @@ include_once('includes/navbar.php');
                                             <label for="email">Email<b class="text-danger">*</b></label>
                                             <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
                                             <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
-                                            <input type="email" class="form-control verify_email" name="email" id="email" data-sb-validations="required,email" required>
+                                            <input type="email" class="form-control rounded-0 verify_email" name="email" id="email" data-sb-validations="required,email" required>
                                             <p class="notice_email text-danger"></p>
                                         </div>
 
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label for="phone_number">Phone Number<b class="text-danger">*</b></label>
-                                                <input type="text" class="form-control verify_phone_number" name="phone_number" id="phone_number" minlength="10" maxlength="10" required>
+                                                <input type="text" class="form-control rounded-0 verify_phone_number" name="phone_number" id="phone_number" minlength="10" maxlength="10" required>
                                             </div>
                                             <p class="notice_phone_number text-danger"></p>
                                         </div>
@@ -63,29 +63,29 @@ include_once('includes/navbar.php');
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label for="username">Username<b class="text-danger">*</b></label>
-                                                <input type="text" class="form-control verify_username" name="username" id="username" minlength="3" maxlength="16" required>
+                                                <input type="text" class="form-control rounded-0 verify_username" name="username" id="username" minlength="3" maxlength="16" required>
                                             </div>
                                             <p class="notice_username text-danger"></p>
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="password">Password<b class="text-danger">*</b></label>
-                                            <input type="password" class="form-control" name="password" id="password" minlength="4" required>
+                                            <input type="password" class="form-control rounded-0" name="password" id="password" minlength="4" required>
                                         </div>
 
                                         <div class="form-group mb-3">
                                             <label for="confirm_password">Confirm Password<b class="text-danger">*</b></label>
-                                            <input type="password" class="form-control" name="confirm_password" id="confirm_password" minlength="4" required>
+                                            <input type="password" class="form-control rounded-0" name="confirm_password" id="confirm_password" minlength="4" required>
                                         </div>
                                     </fieldset>
                                 </div>
                             </div>
-                            <button type="submit" class="w-100 mb-2 btn btn-lg btn-outline-primary" name="register">Register</button>
+                            <button type="submit" class="w-100 mb-2 btn btn-lg btn-outline-primary rounded-0" name="register">Register</button>
                         </form>
                     </div>
                 </div>
             </div>
             <div class="card-footer">
-                <a href="profile.php" class="btn btn-outline-danger">Cancel</a>
+                <a href="profile.php" class="btn btn-outline-danger rounded-0">Cancel</a>
             </div>
         </div>
     </div>

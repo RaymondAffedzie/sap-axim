@@ -8,10 +8,8 @@ include_once('includes/navbar.php');
         <h1 class="h2">Update member's family details</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a type="button" href="view-family.php" class="btn btn-sm btn-outline-secondary">View family</a>
-                <a type="button" class="btn btn-sm btn-outline-secondary">Export</a>
+                <a type="button" href="view-family.php" class="btn btn-sm btn-outline-secondary rounded-0">View family</a>
             </div>
-            <a type="button" class="btn btn-sm btn-outline-secondary" href="#">Add member</a>
         </div>
     </div>
 
@@ -41,10 +39,10 @@ include_once('includes/navbar.php');
                                         while ($fetch = mysqli_fetch_array($sql_run)) {
                                     ?>
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control text-center mb-3" value="<?php echo $fetch['Init'] . $fetch['Reg_year'] . $fetch['Id'] ?> " disabled>
+                                                <input type="text" class="form-control rounded-0 text-center mb-3" value="<?php echo $fetch['Init'] . $fetch['Reg_year'] . $fetch['Id'] ?> " disabled>
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control text-center mb-3" value="<?php echo $fetch['Firstname'] . " " . $fetch['Other_name'] . " " . $fetch['Sur_name'] ?> " disabled>
+                                                <input type="text" class="form-control rounded-0 text-center mb-3" value="<?php echo $fetch['Firstname'] . " " . $fetch['Other_name'] . " " . $fetch['Sur_name'] ?> " disabled>
                                             </div>
                                     <?php
                                         }
@@ -57,11 +55,12 @@ include_once('includes/navbar.php');
                                             <legend>Father</legend>
                                             <div class="form-group mb-3">
                                                 <label for="fn">Father's name</label>
-                                                <input type="text" class="form-control" name="f_name" value="<?php echo $row['Father_name']; ?>" id="fn" autocapitalize="on">
+                                                <input type="text" class="form-control rounded-0" name="f_name" value="<?php echo $row['Father_name']; ?>" id="fn" autocapitalize="on">
                                             </div>
                                             <div class="form-group mb-3">
                                                 <label for="fs">Father's status</label>
-                                                <input type="text" class="form-control" name="f_status" value="<?php echo $row['F_decease']; ?>" id="fs" autocapitalize="on">
+                                                <small class="text-success">Use <b>A</b> for Alive and <b>D</b> for Deceased</small>
+                                                <input type="text" class="form-control rounded-0" name="f_status" value="<?php echo $row['F_decease']; ?>" id="fs" autocapitalize="on">
                                             </div>
                                         </fieldset>
                                     </div>
@@ -70,11 +69,12 @@ include_once('includes/navbar.php');
                                             <legend>Mother</legend>
                                             <div class="form-group mb-3">
                                                 <label for="mn">Mother's name</label>
-                                                <input type="text" class="form-control" name="m_name" value="<?php echo $row['Mother_name']; ?>" id="mn" autocapitalize="on">
+                                                <input type="text" class="form-control rounded-0" name="m_name" value="<?php echo $row['Mother_name']; ?>" id="mn" autocapitalize="on">
                                             </div>
                                             <div class="form-group mb-3">
                                                 <label for="ms">Mother's status</label>
-                                                <input type="text" class="form-control" name="m_status" value="<?php echo $row['M_decease']; ?>" id="ms" autocapitalize="on">
+                                                <small class="text-success">Use <b>A</b> for Alive and <b>D</b> for Deceased</small>
+                                                <input type="text" class="form-control rounded-0" name="m_status" value="<?php echo $row['M_decease']; ?>" id="ms" autocapitalize="on">
                                             </div>
                                         </fieldset>
                                     </div>
@@ -83,20 +83,20 @@ include_once('includes/navbar.php');
                                             <legend>Next of kin</legend>
                                             <div class="form-group mb-3">
                                                 <label for="kn">Kin's name</label>
-                                                <input type="text" class="form-control" name="k_name" value="<?php echo $row['Next_of_kin']; ?>" id="kn" autocapitalize="on">
+                                                <input type="text" class="form-control rounded-0" name="k_name" value="<?php echo $row['Next_of_kin']; ?>" id="kn" autocapitalize="on">
                                             </div>
                                             <div class="form-group mb-3">
                                                 <label for="nc">Kin's contact</label>
-                                                <input type="tel" class="form-control" name="k_contact" value="<?php echo $row['NoK_contact']; ?>" id="nc">
+                                                <input type="tel" class="form-control rounded-0" name="k_contact" value="<?php echo $row['NoK_contact']; ?>" id="nc">
                                             </div>
                                             <div class="form-group mb-3">
                                                 <label for="gps">GPS address</label>
-                                                <input type="text" class="form-control" name="k_gps" value="<?php echo $row['NoK_GPS_address']; ?>" id="gps">
+                                                <input type="text" class="form-control rounded-0" name="k_gps" value="<?php echo $row['NoK_GPS_address']; ?>" id="gps">
                                             </div>
                                         </fieldset>
                                     </div>
                                 </div>
-                                <button type="submit" class="w-100 mb-2 btn btn-lg rounded-4 btn-outline-primary" name="update">Save</button>
+                                <button type="submit" class="w-100 mb-2 btn btn-lg rounded-0 btn-outline-primary" name="update">Save</button>
                             </form>
                 <?php
                         }
@@ -105,7 +105,7 @@ include_once('includes/navbar.php');
                 ?>
             </div>
             <div class="card-footer">
-                <a href="view-family.php" class="btn btn-outline-danger">Cancel</a>
+                <a href="view-family.php" class="btn btn-outline-danger rounded-0">Cancel</a>
             </div>
         </div>
     </div>

@@ -8,10 +8,10 @@ include_once('includes/navbar.php');
         <h1 class="h2">Update your(admin) details</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a type="button" class="btn btn-sm btn-outline-secondary" href="profile.php">View profile</a>
-                <a type="button" class="btn btn-sm btn-outline-secondary" href="register-admin.php">View users</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary rounded-0" href="register-admin.php">Add user</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary rounded-0" href="view-users.php">View users</a>
             </div>
-            <a type="button" class="btn btn-sm btn-outline-secondary" href="register-admin.php">Add user</a>
+            <a type="button" class="btn btn-sm btn-outline-success rounded-0" href="profile.php">View profile</a>
         </div>
     </div>
 
@@ -34,11 +34,11 @@ include_once('includes/navbar.php');
                                         <legend>About</legend>
                                         <div class="form-group mb-3">
                                             <label for="first_name">First name</label>
-                                            <input type="text" class="form-control" name="firstname" value="<?php echo $row['Firstname']; ?>" id="first_name" autocapitalize="on">
+                                            <input type="text" class="form-control rounded-0" name="firstname" value="<?php echo $row['Firstname']; ?>" id="first_name" autocapitalize="on">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="surname">Surname</label>
-                                            <input type="text" class="form-control" name="surname" value="<?php echo $row['Surname']; ?>" id="surname" autocapitalize="on">
+                                            <input type="text" class="form-control rounded-0" name="surname" value="<?php echo $row['Surname']; ?>" id="surname" autocapitalize="on">
                                         </div>
                                     </fieldset>
                                 </div>
@@ -47,18 +47,18 @@ include_once('includes/navbar.php');
                                         <legend>Account</legend>
                                         <div class="form-group mb-3">
                                             <label for="username">Username</label>
-                                            <input type="text" class="form-control" name="username" value="<?php echo $row['Username']; ?>" id="username">
+                                            <input type="text" class="form-control rounded-0" name="username" value="<?php echo $row['Username']; ?>" id="username">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="status">Status</label>
                                             <?php
                                             if ($row['Status'] == 'A') {
                                             ?>
-                                                <input type="text" class="form-control" name="status" value="Active" id="status" disabled>
+                                                <input type="text" class="form-control rounded-0" name="status" value="Active" id="status" disabled>
                                             <?php
                                             } else {
                                             ?>
-                                                <input type="text" class="form-control" name="status" value="Suspended" id="status" disabled>
+                                                <input type="text" class="form-control rounded-0" name="status" value="Suspended" id="status" disabled>
                                             <?php
                                             }
                                             ?>
@@ -70,16 +70,16 @@ include_once('includes/navbar.php');
                                         <legend>Contact</legend>
                                         <div class="form-group mb-3">
                                             <label for="email">Email</label>
-                                            <input type="email" class="form-control" name="email" value="<?php echo $row['Email']; ?>" id="email">
+                                            <input type="email" class="form-control rounded-0" name="email" value="<?php echo $row['Email']; ?>" id="email">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="pn">Phone nubmer</label>
-                                            <input type="tel" class="form-control" name="phone_number" value="<?php echo $row['Phone_number']; ?>" id="pn">
+                                            <input type="tel" class="form-control rounded-0" name="phone_number" value="<?php echo $row['Phone_number']; ?>" id="pn">
                                         </div>
                                     </fieldset>
                                 </div>
                             </div>
-                            <button type="submit" class="w-100 mb-2 btn btn-lg rounded-4 btn-outline-primary" name="updateprofile">Save</button>
+                            <button type="submit" class="w-100 mb-2 btn btn-lg rounded-0 btn-outline-primary" name="updateprofile">Save</button>
                         </form>
                 <?php
                     }
@@ -87,7 +87,7 @@ include_once('includes/navbar.php');
                 ?>
             </div>
             <div class="card-footer">
-                <a href="profile.php" class="btn btn-outline-danger">Cancel</a>
+                <a href="profile.php" class="btn btn-outline-danger rounded-0">Cancel</a>
             </div>
         </div>
     </div>

@@ -8,10 +8,8 @@ include_once('includes/navbar.php');
         <h1 class="h2">Update member's church details</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a type="button" href="view-church.php" class="btn btn-sm btn-outline-secondary">View church</a>
-                <a type="button" class="btn btn-sm btn-outline-secondary">Export</a>
+                <a type="button" class="btn btn-sm btn-outline-secondary rounded-0" href="view-church.php">View church</a>
             </div>
-            <a type="button" class="btn btn-sm btn-outline-secondary" href="#">Add member</a>
         </div>
     </div>
 
@@ -41,10 +39,10 @@ include_once('includes/navbar.php');
                                         while ($fetch = mysqli_fetch_array($sql_run)) {
                                     ?>
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control text-center mb-3" value="<?php echo $fetch['Init'] . $fetch['Reg_year'] . $fetch['Id'] ?> " disabled>
+                                                <input type="text" class="form-control rounded-0 text-center mb-3" value="<?php echo $fetch['Init'] . $fetch['Reg_year'] . $fetch['Id'] ?> " disabled>
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control text-center mb-3" value="<?php echo $fetch['Firstname'] . " " . $fetch['Other_name'] . " " . $fetch['Sur_name'] ?> " disabled>
+                                                <input type="text" class="form-control rounded-0 text-center mb-3" value="<?php echo $fetch['Firstname'] . " " . $fetch['Other_name'] . " " . $fetch['Sur_name'] ?> " disabled>
                                             </div>
                                     <?php
                                         }
@@ -54,18 +52,18 @@ include_once('includes/navbar.php');
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="bcn">Baptism number</label>
-                                            <input type="text" class="form-control" name="card_number" value="<?php echo $row['Baptism_card_number']; ?>" id="bcn" autocapitalize="on">
+                                            <label for="bcn">Baptism number (NLB)</label>
+                                            <input type="text" class="form-control rounded-0" name="card_number" value="<?php echo $row['Baptism_card_number']; ?>" id="bcn" autocapitalize="on">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="bp">Parish of baptism</label>
-                                            <input type="text" class="form-control" name="parish" value="<?php echo $row['Parish']; ?>" id="bp">
+                                            <input type="text" class="form-control rounded-0" name="parish" value="<?php echo $row['Parish']; ?>" id="bp">
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="w-100 mb-2 btn btn-lg rounded-4 btn-outline-primary" name="update">Save</button>
+                                <button type="submit" class="w-100 mb-2 btn btn-lg rounded-0 btn-outline-primary" name="update">Save</button>
                             </form>
                 <?php
                         }
@@ -74,7 +72,7 @@ include_once('includes/navbar.php');
                 ?>
             </div>
             <div class="card-footer">
-                <a href="view-church.php" class="btn btn-outline-danger">Cancel</a>
+                <a href="view-church.php" class="btn btn-outline-danger rounded-0">Cancel</a>
             </div>
         </div>
     </div>

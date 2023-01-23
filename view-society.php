@@ -69,7 +69,7 @@ include_once('includes/navbar.php');
                                                 <td>
                                                     <form action="member-profile.php" method="post">
                                                         <input type="hidden" name="member_id" value="<?php echo $row['MiD']; ?>" hidden> <!-- MiD is member id from members table inside society table -->
-                                                        <button type="submit" class="btn btn-outline-secondary" name="view-member" data-bs-toggle="tooltip" data-bs-placement="left" title="View member's profile">
+                                                        <button type="submit" class="btn btn-outline-secondary rounded-0" name="view-member" data-bs-toggle="tooltip" data-bs-placement="left" title="View member's profile">
                                                             <i class="fa fa-eye"></i>
                                                         </button>
                                                     </form>
@@ -77,7 +77,7 @@ include_once('includes/navbar.php');
                                                 <td>
                                                     <form action="logic/society-code.php" method="post">
                                                         <input type="hidden" name="society_id" value="<?php echo $row['Id']; ?>"> <!-- society table id is used -->
-                                                        <button type="submit" name="delete_society" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete this member's society" onclick="return confirm('Do you want to delete members society')">
+                                                        <button type="submit" name="delete_society" class="btn btn-outline-danger rounded-0" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete this member's society" onclick="return confirm('Do you want to delete members society')">
                                                             <i class="fa fa-trash-o"></i>
                                                         </button>
                                                     </form>
